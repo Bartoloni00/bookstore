@@ -1,0 +1,23 @@
+Santiago Gallino
+Email:
+santiago.gallino@davinci.edu.ar
+gallino.santi@gmail.com
+
+
+# Portales y Comercio Electrónico
+Tema central: Laravel. Adicionalmente, vamos a ver cómo integrar 
+MercadoPago, y un poquito de testing.
+
+## Entregas
+2 TPs.
+1er TP - Realización de un sitio que comercialice algún servicio o 
+productos. Debe incluir un blog autoadministrable por un usuario 
+administrador.
+2do TP - Extensión del primer TP. Se agrega registro y autenticación de
+usuarios comunes, entre otras cosas.
+
+3ra nota: Promedio de los TPs.
+
+Final obligatorio.
+El final es una extensión del 2do TP, que agrega principalmente un panel de
+estadísticas, la pasarela de MercadoPago, y un poquito de testing.
