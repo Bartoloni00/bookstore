@@ -1,23 +1,20 @@
-Santiago Gallino
-Email:
-santiago.gallino@davinci.edu.ar
-gallino.santi@gmail.com
+En en archivo .env tenemos los datos de configuracion (incluyendo los de conexion a la DB)
 
+Las migraciones son archivos que se encargan de modificar el schema de una base de datos
+Pueden servirnos para llevar un registro de las modificaciones.
+Laravel recomienda artisan(asistente de linea de comandos de laravel)
 
-# Portales y Comercio Electrónico
-Tema central: Laravel. Adicionalmente, vamos a ver cómo integrar 
-MercadoPago, y un poquito de testing.
+la idea es que la migraciones siempre puedan ser invertibles
 
-## Entregas
-2 TPs.
-1er TP - Realización de un sitio que comercialice algún servicio o 
-productos. Debe incluir un blog autoadministrable por un usuario 
-administrador.
-2do TP - Extensión del primer TP. Se agrega registro y autenticación de
-usuarios comunes, entre otras cosas.
+Seeding
+nos da la posibilidada de sembrar las bases de datos con data, utilizando las clases de siembra
+sembrar = poner valores iniciales
+generalmente son datos iniciales o de prueba
+comando para crear: `php artisan make:seeder BookSeeder`
+comando para ejecutar: `php artisan db:seed`
 
-3ra nota: Promedio de los TPs.
+templates html:
+en laravel se utiliza blade
+@extens, @yield, @section 
 
-Final obligatorio.
-El final es una extensión del 2do TP, que agrega principalmente un panel de
-estadísticas, la pasarela de MercadoPago, y un poquito de testing.
+Los Controllers tambien pueden ser creados con artisan

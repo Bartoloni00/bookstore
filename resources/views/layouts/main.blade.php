@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quienes somos</title>
+    <title>@yield('title') :: Bookstore</title>
+    <!-- Este css esta en la carpeta public -->
     <!-- utilizando la funcion de php url cargamos la ruta para que no importe como este hecho el sistema de rutas-->
     <!-- La funcion URL genera una ruta absoluta del archivo -->
     <link rel="stylesheet" href="<?=url('css/bootstrap.min.css')?>">
@@ -20,16 +21,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="<?=url('/')?>">Home</a>
+          <a class="nav-link active" aria-current="page" href="<?=url('/')?>">Home</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="<?=url('/quienes-somos')?>">Sobre nosotros</a>
+          <a class="nav-link" href="<?=url('/quienes-somos');?>">Quiénes Somos</a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link" href="<?=url('/blogs/blog')?>">Blogs</a>
+        <a class="nav-link" href="<?=url('/books/listado');?>">Libros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          <a class="nav-link" href="<?=url('/contacto');?>">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?=url('/admin/books');?>">Admin</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -39,7 +43,9 @@
     </div>
   </div>
 </nav>
-    <h1>Blogs</h1>
+    <main class="container py-3">
+    @yield('contenido')
+    </main>
     <footer class="footer bg-primary">
         <p>Abraham Bartoloni | Primera web en laravel</p>
     </footer>

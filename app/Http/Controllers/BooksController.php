@@ -1,14 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
-class HousesController extends Controller
+class BooksController extends Controller
 {
     public function index()
     {
-        return view('houses/index');
+        return view('books/index');
     }
     public function details()
     {
-        return view('houses/details');
+        return view('books/details');
     }
 }
