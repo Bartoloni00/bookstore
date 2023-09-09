@@ -37,6 +37,7 @@ Route::get('/contacto',[\App\Http\Controllers\HomeController::class,'contact']);
 Route::get('/books/listado', [\App\Http\Controllers\BooksController::class, 'index']);
 
 // Pagina de detalle de propiedad
-Route::get('/books/detalles', [\App\Http\Controllers\BooksController::class, 'details']);
+Route::get('/books/{id}', [\App\Http\Controllers\BooksController::class, 'details'])
+        ->whereNumber('id');//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
 
 Route::get('/admin/books', [\App\Http\Controllers\AdminBooksController::class, 'index']);
