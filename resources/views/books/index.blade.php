@@ -1,3 +1,6 @@
+<?php 
+/** @var Book[]|Collection $movies */
+?>
 @extends('layouts.main')
 
 @section('title','Listado de libros')
@@ -24,6 +27,7 @@
         // en todos los otros casos por temas de seguridad conviene:
         //{{ $book->book_id }}
         ?>
+        <a href=""></a>
         @foreach ($books as $book)
         <tr>
             <td>{{ $book->book_id }}</td>

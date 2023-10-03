@@ -40,4 +40,8 @@ Route::get('/books/listado', [\App\Http\Controllers\BooksController::class, 'ind
 Route::get('/books/{id}', [\App\Http\Controllers\BooksController::class, 'details'])
         ->whereNumber('id');//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
 
+// Route::get('/books/new', \App\Http\Controllers\BooksController::class);
+
+Route::get('/blogs/listado', [\App\Http\Controllers\BlogsController::class, 'index']);
+
 Route::get('/admin/books', [\App\Http\Controllers\AdminBooksController::class, 'index']);
