@@ -61,7 +61,7 @@ class Book extends Seeder
                 'synopsis'=> 'La novela es un hito en la literatura española y mundial, mezclando comedia y sátira con exploraciones de la locura y la realidad.',
                 'release_date'=> '1605-01-16',
                 'user_id'=> 1,
-                'categorie_id'=> 2,
+                'categorie_id'=> 1,
                 'author_id'=> 5,
             ],
             [
@@ -71,7 +71,7 @@ class Book extends Seeder
                 'synopsis' => 'La narrativa detallada y la creación de un mundo ficticio hacen de esta serie un hito en la literatura de fantasía.',
                 'release_date' => '1954-07-29',
                 'user_id' => 1,
-                'categorie_id' => 2,
+                'categorie_id' => 1,
                 'author_id' => 6,
             ]
         ]);

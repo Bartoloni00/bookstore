@@ -25,6 +25,12 @@ class Category extends Seeder
             ],
             [
                 'name' => 'Drama',
+            ],
+            [
+                'name' => 'Terror',
+            ],
+            [
+                'name' => 'Novela Colombiana',
             ]
         ]);
     }
