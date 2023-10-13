@@ -44,4 +44,6 @@ Route::get('/books/{id}', [\App\Http\Controllers\BooksController::class, 'detail
 
 Route::get('/blogs/listado', [\App\Http\Controllers\BlogsController::class, 'index']);
 
+Route::get('/blogs/{id}', [\App\Http\Controllers\BlogsController::class, 'details'])->whereNumber('id');
+
 Route::get('/admin/books', [\App\Http\Controllers\AdminBooksController::class, 'index']);

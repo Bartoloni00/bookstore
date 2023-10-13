@@ -19,12 +19,24 @@ class Author extends Seeder
                 'lastname' => 'Verne'
             ],
             [
+                'name' => 'Gabriel',
+                'lastname' => 'García Márquez'
+            ],
+            [
                 'name' => 'George',
                 'lastname' => 'Orwell'
             ],
             [
-                'name' => 'Aldous',
-                'lastname' => 'Husley'
+                'name' => 'Harper',
+                'lastname' => 'Lee'
+            ],
+            [
+                'name' => 'Miguel de',
+                'lastname' => 'Cervantes'
+            ],
+            [
+                'name' => 'J.R.R.',
+                'lastname' => 'Tolkien'
             ]
         ]);
     }
