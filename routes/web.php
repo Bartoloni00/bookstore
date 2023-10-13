@@ -40,10 +40,17 @@ Route::get('/books/listado', [\App\Http\Controllers\BooksController::class, 'ind
 Route::get('/books/{id}', [\App\Http\Controllers\BooksController::class, 'details'])
         ->whereNumber('id');//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
 
-// Route::get('/books/new', \App\Http\Controllers\BooksController::class);
-
 Route::get('/blogs/listado', [\App\Http\Controllers\BlogsController::class, 'index']);
 
-Route::get('/blogs/{id}', [\App\Http\Controllers\BlogsController::class, 'details'])->whereNumber('id');
+Route::get('/blogs/{id}', [\App\Http\Controllers\BlogsController::class, 'details'])
+        ->whereNumber('id');
+
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']);
 
 Route::get('/admin/books', [\App\Http\Controllers\AdminBooksController::class, 'index']);
+
+Route::get('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createView']);
+Route::post('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createProcess']);
+
+Route::get('/admin/blog', [\App\Http\Controllers\AdminBlogController::class, 'index']);
+
