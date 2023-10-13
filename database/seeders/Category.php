@@ -15,19 +15,16 @@ class Category extends Seeder
     {
         DB::table('categories')->insert([
             [
-                'name' => 'Terror',
-            ],
-            [
                 'name' => 'Ciencia Ficción',
             ],
             [
                 'name' => 'Aventura',
             ],
             [
-                'name' => 'Romance',
+                'name' => 'Futuro Distópico',
             ],
             [
-                'name' => 'Futuro Distopico',
+                'name' => 'Drama',
             ]
         ]);
     }
