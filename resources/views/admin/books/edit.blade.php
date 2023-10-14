@@ -1,11 +1,12 @@
 <?php 
 use Illuminate\Support\ViewErrorBag;
 
+/** @var Book[]|Collection $movies */
 /* @var ViewErrorBag; $errors*/
 ?>
 
 @extends('layouts.admin')
-@section('title', 'Añadir libro')
+@section('title', 'Editar el libro: '. e($book->title))
 {{-- @csrf es para protegernos de ataques CSRF si no lo tenemos laravel tira un error 419 --}}
 @section('contenido')
     <h1>Agregar Nuevo Libro</h1>
@@ -16,7 +17,7 @@ use Illuminate\Support\ViewErrorBag;
         </p>
     @endif
 
-    <form method="POST" action="{{ url('/admin/books/add')}}">
+    <form method="POST" action="{{ url('/admin/books/' . $book->id . '/edit')}}">
         @csrf 
 
         <div class="form-group">
@@ -26,7 +27,7 @@ use Illuminate\Support\ViewErrorBag;
                 class="form-control" 
                 id="title" 
                 name="title"
-                value="{{ old('title')}}"
+                value="{{ old('title', $book->title)}}"
                 @error('title')
                     aria-describedby="error-title"
                 @enderror>
@@ -47,7 +48,7 @@ use Illuminate\Support\ViewErrorBag;
                 @error('description')
                   aria-describedby="error-description"
                 @enderror
-                >{{old('description')}}</textarea>
+                >{{old('description', $book->description)}}</textarea>
             @error('description')
                 <p class="text-danger" id="error-description">
                     {{$message}}
@@ -62,7 +63,7 @@ use Illuminate\Support\ViewErrorBag;
                 class="form-control" 
                 id="price" 
                 name="price"
-                value="{{ old('price')}}"
+                value="{{ old('price', $book->price)}}"
                 @error('price')
                     aria-describedby="error-price"
                 @enderror>
@@ -83,7 +84,7 @@ use Illuminate\Support\ViewErrorBag;
                 @error('synopsis')
                     aria-describedby="error-synopsis"
                 @enderror
-                >{{old('synopsis')}}</textarea>
+                >{{old('synopsis', $book->synopsis)}}</textarea>
             @error('synopsis')
                 <p class="text-danger" id="error-synopsis">
                     {{$message}}
@@ -98,7 +99,7 @@ use Illuminate\Support\ViewErrorBag;
                 class="form-control" 
                 id="release_date" 
                 name="release_date"
-                value="{{ old('date')}}"
+                value="{{ old('date', $book->date)}}"
                 @error('date')
                     aria-describedby="error-date"
                 @enderror>

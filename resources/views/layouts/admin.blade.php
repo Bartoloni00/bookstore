@@ -37,6 +37,11 @@
   </div>
 </nav>
     <main class="container py-3">
+      @if (\Session::has('status.message'))
+        <div class="alert alert-success">
+          <p>{!! \Session::get('status.message') !!}</p>
+        </div>
+      @endif
     @yield('contenido')
     </main>
     <footer class="footer bg-primary">

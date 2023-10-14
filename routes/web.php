@@ -52,5 +52,15 @@ Route::get('/admin/books', [\App\Http\Controllers\AdminBooksController::class, '
 Route::get('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createView']);
 Route::post('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createProcess']);
 
+Route::get('/admin/books/{id}/edit', [\App\Http\Controllers\AdminBooksController::class, 'editView'])
+        ->whereNumber('id'); // nose si este whereNumber es necesario despues lo miramos
+Route::post('/admin/books/{id}/edit', [\App\Http\Controllers\AdminBooksController::class, 'editProcess'])
+->whereNumber('id'); // nose si este whereNumber es necesario despues lo miramos
+
+Route::get('/admin/books/{id}/delete', [\App\Http\Controllers\AdminBooksController::class, 'deleteView'])
+        ->whereNumber('id'); // nose si este whereNumber es necesario despues lo miramos
+Route::post('/admin/books/{id}/delete', [\App\Http\Controllers\AdminBooksController::class, 'deleteProcess'])
+->whereNumber('id'); // nose si este whereNumber es necesario despues lo miramos
+
 Route::get('/admin/blog', [\App\Http\Controllers\AdminBlogController::class, 'index']);
 
