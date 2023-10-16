@@ -36,11 +36,11 @@
           <a class="nav-link" href="<?=url('/contacto');?>">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?=url('/admin');?>">Admin</a>
+          <a class="nav-link" href="<?=route('dashboard');?>">Admin</a>
         </li>
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
+
         @auth
         <form action="<?= route('logout') ?>" method="post" class="nav-item">
           @csrf
@@ -58,7 +58,7 @@
 </nav>
     <main class="container py-3">
       @if (\Session::has('status.message'))
-        <div class="alert alert-success">
+        <div class="alert alert-{{\Session::get('status.type','success')}}">
           <p>{!! \Session::get('status.message') !!}</p>
         </div>
       @endif

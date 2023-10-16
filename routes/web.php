@@ -39,35 +39,42 @@ Route::post('/iniciar-sesion',[\App\Http\Controllers\AuthController::class,'logi
         ->name('login.process');
 
 Route::post('cerrar-sesion',[\App\Http\Controllers\AuthController::class,'logoutProcess'])
-        ->name('logout');
+        ->name('logout')
+        ->middleware('auth');
 // Listado de propiedades // Busqueda avanzada
-Route::get('/books/listado', [\App\Http\Controllers\BooksController::class, 'index']);
-
+Route::get('/books/listado', [\App\Http\Controllers\BooksController::class, 'index'])
+        ->name('books');
 // Pagina de detalle de propiedad
 Route::get('/books/{id}', [\App\Http\Controllers\BooksController::class, 'details'])
-        ->whereNumber('id')//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
-        ->name('books');
+        ->whereNumber('id');//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
+        
 Route::get('/blogs/listado', [\App\Http\Controllers\BlogsController::class, 'index']);
 
 Route::get('/blogs/{id}', [\App\Http\Controllers\BlogsController::class, 'details'])
         ->whereNumber('id');
 
-Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']);
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])
+        ->name('dashboard')
+        ->middleware('auth');
 
-Route::get('/admin/books', [\App\Http\Controllers\AdminBooksController::class, 'index']);
+Route::get('/admin/books', [\App\Http\Controllers\AdminBooksController::class, 'index'])
+        ->middleware('auth');
 
-Route::get('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createView']);
-Route::post('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createProcess']);
+Route::get('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createView'])
+        ->middleware('auth');
+Route::post('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createProcess'])
+        ->middleware('auth');
 
 Route::get('/admin/books/{id}/edit', [\App\Http\Controllers\AdminBooksController::class, 'editView'])
-        ->whereNumber('id'); // nose si este whereNumber es necesario despues lo miramos
+        ->middleware('auth');
 Route::post('/admin/books/{id}/edit', [\App\Http\Controllers\AdminBooksController::class, 'editProcess'])
-->whereNumber('id'); // nose si este whereNumber es necesario despues lo miramos
+        ->middleware('auth');
 
 Route::get('/admin/books/{id}/delete', [\App\Http\Controllers\AdminBooksController::class, 'deleteView'])
-        ->whereNumber('id'); // nose si este whereNumber es necesario despues lo miramos
+        ->middleware('auth');
 Route::post('/admin/books/{id}/delete', [\App\Http\Controllers\AdminBooksController::class, 'deleteProcess'])
-->whereNumber('id'); // nose si este whereNumber es necesario despues lo miramos
+        ->middleware('auth');
 
-Route::get('/admin/blog', [\App\Http\Controllers\AdminBlogController::class, 'index']);
+Route::get('/admin/blog', [\App\Http\Controllers\AdminBlogController::class, 'index'])
+        ->middleware('auth');
 

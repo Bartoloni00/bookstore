@@ -20,6 +20,8 @@ class AuthController extends Controller
         if (!Auth::attempt($credenciales)) {
             return redirect()
                 ->route('login')
+                ->withInput()
+                ->with('status.type','danger')
                 ->with('status.message','Las credenciales de ingreso no coinciden con nuestros datos');
         }
 
@@ -28,9 +30,13 @@ class AuthController extends Controller
             ->with('status.message', 'Buen dia ' .auth()->user()->name);
     }
 
-    public function logoutProcess()
+    public function logoutProcess(Request $request)
     {
         Auth::logout();
+
+        $request->session()->invalidate();// vacia la sesion y genera un nuevo id.
+        $request->session()->regenerateToken();// genera un nuevo token CSRF
+
         return redirect()
             ->route('home')
             ->with('status.message','La session se cerro exitosamente');
