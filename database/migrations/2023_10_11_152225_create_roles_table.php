@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('roles', function (Blueprint $table) {
-            $table->id();
+            $table->id();// Aca podria haber utilizado tinyIncrements para ahorrar memoria ya que no tendremos una gran cantidad de roles
             $table->string('name');
             $table->timestamps();
         });

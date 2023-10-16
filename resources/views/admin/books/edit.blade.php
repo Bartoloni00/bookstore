@@ -2,14 +2,16 @@
 use Illuminate\Support\ViewErrorBag;
 
 /** @var Book[]|Collection $movies */
-/* @var ViewErrorBag; $errors*/
+/** @var ViewErrorBag; $errors*/
+/** @var Category|Collections; $categories*/
+/** @var Author|Collections; $authors*/
 ?>
 
 @extends('layouts.admin')
 @section('title', 'Editar el libro: '. e($book->title))
 {{-- @csrf es para protegernos de ataques CSRF si no lo tenemos laravel tira un error 419 --}}
 @section('contenido')
-    <h1>Agregar Nuevo Libro</h1>
+    <h1>Editar el libro: {{$book->title}}</h1>
 
     @if ($errors->any)
         <p class="text-danger mb-3">
@@ -99,23 +101,27 @@ use Illuminate\Support\ViewErrorBag;
                 class="form-control" 
                 id="release_date" 
                 name="release_date"
-                value="{{ old('date', $book->date)}}"
-                @error('date')
-                    aria-describedby="error-date"
+                value="{{ old('release_date', $book->release_date ?: \Carbon\Carbon::now()->toDateString()) }}"
+                @error('release_date')
+                    aria-describedby="error-release_date"
                 @enderror>
-            @error('date')
-                <p class="text-danger" id="error-date">
+            @error('release_date')
+                <p class="text-danger" id="error-release_date">
                     {{$message}}
                 </p>
             @enderror
-        </div>
+        </div>        
 
         <div class="form-group">
             <label for="categorie_id">Categoría</label>
             <select class="form-control" id="categorie_id" name="categorie_id">
-                <option value="1">Ficción</option>
-                <option value="2">Fantasía</option>
-                <!-- Agrega más opciones según tus necesidades -->
+                <option value="">--Selecciona una categoria--</option>
+                @foreach ($categories as $category)
+                    <option 
+                        value="{{$category->id}}"
+                        @selected($category->id == old('categorie_id', $book->category->id))
+                        >{{ $category->name }}</option>
+                @endforeach
             </select>
             @error('categorie_id')
                 <p class="text-danger">
@@ -127,9 +133,14 @@ use Illuminate\Support\ViewErrorBag;
         <div class="form-group">
             <label for="author_id">Autor</label>
             <select class="form-control" id="author_id" name="author_id">
-                <option value="1">J.R.R. Tolkien</option>
-                <option value="2">Otro Autor</option>
-                <!-- Agrega más opciones según tus necesidades -->
+                <option value="">--Selecciona un author--</option>
+                @foreach ($authors as $author)
+                <option 
+                    value="{{$author->id}}"
+                    @selected($author->id == old('author_id', $book->author->id))
+                    >{{ $author->name }} {{ $author->lastname }}</option>
+            @endforeach
+        </select>
             </select>
             @error('author_id')
                 <p class="text-danger">
@@ -138,6 +149,41 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Agregar Libro</button>
+        <div class="form-group">
+            <label for="image">Imagen</label>
+            <input 
+                type="file" 
+                class="form-control-file" 
+                id="image" 
+                name="image"
+                @error('image')
+                    aria-describedby="error-image"
+                @enderror>
+            @error('image')
+                <p class="text-danger" id="error-image">
+                    {{$message}}
+                </p>
+            @enderror
+        </div>
+        
+        <div class="form-group">
+            <label for="alt">Texto Alternativo (Alt)</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="alt" 
+                name="alt"
+                value="{{ old('alt') }}"
+                @error('alt')
+                    aria-describedby="error-alt"
+                @enderror>
+            @error('alt')
+                <p class="text-danger" id="error-alt">
+                    {{$message}}
+                </p>
+            @enderror
+        </div>
+
+        <button type="submit" class="btn btn-warning">Editar Libro</button>
     </form>
 @endsection()

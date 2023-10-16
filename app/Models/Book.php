@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Seeders\Image;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -50,5 +51,20 @@ class Book extends Model
     public function author()
     {
         return $this->belongsTo(Author::class, 'author_id');
+    }
+
+    public function Image()
+    {
+        return $this->belongsTo(Images::class, 'image_id');
+    }
+
+    public function Category()
+    {
+        return $this->belongsTo(Category::class, 'categorie_id');
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

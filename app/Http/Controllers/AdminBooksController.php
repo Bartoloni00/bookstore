@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Author;
 use App\Models\Images;
 use App\Models\Category;
+use Database\Seeders\Image;
 use Illuminate\Http\Request;
 
 class AdminBooksController extends Controller
@@ -14,22 +15,20 @@ class AdminBooksController extends Controller
 
     public function index()
     {
-        $books = Book::all();
-        $author = Author::All();
-        $images = Images::All();
-        $category = Category::All();
+        //asi evitamos el lazyloading y tenemos menos consultas hacia la BD
+        $books = Book::with(['category','author','user','image'])->get();
 
         return view('admin/books/index', [
-            'books' => $books,
-            'author' => $author,
-            'images' => $images,
-            'category' => $category,
+            'books' => $books
         ]);
     }
 
     public function createView()
     {
-        return view('admin/books/add');
+        return view('admin/books/add',[
+            'categories' => Category::all(),
+            'authors' => Author::all()
+        ]);
     }
 
     public function createProcess(Request $request)
@@ -37,20 +36,30 @@ class AdminBooksController extends Controller
         // echo '<pre>';
         // dd($request);// igual a print_r pero evita bucles infinitos
         // echo '</pre>';
-        $data = $request->only(['title','description','price','synopsis','release_date','categorie_id','author_id']);
-        // // $data['user_id'] = 1;
-        // // dd($data);
-        // Book::create($data);
+        $dataImage = [];
+        $dataBook = $request->only(['title','description','price','synopsis','release_date','categorie_id','author_id']);
+        // // $dataBook['user_id'] = 1;
+        // // dd($dataBook);
+        if ($request->hasFile('image')) {
+            $dataImage = $request->only(['alt','image']);
+            $dataImage['image'] = $request->file('image')->store('images');
+
+            $request->validate(Images::CREATE_RULES,Images::ERROR_MESSAGES);
+            Images::create($dataImage);
+        }
         $request->validate(Book::CREATE_RULES,Book::ERROR_MESSAGES);
 
+        Book::create($dataBook);
         return redirect('admin/books/index')
-            ->with('status.message','El Libro: '. e($data['title']) . 'fue agregado exitosamente.');
+            ->with('status.message','El Libro: '. e($dataBook['title']) . 'fue agregado exitosamente.');
     }
 
     public function editView(int $id)
     {
         return view('admin/books/edit',[
             'book' => Book::findOrFail($id),
+            'categories' => Category::all(),
+            'authors' => Author::all()
         ]);
     }
 
@@ -86,6 +95,6 @@ class AdminBooksController extends Controller
         $book->delete();
 
         return redirect('admin/books')
-        ->with('status.message','El Libro: '. e($book->title) . ' fue eliminada exitosamente.');
+        ->with('status.message','El Libro: '. e($book->title) . ' fue eliminado exitosamente.');
     }
 }

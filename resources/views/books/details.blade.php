@@ -7,7 +7,8 @@
 <div class="card mb-3 m-auto mt-3 mb-4" style="max-width: 800px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{ $images->name }}" class="img-fluid rounded-start" alt="{{ $images->alt }}" loading="lazy">
+      {{-- <img src="{{ $images->name }}" class="img-fluid rounded-start" alt="{{ $images->alt }}" loading="lazy"> --}}
+    <img src="{{ asset('storage/' . $images->name)}}" alt="{{$images->alt}}" loading="lazy">
     </div>
     <div class="col-md-8">
       <div class="card-body">

@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Pagina de inicio
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
+        ->name('home');// esto me permite llamar a la ruta por su nombre en lugar de por url (uso de la funcion route())
 
 // Pagina acerca de nosotros
 Route::get('quienes-somos', [\App\Http\Controllers\HomeController::class, 'about']);
@@ -31,15 +32,21 @@ Route::get('/contacto',[\App\Http\Controllers\HomeController::class,'contact']);
 // Route::get('/preguntas-frecuentes',[\App\Http\Controllers\HomeController::class,'faq']);
 
 // Inicio de sesion o registro
-// Route::get('/inicio-de-sesion',[\App\Http\Controllers\HomeController::class,'login']);
+Route::get('/iniciar-sesion',[\App\Http\Controllers\AuthController::class,'login'])
+        ->name('login');
 
+Route::post('/iniciar-sesion',[\App\Http\Controllers\AuthController::class,'loginProcess'])
+        ->name('login.process');
+
+Route::post('cerrar-sesion',[\App\Http\Controllers\AuthController::class,'logoutProcess'])
+        ->name('logout');
 // Listado de propiedades // Busqueda avanzada
 Route::get('/books/listado', [\App\Http\Controllers\BooksController::class, 'index']);
 
 // Pagina de detalle de propiedad
 Route::get('/books/{id}', [\App\Http\Controllers\BooksController::class, 'details'])
-        ->whereNumber('id');//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
-
+        ->whereNumber('id')//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
+        ->name('books');
 Route::get('/blogs/listado', [\App\Http\Controllers\BlogsController::class, 'index']);
 
 Route::get('/blogs/{id}', [\App\Http\Controllers\BlogsController::class, 'details'])

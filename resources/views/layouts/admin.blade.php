@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?=url('/')?>">Web</a>
+          <a class="nav-link active" aria-current="page" href="<?=route('home')?>">Web</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?=url('/admin');?>">Home</a>
@@ -45,7 +45,7 @@
     @yield('contenido')
     </main>
     <footer class="footer bg-primary">
-        <p>Abraham Bartoloni | Primera web en laravel</p>
+      <p>Jonathan Abraham Bartoloni | Ezequiel Thomas Arevalo</p>
     </footer>
 </div>
 </body>

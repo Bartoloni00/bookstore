@@ -12,9 +12,9 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>ID</th>
             <th>Titulo</th>
             <th>Author</th>
+            <th>Categoria</th>
             <th>Synopsis</th>
             <th>Fecha de estreno</th>
             <th>Precio</th>
@@ -24,9 +24,9 @@
     <tbody>
         @foreach ($books as $book)
         <tr>
-            <td>{{ $book->id }}</td>
             <td>{{ $book->title }}</td>
             <td>{{ $book->author->name }} {{ $book->author->lastname }}</td>
+            <td>{{ $book->category->name }}</td>
             <td>{{ $book->synopsis }}</td>
             <td>{{ $book->release_date }}</td>
             <td>$ {{ $book->price }}</td>

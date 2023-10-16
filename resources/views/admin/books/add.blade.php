@@ -1,7 +1,10 @@
 <?php 
+use Illuminate\Database\Eloquent\Collections;
 use Illuminate\Support\ViewErrorBag;
 
-/* @var ViewErrorBag; $errors*/
+/** @var ViewErrorBag; $errors*/
+/** @var Category|Collections; $categories*/
+/** @var Author|Collections; $authors*/
 ?>
 
 @extends('layouts.admin')
@@ -16,7 +19,7 @@ use Illuminate\Support\ViewErrorBag;
         </p>
     @endif
 
-    <form method="POST" action="{{ url('/admin/books/add')}}">
+    <form method="POST" action="{{ url('/admin/books/add')}}" enctype="multipart/form-data">
         @csrf 
 
         <div class="form-group">
@@ -112,9 +115,13 @@ use Illuminate\Support\ViewErrorBag;
         <div class="form-group">
             <label for="categorie_id">Categoría</label>
             <select class="form-control" id="categorie_id" name="categorie_id">
-                <option value="1">Ficción</option>
-                <option value="2">Fantasía</option>
-                <!-- Agrega más opciones según tus necesidades -->
+                <option value="">--Selecciona una categoria--</option>
+                @foreach ($categories as $category)
+                    <option 
+                        value="{{$category->id}}"
+                        @selected($category->id == old('categorie_id'))
+                        >{{ $category->name }}</option>
+                @endforeach
             </select>
             @error('categorie_id')
                 <p class="text-danger">
@@ -126,12 +133,51 @@ use Illuminate\Support\ViewErrorBag;
         <div class="form-group">
             <label for="author_id">Autor</label>
             <select class="form-control" id="author_id" name="author_id">
-                <option value="1">J.R.R. Tolkien</option>
-                <option value="2">Otro Autor</option>
-                <!-- Agrega más opciones según tus necesidades -->
+            <option value="">--Selecciona un author--</option>
+                @foreach ($authors as $author)
+                    <option 
+                        value="{{$author->id}}"
+                        @selected($author->id == old('author_id'))
+                        >{{ $author->name }} {{ $author->lastname }}</option>
+                @endforeach
             </select>
             @error('author_id')
                 <p class="text-danger">
+                    {{$message}}
+                </p>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="image">Imagen</label>
+            <input 
+                type="file" 
+                class="form-control-file" 
+                id="image" 
+                name="image"
+                @error('image')
+                    aria-describedby="error-image"
+                @enderror>
+            @error('image')
+                <p class="text-danger" id="error-image">
+                    {{$message}}
+                </p>
+            @enderror
+        </div>
+        
+        <div class="form-group">
+            <label for="alt">Texto Alternativo (Alt)</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="alt" 
+                name="alt"
+                value="{{ old('alt') }}"
+                @error('alt')
+                    aria-describedby="error-alt"
+                @enderror>
+            @error('alt')
+                <p class="text-danger" id="error-alt">
                     {{$message}}
                 </p>
             @enderror
