@@ -64,7 +64,8 @@ Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])
         ->middleware('auth');
 
 Route::get('/admin/books', [\App\Http\Controllers\AdminBooksController::class, 'index'])
-        ->middleware('auth');
+        ->middleware('auth')
+        ->name('admin.books');
 
 Route::get('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createView'])
         ->middleware('auth')
@@ -84,7 +85,8 @@ Route::post('/admin/books/{id}/delete', [\App\Http\Controllers\AdminBooksControl
         ->middleware('auth');
 
 Route::get('/admin/blog', [\App\Http\Controllers\AdminBlogController::class, 'index'])
-        ->middleware('auth');
+        ->middleware('auth')
+        ->name('admin.blogs');
 
 Route::get('/admin/blog/add', [\App\Http\Controllers\AdminBlogController::class, 'createView'])
         ->middleware('auth')
@@ -106,17 +108,41 @@ Route::get('/admin/blog/{id}/delete', [\App\Http\Controllers\AdminBlogController
 Route::post('/admin/blog/{id}/delete', [\App\Http\Controllers\AdminBlogController::class, 'deleteProcess'])
         ->middleware('auth')
         ->name('delete.blog.process');
-        
+
+Route::get('/admin/author',[\App\Http\Controllers\AdminAuthorController::class, 'index'])
+        ->middleware('auth')
+        ->name('admin.authors');
 Route::get('/admin/author/add', [\App\Http\Controllers\AdminAuthorController::class, 'createView'])
         ->middleware('auth')
         ->name('author.create.form');
 Route::post('/admin/author/add', [\App\Http\Controllers\AdminAuthorController::class, 'createProcess'])
         ->middleware('auth')
         ->name('author.create.process');
+Route::get('/admin/author/{id}/edit', [\App\Http\Controllers\AdminAuthorController::class, 'editView'])
+        ->middleware('auth')
+        ->name('author.edit.form');
+Route::post('/admin/author/{id}/edit', [\App\Http\Controllers\AdminAuthorController::class, 'editProcess'])
+        ->middleware('auth')
+        ->name('author.edit.process');
+Route::get('/admin/author/{id}/delete', [\App\Http\Controllers\AdminAuthorController::class, 'deleteView'])
+        ->middleware('auth')
+        ->name('author.delete.form');
+Route::post('/admin/author/{id}/delete', [\App\Http\Controllers\AdminAuthorController::class, 'deleteProcess'])
+        ->middleware('auth')
+        ->name('author.delete.process');
 
+
+Route::get('admin/category',[\App\Http\Controllers\AdminCategoryController::class,'index'])
+        ->middleware('auth')
+        ->name('admin.categories');
 Route::get('/admin/category/add', [\App\Http\Controllers\AdminCategoryController::class, 'createView'])
         ->middleware('auth')
         ->name('category.create.form');
 Route::post('/admin/category/add', [\App\Http\Controllers\AdminCategoryController::class, 'createProcess'])
         ->middleware('auth')
         ->name('category.create.process');
+
+
+Route::get('admin/users',[\App\Http\Controllers\AuthController::class, 'index'])
+        ->middleware('auth')
+        ->name('admin.users');
