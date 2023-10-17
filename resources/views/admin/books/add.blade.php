@@ -19,7 +19,7 @@ use Illuminate\Support\ViewErrorBag;
         </p>
     @endif
 
-    <form method="POST" action="{{ url('/admin/books/add')}}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('create.book.process')}}" enctype="multipart/form-data">
         @csrf 
 
         <div class="form-group">
@@ -101,12 +101,12 @@ use Illuminate\Support\ViewErrorBag;
                 class="form-control" 
                 id="release_date" 
                 name="release_date"
-                value="{{ old('date')}}"
-                @error('date')
-                    aria-describedby="error-date"
+                value="{{ old('release_date' ?: \Carbon\Carbon::now()->toDateString()) }}"
+                @error('release_date')
+                    aria-describedby="error-release_date"
                 @enderror>
-            @error('date')
-                <p class="text-danger" id="error-date">
+            @error('release_date')
+                <p class="text-danger" id="error-release_date">
                     {{$message}}
                 </p>
             @enderror
@@ -148,7 +148,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="image">Imagen</label>
             <input 
                 type="file" 
@@ -181,7 +181,7 @@ use Illuminate\Support\ViewErrorBag;
                     {{$message}}
                 </p>
             @enderror
-        </div>
+        </div> --}}
 
         <button type="submit" class="btn btn-primary">Agregar Libro</button>
     </form>

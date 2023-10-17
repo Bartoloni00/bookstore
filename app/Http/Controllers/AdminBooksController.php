@@ -33,24 +33,23 @@ class AdminBooksController extends Controller
 
     public function createProcess(Request $request)
     {
-        // echo '<pre>';
-        // dd($request);// igual a print_r pero evita bucles infinitos
-        // echo '</pre>';
-        $dataImage = [];
-        $dataBook = $request->only(['title','description','price','synopsis','release_date','categorie_id','author_id']);
-        // // $dataBook['user_id'] = 1;
-        // // dd($dataBook);
-        if ($request->hasFile('image')) {
-            $dataImage = $request->only(['alt','image']);
-            $dataImage['image'] = $request->file('image')->store('images');
+        // $dataImage = [];
 
-            $request->validate(Images::CREATE_RULES,Images::ERROR_MESSAGES);
-            Images::create($dataImage);
-        }
+        $dataBook = $request->only(['title','description','price','synopsis','release_date','categorie_id','author_id']);
+        // $dataBook['user_id'] = auth()->user()->id;
+        // // dd($dataBook);
+        // if ($request->hasFile('image')) {
+        //     $dataImage = $request->only(['alt','image']);
+        //     $dataImage['image'] = $request->file('image')->store('images');
+
+        //     $request->validate(Images::CREATE_RULES,Images::ERROR_MESSAGES);
+        //     Images::create($dataImage);
+        // }
         $request->validate(Book::CREATE_RULES,Book::ERROR_MESSAGES);
 
+        $dataBook['user_id'] = auth()->user()->id;
         Book::create($dataBook);
-        return redirect('admin/books/index')
+        return redirect('/admin/books')
             ->with('status.message','El Libro: '. e($dataBook['title']) . 'fue agregado exitosamente.');
     }
 
@@ -71,7 +70,7 @@ class AdminBooksController extends Controller
 
         $book->update($data);
 
-        return redirect('admin/books/index')
+        return redirect('admin/books')
         ->with('status.message','El Libro: '. e($data['title']) . 'fue editado exitosamente.');
     }
 

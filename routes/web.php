@@ -61,9 +61,11 @@ Route::get('/admin/books', [\App\Http\Controllers\AdminBooksController::class, '
         ->middleware('auth');
 
 Route::get('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createView'])
-        ->middleware('auth');
+        ->middleware('auth')
+        ->name('create.book.view');
 Route::post('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createProcess'])
-        ->middleware('auth');
+        ->middleware('auth')
+        ->name('create.book.process');
 
 Route::get('/admin/books/{id}/edit', [\App\Http\Controllers\AdminBooksController::class, 'editView'])
         ->middleware('auth');

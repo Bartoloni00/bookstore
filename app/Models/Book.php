@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Database\Seeders\Image;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,22 +31,22 @@ class Book extends Model
         'price' => ['required', 'numeric'],
         'synopsis' => ['required'],
         'release_date' => 'required',
-        'categorie_id' => ['required','numeric'],
-        'user_id' => ['required','numeric'],
-        'author_id' => ['required','numeric']
+        'categorie_id' => ['required'],
+        'author_id' => ['required']
     ];
-
+    
     public const ERROR_MESSAGES = [
-        'title.require' => 'El titulo no puede estar vacio',
-        'description.require' => 'Tienes que escribir una descripcion.',
-        'price.require' => 'El libro debe poseer un precio.',
-        'synopsis.require' => 'Debes escribir un resumen de la descripcion',
-        'release_date.require' => 'Debes poner la fecha de lanzamiento del libro',
-        'categorie_id.require' => 'El libro tiene que poseer una categoria.',
-        'author_id.require' => 'El libro tiene que poseer un autor.',
-        'title.max' => 'El titulo no puede superar los :max caracteres.',
-        'price.numeric' => 'El precio del libro tiene que ser numerico.',
+        'title.required' => 'El título no puede estar vacío',
+        'description.required' => 'Tienes que escribir una descripción.',
+        'price.required' => 'El libro debe tener un precio.',
+        'synopsis.required' => 'Debes escribir un resumen de la descripción.',
+        'release_date.required' => 'Debes poner la fecha de lanzamiento del libro.',
+        'categorie_id.required' => 'El libro tiene que tener una categoría.',
+        'author_id.required' => 'El libro tiene que tener un autor.',
+        'title.max' => 'El título no puede superar los :max caracteres.',
+        'price.numeric' => 'El precio del libro tiene que ser numérico.',
     ];
+    
     
     public function author()
     {
@@ -66,5 +66,13 @@ class Book extends Model
     public function User()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    protected function price(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value / 100,
+            set: fn ($value) => $value * 100,
+        );
     }
 }

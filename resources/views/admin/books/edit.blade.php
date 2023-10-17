@@ -149,7 +149,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="image">Imagen</label>
             <input 
                 type="file" 
@@ -182,7 +182,7 @@ use Illuminate\Support\ViewErrorBag;
                     {{$message}}
                 </p>
             @enderror
-        </div>
+        </div> --}}
 
         <button type="submit" class="btn btn-warning">Editar Libro</button>
     </form>
