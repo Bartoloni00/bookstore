@@ -33,7 +33,44 @@ class AdminBlogController extends Controller
         $data['user_id'] = auth()->user()->id;
         Blog::create($data);
 
-        return redirect('/admin/blog')
+        return redirect('admin/blog')
         ->with('status.message','La categoria: '. e($data['title']) . ' fue agregado exitosamente.');
+    }
+
+    public function editView(int $id)
+    {
+        return view('admin/blog/edit',[
+            'blog' => Blog::findOrFail($id),
+            'categories' => Category::all(),
+        ]);
+    }
+
+    public function editProcess(int $id, Request $request)
+    {
+        $blog = Blog::findOrFail($id);
+        $request->validate(Blog::CREATE_RULES,Blog::ERROR_MESSAGES);
+        $data = $request->except('_token');
+        $data['release_date'] = now();
+
+        $blog->update($data);
+
+        return redirect('admin/blog')
+        ->with('status.message','El blog: '. e($data['title']) . 'fue editado exitosamente.');
+    }
+
+    public function deleteView(int $id)
+    {
+        return view('admin/blog/delete',[
+            'blog' => Blog::findOrFail($id)
+        ]);
+    }
+
+    public function deleteProcess(int $id)
+    {
+        $blog = Blog::findOrFail($id);
+        $blog->delete();
+
+        return redirect('admin/blog')
+        ->with('status.message','El Libro: '. e($blog->title) . ' fue eliminado exitosamente.');
     }
 }

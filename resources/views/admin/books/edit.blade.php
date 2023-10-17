@@ -1,7 +1,7 @@
 <?php 
 use Illuminate\Support\ViewErrorBag;
 
-/** @var Book[]|Collection $movies */
+/** @var Book[]|Collection $book */
 /** @var ViewErrorBag; $errors*/
 /** @var Category|Collections; $categories*/
 /** @var Author|Collections; $authors*/

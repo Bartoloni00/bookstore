@@ -76,10 +76,6 @@ class AdminBooksController extends Controller
 
     public function deleteView(int $id)
     {
-        $books = Book::all();
-        $author = Author::All();
-        $images = Images::All();
-        $category = Category::All();
         return view('admin/books/delete',[
             'book' => Book::findOrFail($id),
             'author' => Author::All(),

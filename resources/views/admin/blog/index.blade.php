@@ -28,8 +28,8 @@
             <td>{{ $blog->title }}</td>
             <td>{{ $blog->release_date }}</td>
             <td>
-                <a href="{{ url('/admin/blogs/' . $blog->id . '/edit') }}" class="btn btn-warning">Editar</a>
-                <a href="{{ url('/admin/blogs/' . $blog->id . '/delete') }}" class="btn btn-danger">Eliminar</a>
+                <a href="{{ url('/admin/blog/' . $blog->id . '/edit') }}" class="btn btn-warning">Editar</a>
+                <a href="{{ url('/admin/blog/' . $blog->id . '/delete') }}" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
         @endforeach
