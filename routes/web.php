@@ -38,6 +38,12 @@ Route::get('/iniciar-sesion',[\App\Http\Controllers\AuthController::class,'login
 Route::post('/iniciar-sesion',[\App\Http\Controllers\AuthController::class,'loginProcess'])
         ->name('login.process');
 
+Route::get('/registrar-usuario',[\App\Http\Controllers\AuthController::class,'createView'])
+        ->name('user.create.view');
+
+Route::post('/registrar-usuario',[\App\Http\Controllers\AuthController::class,'createProcess'])
+        ->name('user.create.process');
+
 Route::post('cerrar-sesion',[\App\Http\Controllers\AuthController::class,'logoutProcess'])
         ->name('logout')
         ->middleware('auth');

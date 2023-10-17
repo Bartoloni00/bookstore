@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -40,5 +42,28 @@ class AuthController extends Controller
         return redirect()
             ->route('home')
             ->with('status.message','La session se cerro exitosamente');
+    }
+
+    public function createView()
+    {
+        return view('auth/create');
+    }
+
+    public function createProcess(Request $request)
+    {
+        $data = $request->only(['name','email','password']);
+        $request->validate(User::CREATE_RULES,User::ERROR_MESSAGES);
+
+        $data['rol_id'] = 2;
+        $data['password'] = Hash::make($data['password']);
+        $data['created_at'] = now();
+        $data['updated_at'] = now();
+
+        User::create($data);
+
+        return redirect()
+            ->route('home')
+            ->with('status.message','El usuario: '. e($data['name']) . ' fue registrado exitosamente.');
+
     }
 }

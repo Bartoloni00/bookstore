@@ -50,6 +50,9 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="<?=route('login')?>">Iniciar session</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="<?=route('user.create.view')?>">Registrarse</a>
+        </li>
         @endauth
         
       </ul>
