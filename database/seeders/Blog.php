@@ -16,13 +16,12 @@ class Blog extends Seeder
         DB::table('blogs')->insert([
             [
                 'title' => 'Novedades',
-                'release_date' => '2023-10-12',
+                'release_date' => now(),
                 'description' => 'Descripción de test',
                 'synopsis' => 'Synopsis de test',
                 'categorie_id' => 1,
-                'user_id' => 1,//NO LO ENCUENTRÁ
+                'user_id' => 1,
                 'image_id' => 1,
-                'author_id' => 1,
             ]
         ]);
     }

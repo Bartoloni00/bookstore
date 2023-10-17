@@ -14,14 +14,12 @@ class AdminCategoryController extends Controller
     public function createProcess(Request $request)
     {
         $data = $request->only(['name']);
-        // echo '<pre>';
-        // dd($data);
-        // echo '<pre>';
+
         $request->validate(Category::CREATE_RULES,Category::ERROR_MESSAGES);
 
         Category::create($data);
 
         return redirect('admin/books/add')
-            ->with('status.message','El Categoria : '. e($data['name']) . ' fue creado con exito.');
+            ->with('status.message','El Categoria : '. e($data['name']) . ' fue creada con exito.');
     }
 }

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('image_id')->nullable()->constrained('images');
             $table->foreignId('categorie_id')->constrained('categories');
-            $table->foreignId('author_id')->constrained('authors');
             $table->timestamps();
         });
     }

@@ -80,6 +80,27 @@ Route::post('/admin/books/{id}/delete', [\App\Http\Controllers\AdminBooksControl
 Route::get('/admin/blog', [\App\Http\Controllers\AdminBlogController::class, 'index'])
         ->middleware('auth');
 
+Route::get('/admin/blog/add', [\App\Http\Controllers\AdminBlogController::class, 'createView'])
+        ->middleware('auth')
+        ->name('create.blog.view');
+Route::post('/admin/blog/add', [\App\Http\Controllers\AdminBlogController::class, 'createProcess'])
+        ->middleware('auth')
+        ->name('create.blog.process');
+
+Route::get('/admin/blog/{id}/edit', [\App\Http\Controllers\AdminBlogController::class, 'editView'])
+        ->middleware('auth')
+        ->name('edit.blog.view');
+Route::post('/admin/blog/{id}/edit', [\App\Http\Controllers\AdminBlogController::class, 'editProcess'])
+        ->middleware('auth')
+        ->name('edit.blog.process');
+
+Route::get('/admin/blog/{id}/delete', [\App\Http\Controllers\AdminBlogController::class, 'deleteView'])
+        ->middleware('auth')
+        ->name('delete.blog.view');
+Route::post('/admin/blog/{id}/delete', [\App\Http\Controllers\AdminBlogController::class, 'deleteProcess'])
+        ->middleware('auth')
+        ->name('delete.blog.process');
+        
 Route::get('/admin/author/add', [\App\Http\Controllers\AdminAuthorController::class, 'createView'])
         ->middleware('auth')
         ->name('author.create.form');

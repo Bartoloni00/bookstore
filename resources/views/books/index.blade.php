@@ -1,5 +1,5 @@
 <?php 
-/** @var Book[]|Collection $movies */
+/** @var Book[]|Collection $books */
 ?>
 @extends('layouts.main')
 

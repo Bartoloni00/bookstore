@@ -13,7 +13,7 @@ use Illuminate\Support\ViewErrorBag;
 @section('contenido')
     <h1>Agregar Nuevo Libro</h1>
 
-    @if ($errors->any)
+    @if ($errors->any())
         <p class="text-danger mb-3">
             Existen errores en el formulario.
         </p>

@@ -18,11 +18,10 @@ class NewSeeder extends Seeder
                 'title' => 'Nuevo Lanzamiento',
                 'description' => 'Nuevo Lanzamiento',
                 'synopsis' => 'Nuevo Lanzamiento',
-                'date' => '2023-10-12',
+                'date' => now(),
                 'user_id' => 1,
                 'image_id' => 1,
                 'categorie_id' => 1,
-                'author_id' => 1,
             ]
         ]);
     }
