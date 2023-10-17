@@ -155,7 +155,18 @@ Route::post('/admin/category/{id}/delete', [\App\Http\Controllers\AdminCategoryC
         ->name('category.delete.process');
 
 
-
-Route::get('admin/users',[\App\Http\Controllers\AuthController::class, 'index'])
+Route::get('admin/users',[\App\Http\Controllers\AdminUserController::class, 'index'])
         ->middleware('auth')
         ->name('admin.users');
+Route::get('admin/users/{id}/edit',[\App\Http\Controllers\AdminUserController::class, 'editView'])
+        ->middleware('auth')
+        ->name('users.edit.form');
+Route::post('admin/users/{id}/edit',[\App\Http\Controllers\AdminUserController::class, 'editProcess'])
+        ->middleware('auth')
+        ->name('users.edit.proces');
+Route::get('admin/users/{id}/delete',[\App\Http\Controllers\AdminUserController::class, 'deleteView'])
+        ->middleware('auth')
+        ->name('users.delete.form');
+Route::post('admin/users/{id}/delete',[\App\Http\Controllers\AdminUserController::class, 'deleteProcess'])
+        ->middleware('auth')
+        ->name('users.delete.proces');

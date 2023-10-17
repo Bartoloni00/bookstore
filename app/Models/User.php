@@ -51,11 +51,21 @@ class User extends Authenticatable
         'email' => ['required'],
         'password' => ['required']
     ];
+
+    public const CREATE_RULES_EDIT = [
+        'name' => ['required', 'max:100'],
+        'email' => ['required']
+    ];
     
     public const ERROR_MESSAGES = [
         'name.required' => 'El nombre de usuario no puede estar vacío',
         'email.required' => 'Tienes que poseer un email.',
         'password.required' => 'El campo de la contraseña no puede estar vacio.'
+    ];
+
+    public const ERROR_MESSAGES_EDIT = [
+        'name.required' => 'El nombre de usuario no puede estar vacío',
+        'email.required' => 'Tienes que poseer un email.'
     ];
 
     public function Role()
