@@ -6,10 +6,10 @@ use Illuminate\Support\ViewErrorBag;
 ?>
 
 @extends('layouts.admin')
-@section('title', 'Añadir Author')
+@section('title', 'Añadir categoria')
 {{-- @csrf es para protegernos de ataques CSRF si no lo tenemos laravel tira un error 419 --}}
 @section('contenido')
-    <h1>Agregar Nuevo author</h1>
+    <h1>Agregar Nueva categoria</h1>
 
     @if ($errors->any())
         <p class="text-danger mb-3">
@@ -17,11 +17,11 @@ use Illuminate\Support\ViewErrorBag;
         </p>
     @endif
 
-    <form method="POST" action="{{ route('author.create.process')}}">
+    <form method="POST" action="{{ route('category.create.process')}}">
         @csrf 
 
         <div class="form-group">
-            <label for="name">Nombre</label>
+            <label for="name">Nombre de la categoria</label>
             <input 
                 type="text" 
                 class="form-control" 
@@ -38,24 +38,6 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
-            <label for="lastname">Apellido</label>
-            <input 
-                type="text" 
-                class="form-control" 
-                id="lastname" 
-                name="lastname"
-                value="{{ old('lastname')}}"
-                @error('lastname')
-                    aria-describedby="error-lastname"
-                @enderror>
-            @error('lastname')
-                <p class="text-danger" id="error-lastname">
-                    {{$message}}
-                </p>
-            @enderror
-        </div>
-
-        <button type="submit" class="btn btn-primary">Agregar Author</button>
+        <button type="submit" class="btn btn-primary">Agregar nueva categoria</button>
     </form>
 @endsection()

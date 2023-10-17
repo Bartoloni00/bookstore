@@ -113,7 +113,8 @@ use Illuminate\Support\ViewErrorBag;
         </div>
 
         <div class="form-group">
-            <label for="categorie_id">Categoría</label>
+            <div>
+                <label for="categorie_id">Categoría</label>
             <select class="form-control" id="categorie_id" name="categorie_id">
                 <option value="">--Selecciona una categoria--</option>
                 @foreach ($categories as $category)
@@ -128,6 +129,12 @@ use Illuminate\Support\ViewErrorBag;
                     {{$message}}
                 </p>
             @enderror
+            </div>
+            <div>
+                <p>
+                 ¿No encuentras la categoria que deseas? <a href="{{ route('category.create.form') }}">Agregala</a>
+                </p>
+             </div>
         </div>
 
         <div class="form-group">

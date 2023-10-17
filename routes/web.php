@@ -86,3 +86,10 @@ Route::get('/admin/author/add', [\App\Http\Controllers\AdminAuthorController::cl
 Route::post('/admin/author/add', [\App\Http\Controllers\AdminAuthorController::class, 'createProcess'])
         ->middleware('auth')
         ->name('author.create.process');
+
+Route::get('/admin/category/add', [\App\Http\Controllers\AdminCategoryController::class, 'createView'])
+        ->middleware('auth')
+        ->name('category.create.form');
+Route::post('/admin/category/add', [\App\Http\Controllers\AdminCategoryController::class, 'createProcess'])
+        ->middleware('auth')
+        ->name('category.create.process');
