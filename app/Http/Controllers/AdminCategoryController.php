@@ -48,4 +48,20 @@ class AdminCategoryController extends Controller
         return redirect('admin/category')
         ->with('status.message','La categoria: '. e($data['name']) . ' fue editada exitosamente.');
     }
+
+    public function deleteView(int $id)
+    {
+        return view('admin/categories/delete',[
+            'category' => Category::findOrFail($id)
+        ]);
+    }
+
+    public function deleteProcess(int $id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect('admin/category')
+        ->with('status.message','La categoria: '. e($category->name) . ' fue eliminada exitosamente.');
+    }
 }

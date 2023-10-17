@@ -147,12 +147,12 @@ Route::get('/admin/category/{id}/edit', [\App\Http\Controllers\AdminCategoryCont
 Route::post('/admin/category/{id}/edit', [\App\Http\Controllers\AdminCategoryController::class, 'editProcess'])
         ->middleware('auth')
         ->name('category.edit.process');
-        Route::get('/admin/category/add', [\App\Http\Controllers\AdminCategoryController::class, 'createView'])
+        Route::get('/admin/category/{id}/delete', [\App\Http\Controllers\AdminCategoryController::class, 'deleteView'])
         ->middleware('auth')
-        ->name('category.create.form');
-Route::post('/admin/category/add', [\App\Http\Controllers\AdminCategoryController::class, 'createProcess'])
+        ->name('category.delete.form');
+Route::post('/admin/category/{id}/delete', [\App\Http\Controllers\AdminCategoryController::class, 'deleteProcess'])
         ->middleware('auth')
-        ->name('category.create.process');
+        ->name('category.delete.process');
 
 
 

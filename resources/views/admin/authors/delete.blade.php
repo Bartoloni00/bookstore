@@ -7,7 +7,7 @@ use Illuminate\Support\ViewErrorBag;
 ?>
 
 @extends('layouts.admin')
-@section('title', 'Añadir Author')
+@section('title', 'Eliminar Author')
 {{-- @csrf es para protegernos de ataques CSRF si no lo tenemos laravel tira un error 419 --}}
 @section('contenido')
     <h1 class="text-danger text-center">¿Estas seguro de querer eliminar al author: {{$author->name}} {{$author->lastname}}?</h1>
