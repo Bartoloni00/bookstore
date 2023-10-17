@@ -80,3 +80,9 @@ Route::post('/admin/books/{id}/delete', [\App\Http\Controllers\AdminBooksControl
 Route::get('/admin/blog', [\App\Http\Controllers\AdminBlogController::class, 'index'])
         ->middleware('auth');
 
+Route::get('/admin/author/add', [\App\Http\Controllers\AdminAuthorController::class, 'createView'])
+        ->middleware('auth')
+        ->name('author.create.form');
+Route::post('/admin/author/add', [\App\Http\Controllers\AdminAuthorController::class, 'createProcess'])
+        ->middleware('auth')
+        ->name('author.create.process');

@@ -131,7 +131,8 @@ use Illuminate\Support\ViewErrorBag;
         </div>
 
         <div class="form-group">
-            <label for="author_id">Autor</label>
+            <div>
+                <label for="author_id">Autor</label>
             <select class="form-control" id="author_id" name="author_id">
             <option value="">--Selecciona un author--</option>
                 @foreach ($authors as $author)
@@ -146,6 +147,12 @@ use Illuminate\Support\ViewErrorBag;
                     {{$message}}
                 </p>
             @enderror
+            </div>
+            <div>
+               <p>
+                ¿No encuentras el author que deseas? <a href="{{ route('author.create.form') }}">Agregalo</a>
+               </p>
+            </div>
         </div>
 
         {{-- <div class="form-group">
