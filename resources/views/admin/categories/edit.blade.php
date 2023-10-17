@@ -3,14 +3,13 @@ use Illuminate\Database\Eloquent\Collections;
 use Illuminate\Support\ViewErrorBag;
 
 /** @var ViewErrorBag; $errors*/
-/** @var Category[]|Collection $category */
 ?>
 
 @extends('layouts.admin')
 @section('title', 'Añadir categoria')
 {{-- @csrf es para protegernos de ataques CSRF si no lo tenemos laravel tira un error 419 --}}
 @section('contenido')
-    <h1>Agregar Nueva categoria</h1>
+    <h1>Editando la categoria: <b>{{$category->name}}</b></h1>
 
     @if ($errors->any())
         <p class="text-danger mb-3">
@@ -18,7 +17,7 @@ use Illuminate\Support\ViewErrorBag;
         </p>
     @endif
 
-    <form method="POST" action="{{ route('category.create.process')}}">
+    <form method="POST" action="{{ url('/admin/category/'. $category->id .'/edit')}}">
         @csrf 
 
         <div class="form-group">
@@ -28,7 +27,7 @@ use Illuminate\Support\ViewErrorBag;
                 class="form-control" 
                 id="name" 
                 name="name"
-                value="{{ old('name')}}"
+                value="{{ old('name', $category->name)}}"
                 @error('name')
                     aria-describedby="error-name"
                 @enderror>
@@ -39,6 +38,6 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Agregar nueva categoria</button>
+        <button type="submit" class="btn btn-warning">Editar la categoria: <b>{{$category->name}}</b></button>
     </form>
 @endsection()

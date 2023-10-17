@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
 {
+    public function index()
+    {
+        return view('admin/categories/index',[
+            'categories' => Category::all()
+        ]);
+    }
+
     public function createView()
     {
         return view('admin/categories/add');
@@ -21,5 +28,24 @@ class AdminCategoryController extends Controller
 
         return redirect('admin/books/add')
             ->with('status.message','El Categoria : '. e($data['name']) . ' fue creada con exito.');
+    }
+
+    public function editView(int $id)
+    {
+        return view('admin/categories/edit',[
+            'category' => Category::findOrFail($id)
+        ]);
+    }
+
+    public function editProcess(int $id, Request $request)
+    {
+        $category = Category::findOrFail($id);
+        $request->validate(Category::CREATE_RULES,Category::ERROR_MESSAGES);
+        $data = $request->except('_token');
+
+        $category->update($data);
+
+        return redirect('admin/category')
+        ->with('status.message','La categoria: '. e($data['name']) . ' fue editada exitosamente.');
     }
 }

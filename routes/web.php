@@ -141,6 +141,19 @@ Route::get('/admin/category/add', [\App\Http\Controllers\AdminCategoryController
 Route::post('/admin/category/add', [\App\Http\Controllers\AdminCategoryController::class, 'createProcess'])
         ->middleware('auth')
         ->name('category.create.process');
+Route::get('/admin/category/{id}/edit', [\App\Http\Controllers\AdminCategoryController::class, 'editView'])
+        ->middleware('auth')
+        ->name('category.edit.form');
+Route::post('/admin/category/{id}/edit', [\App\Http\Controllers\AdminCategoryController::class, 'editProcess'])
+        ->middleware('auth')
+        ->name('category.edit.process');
+        Route::get('/admin/category/add', [\App\Http\Controllers\AdminCategoryController::class, 'createView'])
+        ->middleware('auth')
+        ->name('category.create.form');
+Route::post('/admin/category/add', [\App\Http\Controllers\AdminCategoryController::class, 'createProcess'])
+        ->middleware('auth')
+        ->name('category.create.process');
+
 
 
 Route::get('admin/users',[\App\Http\Controllers\AuthController::class, 'index'])
