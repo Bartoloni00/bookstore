@@ -21,7 +21,7 @@ use Illuminate\Support\ViewErrorBag;
     <form method="POST" action="{{ route('category.create.process')}}">
         @csrf 
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="name">Nombre de la categoria</label>
             <input 
                 type="text" 
@@ -39,6 +39,8 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Agregar nueva categoria</button>
+        <div class="btn-max-width mx-auto mb-3">
+            <button type="submit" class="btn btn-success mt-3 w-100 block m-auto">Agregar nueva categoria</button>
+        </div>
     </form>
 @endsection()

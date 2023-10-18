@@ -7,58 +7,80 @@
     <!-- Este css esta en la carpeta public -->
     <!-- utilizando la funcion de php url cargamos la ruta para que no importe como este hecho el sistema de rutas-->
     <!-- La funcion URL genera una ruta absoluta del archivo -->
-    <link rel="stylesheet" href="<?=url('css/bootstrap.min.css')?>">
+    <?php //<link rel="stylesheet" href="<?=url('css/bootstrap.min.css')?>
+    <!--Favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="<?=url('favicon/apple-icon-57x57.png')?>">
+    <link rel="apple-touch-icon" sizes="60x60" href="<?=url('favicon/apple-icon-60x60.png')?>">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?=url('favicon/apple-icon-72x72.png')?>">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?=url('favicon/apple-icon-76x76.png')?>">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?=url('favicon/apple-icon-114x114.png')?>">
+    <link rel="apple-touch-icon" sizes="120x120" href="<?=url('favicon/apple-icon-120x120.png')?>">
+    <link rel="apple-touch-icon" sizes="144x144" href="<?=url('favicon/apple-icon-144x144.png')?>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?=url('favicon/apple-icon-152x152.png')?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?=url('favicon/apple-icon-180x180.png')?>">
+    <link rel="icon" type="image/png" sizes="192x192"  href="<?=url('favicon/android-icon-192x192.png')?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?=url('favicon/favicon-32x32.png')?>">
+    <link rel="icon" type="image/png" sizes="96x96" href="<?=url('favicon/favicon-96x96.png')?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?=url('favicon/favicon-16x16.png')?>">
+    <link rel="manifest" href="<?=url('favicon/manifest.json')?>">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
     <link rel="stylesheet" href="<?=url('css/estilos.css')?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 </head>
 <body>
 <div id="app">
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Bookstore</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?=route('home')?>">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?=url('/quienes-somos');?>">Quiénes Somos</a>
-        </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link" href="<?=url('/books/listado');?>">Libros</a>
-        </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link" href="<?=url('/blogs/listado');?>">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?=url('/contacto');?>">Contacto</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?=route('dashboard');?>">Admin</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
+      <div class="container-fluid bg-white">
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        @auth
-        <form action="<?= route('logout') ?>" method="post" class="nav-item">
-          @csrf
-          <button type="submit" class="nav-link">Cerrar session</button>
-        </form>
-        @else
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="<?=route('login')?>">Iniciar session</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="<?=route('user.create.view')?>">Registrarse</a>
-        </li>
-        @endauth
-        
-      </ul>
-    </div>
-  </div>
-</nav>
+        <div class="navbar-collapse d-lg-flex collapse" id="navbarsExample11" style="">
+          <a class="navbar-brand col-lg-3 me-0" href="#">BookStore</a>
+          <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/quienes-somos') }}">Quiénes Somos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/books/listado') }}">Libros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/blogs/listado') }}">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/contacto') }}">Contacto</a>
+            </li>
+            @auth
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('dashboard') }}">Admin</a>
+            </li>
+            @endauth
+          </ul>
+          <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+            @auth
+            <form action="<?= route('logout') ?>" method="post" class="nav-item">
+              @csrf
+              <button type="submit" class="btn btn-primary">Cerrar sesión</button>
+            </form>
+            @else
+            <li class="nav-item list-unstyled m-2">
+              <a class="btn btn-outline-primary" aria-current="page" href="<?=route('login')?>">Iniciar sesion</a>
+            </li>
+            <li class="nav-item list-unstyled m-2">
+              <a class="btn btn-primary" aria-current="page" href="<?=route('user.create.view')?>">Registrarse</a>
+            </li>
+            @endauth
+          </div>
+        </div>
+      </div>
+    </nav>
     <main class="container py-3">
       @if (\Session::has('status.message'))
         <div class="alert alert-{{\Session::get('status.type','success')}}">
@@ -68,8 +90,9 @@
     @yield('contenido')
     </main>
     <footer class="footer bg-primary">
-        <p>Jonathan Abraham Bartoloni | Ezequiel Thomas Arevalo</p>
+        <p class="text-light text-wrap text-center">Jonathan Abraham Bartoloni | Ezequiel Thomas Arevalo</p>
     </footer>
 </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
