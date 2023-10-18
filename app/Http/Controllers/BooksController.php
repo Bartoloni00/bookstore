@@ -35,10 +35,7 @@ class BooksController extends Controller
         // eso puede generarnos problemas y como es muy comun laravel provee:
         // findOrFail la cual redirecciona a un 404
         return view('books/details',[
-            'book' => Book::findOrFail($id),
-            'author' => Author::findOrFail($id),
-            'images' => Images::findOrFail($id),
-            'category' => Category::findOrFail($id),
+            'book' => Book::findOrFail($id)
         ]);
     }
 }

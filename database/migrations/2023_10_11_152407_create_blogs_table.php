@@ -18,10 +18,9 @@ return new class extends Migration
             $table->text('description');
             $table->text('synopsis');
             $table->foreignId('categorie_id')->constrained('categories');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users');// contrained busca automaticamente la columna para referencia el fk, reference es mas manual.
             $table->foreignId('image_id')->nullable()->constrained('images'); // Utilizamos nullable para permitir valores nulos
-            $table->foreignId('author_id')->constrained('authors');
-            $table->timestamps(); // Fecha de creación y fecha de actualización
+            $table->timestamps();
         });
     }
 

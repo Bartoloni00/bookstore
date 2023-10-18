@@ -11,4 +11,18 @@ class Images extends Model
     protected $table = 'images';
     protected $primaryKey = 'id';
     
+    protected $fillable = [
+        'name',
+        'alt',
+    ];
+
+    public const CREATE_RULES = [
+        'name' => ['required'],
+        'alt' => ['required'],
+    ];
+
+    public const ERROR_MESSAGES = [
+        'name.require' => 'Debe poseer una imagen',
+        'alt.require' => 'La imagen debe poseer una descripcion.',
+    ];
 }

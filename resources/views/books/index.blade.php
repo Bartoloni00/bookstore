@@ -1,5 +1,5 @@
 <?php 
-/** @var Book[]|Collection $movies */
+/** @var Book[]|Collection $books */
 ?>
 @extends('layouts.main')
 
@@ -38,7 +38,8 @@
             <td>{{ $book->release_date }}</td>
             <td>$ {{ $book->price }}</td>
             <td>
-                <a href="{{ url('/books/' . $book->id) }}" class="btn btn-primary">Ver detalles</a>
+                {{-- <a href="{{ url('/books/' . $book->id) }}" class="btn btn-primary">Ver detalles</a> --}}
+                <a href="{{ url('books',['id' => $book->id]) }}" class="btn btn-primary">Ver detalles</a>
             </td>
         </tr>
         @endforeach

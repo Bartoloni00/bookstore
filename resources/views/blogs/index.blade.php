@@ -1,3 +1,7 @@
+<?php 
+/** @var Blog[]|Collection $blogs */
+?>
+
 @extends('layouts.main')
 
 @section('title','Nuestros blogs')

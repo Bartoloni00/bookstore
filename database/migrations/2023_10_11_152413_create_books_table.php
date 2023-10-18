@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('synopsis');
             $table->unsignedInteger('price'); // Guardamos el precio en centavos
-            $table->foreignId('user_id')->constrained('users'); // Utilizamos foreignId y constrained para definir la relación
+            $table->foreignId('user_id')->constrained('users')->default(1); // Utilizamos foreignId y constrained para definir la relación
             $table->foreignId('categorie_id')->constrained('categories');
             $table->foreignId('author_id')->constrained('authors');
             $table->foreignId('image_id')->nullable()->constrained('images'); // Utilizamos nullable para permitir valores nulos
