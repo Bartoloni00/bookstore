@@ -17,7 +17,7 @@ use Illuminate\Support\ViewErrorBag;
     <div class="row">
     @foreach ($authors as $author)
         <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card" href="{{ route('admin.books') }}" style="min-height: 180px;">
+            <div class="card" style="min-height: 180px;">
               <div class="card-body">
                   <h2 class="card-title">{{$author->name}} {{$author->lastname}}</h2>
                 </div>
