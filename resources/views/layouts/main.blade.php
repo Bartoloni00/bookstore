@@ -7,7 +7,6 @@
     <!-- Este css esta en la carpeta public -->
     <!-- utilizando la funcion de php url cargamos la ruta para que no importe como este hecho el sistema de rutas-->
     <!-- La funcion URL genera una ruta absoluta del archivo -->
-    <?php //<link rel="stylesheet" href="<?=url('css/bootstrap.min.css')?>
     <!--Favicon-->
     <link rel="apple-touch-icon" sizes="57x57" href="<?=url('favicon/apple-icon-57x57.png')?>">
     <link rel="apple-touch-icon" sizes="60x60" href="<?=url('favicon/apple-icon-60x60.png')?>">

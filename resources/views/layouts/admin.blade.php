@@ -7,7 +7,6 @@
     <!-- Este css esta en la carpeta public -->
     <!-- utilizando la funcion de php url cargamos la ruta para que no importe como este hecho el sistema de rutas-->
     <!-- La funcion URL genera una ruta absoluta del archivo -->
-    <?php //<link rel="stylesheet" href="<?=url('css/bootstrap.min.css')?>
     <link rel="stylesheet" href="<?=url('css/estilos.css')?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">

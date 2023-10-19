@@ -21,20 +21,35 @@
         <div class="row featurette mb-5">
             <div class="col-md-7">
                 <h2 class="featurette-heading fw-normal lh-1">¡Contamos con una Gran catalogo de Libros!</h2>
-                <p class="lead">Explora un mundo de conocimiento, aventuras y emociones. En nuestra librería, te ofrecemos una vasta selección de libros que abarcan una amplia variedad de géneros y temas. Ya seas un apasionado de la ciencia, un amante de la ficción, un buscador de misterios o un devorador de clásicos, encontrarás una obra que satisfaga tu sed de lectura. Sumérgete en historias cautivadoras, aprende de los expertos y descubre mundos inexplorados a través de las páginas de nuestros libros. ¡La aventura comienza aquí!</p>
+                <p class="lead">
+                    Explora un mundo de conocimiento, aventuras y emociones. En nuestra librería,
+                     te <strong> ofrecemos una vasta selección de libros que abarcan una amplia variedad de géneros 
+                        y temas</strong>. Ya seas un apasionado de la ciencia, un amante de la ficción, 
+                     un buscador de misterios o un devorador de clásicos, 
+                     encontrarás una obra que satisfaga tu sed de lectura. <em>Sumérgete en historias cautivadoras, 
+                        aprende de los expertos y descubre mundos inexplorados a través de las 
+                        páginas de nuestros libros.</em> ¡La aventura comienza aquí!
+                </p>
             </div>
             <div class="col-md-5 sect-2">
-                <img src="<?=url('img/libros.webp')?>" alt="" loading="lazy" class="img-fluid" />
+                <img src="<?=url('img/libros.webp')?>" alt="libros apilados" loading="lazy" class="img-fluid" />
             </div>
         </div>
 
         <div class="row featurette">
             <div class="col-md-7 order-md-2">
                 <h2 class="featurette-heading fw-normal lh-1">¡Contamos con una gran cantidad de temas en nuestro blog!</h2>
-                <p class="lead">Descubre un mundo de conocimiento y reflexión en nuestro blog. Exploramos una amplia gama de temas, desde la literatura y la ciencia hasta consejos de escritura y reseñas de libros. Nuestros apasionados escritores comparten sus ideas y perspectivas, brindándote una fuente constante de inspiración y entretenimiento. Sumérgete en nuestras entradas, participa en las conversaciones y encuentra tu próxima fuente de información y diversión. ¡La exploración comienza aquí!</p>
+                <p class="lead">
+                    Descubre un mundo de conocimiento y reflexión en nuestro blog. Exploramos una amplia gama de temas,
+                     desde la literatura y la ciencia hasta consejos de escritura y reseñas de libros. 
+                     <strong>Nuestros apasionados escritores comparten sus ideas y perspectivas, 
+                        brindándote una fuente constante de inspiración y entretenimiento.</strong> Sumérgete en nuestras entradas, 
+                     participa en las conversaciones y encuentra tu próxima fuente de información y diversión. 
+                     ¡La exploración comienza aquí!
+                </p>
             </div>
             <div class="col-md-5 sect-2 order-md-1">
-                <img src="<?=url('img/blogs.webp')?>" alt="" loading="lazy" class="img-fluid" />
+                <img src="<?=url('img/blogs.webp')?>" alt="el tipico meme de los hombres que arañan señalandose entre si" loading="lazy" class="img-fluid" />
             </div>
         </div>
     </section>
