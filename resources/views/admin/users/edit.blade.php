@@ -23,7 +23,7 @@ use Illuminate\Support\ViewErrorBag;
         <div class="col-md-6">
             <form method="POST" action="{{ url('admin/users/' . $user->id . '/edit') }}" class="my-5">
                 @csrf
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="name">Nombre de usuario</label>
                     <input 
                         id="name" 
@@ -38,7 +38,7 @@ use Illuminate\Support\ViewErrorBag;
                     @enderror
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="email">Correo Electrónico</label>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email', $user->email)}}" required >
                     
@@ -49,11 +49,14 @@ use Illuminate\Support\ViewErrorBag;
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <span class="form-control">{{$user->role->name}}</span>
+                <div class="form-group mb-3">
+                    <span>Rol:</span>
+                    <p class="form-control">{{$user->role->name}}</p>
                 </div>
 
-                <button type="submit" class="btn btn-warning">Editar usuario</button>
+                <div class="btn-max-width mx-auto mb-3">
+                    <button type="submit" class="btn btn-primary mt-3 w-100 block m-auto">Editar al usuario</button>
+                </div>
             </form>
         </div>
     </div>

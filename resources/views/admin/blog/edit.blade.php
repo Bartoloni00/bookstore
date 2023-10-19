@@ -21,7 +21,7 @@ use Illuminate\Support\ViewErrorBag;
     <form method="POST" action="{{ url('/admin/blog/' . $blog->id . '/edit')}}">
         @csrf 
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="title">Título</label>
             <input 
                 type="text" 
@@ -39,7 +39,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="description">Descripción</label>
             <textarea 
                 class="form-control" 
@@ -57,7 +57,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="synopsis">Sinopsis</label>
             <textarea 
                 class="form-control" 
@@ -75,7 +75,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>       
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <div>
                 <label for="categorie_id">Categoría</label>
                 <select class="form-control" id="categorie_id" name="categorie_id">
@@ -93,14 +93,14 @@ use Illuminate\Support\ViewErrorBag;
                     </p>
                 @enderror
             </div>
-            <div>
+            <div class="mt-2">
                 <p>
                  ¿No encuentras la categoria que deseas? <a href="{{ route('category.create.form') }}">Agregala</a>
                 </p>
              </div>
         </div>
 
-        {{-- <div class="form-group">
+        {{-- <div class="form-group mb-3">
             <label for="image">Imagen</label>
             <input 
                 type="file" 
@@ -117,7 +117,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
         
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="alt">Texto Alternativo (Alt)</label>
             <input 
                 type="text" 
@@ -135,6 +135,8 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div> --}}
 
-        <button type="submit" class="btn btn-warning">Editar Libro</button>
+        <div class="btn-max-width mx-auto mb-3">
+            <button type="submit" class="btn btn-warning mt-3 w-100 block m-auto">Editar Blog</button>
+        </div>
     </form>
 @endsection()

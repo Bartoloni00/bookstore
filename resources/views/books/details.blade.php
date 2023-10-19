@@ -4,7 +4,7 @@
 
 @section('contenido')
 <h1 class="mb-3">Detalles</h1>
-<div class="card mb-3 m-auto mt-3 mb-4" style="max-width: 800px;">
+<div class="card m-auto mt-3 mb-4" style="max-width: 800px;">
   <div class="row g-0">
     <div class="col-md-4">
       {{-- <img src="{{ $images->name }}" class="img-fluid rounded-start" alt="{{ $images->alt }}" loading="lazy"> --}}

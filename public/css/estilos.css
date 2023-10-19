@@ -13,6 +13,23 @@ html, body , #app{
     align-items: center;
     height: 75px;
 }
+
 .footer p {
     margin: 0;
+}
+
+.btn-max-width{
+    max-width: 600px !important;  
+}
+
+.redonditos > img{
+    width: 150px;
+    height: 150px;
+    clip-path: circle(50%);
+}
+
+.sect-2 > img{
+    width: 450px;
+    height: auto;
+    border-radius: 15px;
 }

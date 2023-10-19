@@ -13,7 +13,7 @@ use Illuminate\Support\ViewErrorBag;
 @section('contenido')
     <h1>Editar el libro: {{$book->title}}</h1>
 
-    @if ($errors->any)
+    @if ($errors->any())
         <p class="text-danger mb-3">
             Existen errores en el formulario.
         </p>
@@ -22,7 +22,7 @@ use Illuminate\Support\ViewErrorBag;
     <form method="POST" action="{{ url('/admin/books/' . $book->id . '/edit')}}">
         @csrf 
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="title">Título</label>
             <input 
                 type="text" 
@@ -40,7 +40,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="description">Descripción</label>
             <textarea 
                 class="form-control" 
@@ -58,7 +58,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="price">Precio</label>
             <input 
                 type="number" 
@@ -76,7 +76,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="synopsis">Sinopsis</label>
             <textarea 
                 class="form-control" 
@@ -94,7 +94,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="release_date">Fecha de Lanzamiento</label>
             <input 
                 type="date" 
@@ -112,7 +112,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>        
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="categorie_id">Categoría</label>
             <select class="form-control" id="categorie_id" name="categorie_id">
                 <option value="">--Selecciona una categoria--</option>
@@ -130,7 +130,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="author_id">Autor</label>
             <select class="form-control" id="author_id" name="author_id">
                 <option value="">--Selecciona un author--</option>
@@ -149,7 +149,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        {{-- <div class="form-group">
+        {{-- <div class="form-group mb-3">
             <label for="image">Imagen</label>
             <input 
                 type="file" 
@@ -166,7 +166,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
         
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="alt">Texto Alternativo (Alt)</label>
             <input 
                 type="text" 
@@ -184,6 +184,8 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div> --}}
 
-        <button type="submit" class="btn btn-warning">Editar Libro</button>
+        <div class="btn-max-width mx-auto mb-3">
+            <button type="submit" class="btn btn-warning mt-3 w-100 block m-auto">Editar Libro</button>
+        </div>
     </form>
 @endsection()

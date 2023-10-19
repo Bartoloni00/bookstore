@@ -22,7 +22,7 @@ use Illuminate\Support\ViewErrorBag;
     <form method="POST" action="{{ route('create.book.process')}}" enctype="multipart/form-data">
         @csrf 
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="title">Título</label>
             <input 
                 type="text" 
@@ -40,7 +40,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="description">Descripción</label>
             <textarea 
                 class="form-control" 
@@ -58,7 +58,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="price">Precio</label>
             <input 
                 type="number" 
@@ -76,7 +76,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="synopsis">Sinopsis</label>
             <textarea 
                 class="form-control" 
@@ -94,7 +94,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="release_date">Fecha de Lanzamiento</label>
             <input 
                 type="date" 
@@ -112,7 +112,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <div>
                 <label for="categorie_id">Categoría</label>
             <select class="form-control" id="categorie_id" name="categorie_id">
@@ -130,14 +130,14 @@ use Illuminate\Support\ViewErrorBag;
                 </p>
             @enderror
             </div>
-            <div>
+            <div class="mt-2">
                 <p>
                  ¿No encuentras la categoria que deseas? <a href="{{ route('category.create.form') }}">Agregala</a>
                 </p>
              </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <div>
                 <label for="author_id">Autor</label>
             <select class="form-control" id="author_id" name="author_id">
@@ -155,14 +155,14 @@ use Illuminate\Support\ViewErrorBag;
                 </p>
             @enderror
             </div>
-            <div>
+            <div class="mt-2">
                <p>
                 ¿No encuentras el author que deseas? <a href="{{ route('author.create.form') }}">Agregalo</a>
                </p>
             </div>
         </div>
 
-        {{-- <div class="form-group">
+        {{-- <div class="form-group mb-3">
             <label for="image">Imagen</label>
             <input 
                 type="file" 
@@ -179,7 +179,7 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
         
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="alt">Texto Alternativo (Alt)</label>
             <input 
                 type="text" 
@@ -197,6 +197,8 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div> --}}
 
-        <button type="submit" class="btn btn-primary">Agregar Libro</button>
+        <div class="btn-max-width mx-auto mb-3">
+            <button type="submit" class="btn btn-primary mt-3 w-100 block m-auto">Agregar Libro</button>
+        </div>
     </form>
 @endsection()
