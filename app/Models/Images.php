@@ -13,16 +13,16 @@ class Images extends Model
     
     protected $fillable = [
         'name',
-        'alt',
+        'alt'
     ];
 
     public const CREATE_RULES = [
         'name' => ['required'],
-        'alt' => ['required'],
+        'alt' => ['required']
     ];
 
     public const ERROR_MESSAGES = [
         'name.require' => 'Debe poseer una imagen',
-        'alt.require' => 'La imagen debe poseer una descripcion.',
+        'alt.require' => 'La imagen debe poseer una descripcion.'
     ];
 }

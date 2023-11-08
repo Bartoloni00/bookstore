@@ -7,9 +7,10 @@
 <div class="card m-auto mt-3 mb-4" style="max-width: 800px;">
   <div class="row g-0">
     <div class="col-md-4">
-      {{-- <img src="{{ $images->name }}" class="img-fluid rounded-start" alt="{{ $images->alt }}" loading="lazy"> --}}
     @if ($book->image)
-    <img src="{{ asset('storage/' . $book->image->name)}}" alt="{{$book->image->alt}}" loading="lazy">
+      <img src="{{ asset('storage/' . $book->image->name)}}" alt="{{$book->image->alt}}" loading="lazy">
+    @else
+    <img src="{{ asset('storage/' .'bookDefault.jpg')}}" alt="{{$book->title}}" loading="lazy">
     @endif
     </div>
     <div class="col-md-8">

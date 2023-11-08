@@ -33,21 +33,28 @@ class AdminBooksController extends Controller
 
     public function createProcess(Request $request)
     {
-        // $dataImage = [];
+        $dataImage = [];
+        $imageID = null;
 
         $dataBook = $request->only(['title','description','price','synopsis','release_date','categorie_id','author_id']);
-        // $dataBook['user_id'] = auth()->user()->id;
-        // // dd($dataBook);
-        // if ($request->hasFile('image')) {
-        //     $dataImage = $request->only(['alt','image']);
-        //     $dataImage['image'] = $request->file('image')->store('images');
+        $dataBook['user_id'] = auth()->user()->id;
+        // dd($dataBook);
+        if ($request->hasFile('image')) {
+            $dataImage = $request->only(['alt']);
+            $imageName = $request->file('image')->store('images');
+            $dataImage['name'] = $imageName;
 
-        //     $request->validate(Images::CREATE_RULES,Images::ERROR_MESSAGES);
-        //     Images::create($dataImage);
-        // }
+            // $request->validate(Images::CREATE_RULES, Images::ERROR_MESSAGES);
+            
+            $image = Images::create($dataImage);
+            $imageID = $image->id;
+        }
+        
         $request->validate(Book::CREATE_RULES,Book::ERROR_MESSAGES);
 
         $dataBook['user_id'] = auth()->user()->id;
+        $dataBook['image_id'] = $imageID;
+        // dd($dataBook);
         Book::create($dataBook);
         return redirect('/admin/books')
             ->with('status.message','El Libro: '. e($dataBook['title']) . 'fue agregado exitosamente.');

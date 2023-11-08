@@ -22,6 +22,7 @@ class Book extends Model
         'release_date',
         'categorie_id',
         'user_id',
+        'image_id',
         'author_id',
     ];
 
