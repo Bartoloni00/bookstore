@@ -18,7 +18,7 @@ use Illuminate\Support\ViewErrorBag;
         </p>
     @endif
 
-    <form method="POST" action="{{ url('/admin/blog/' . $blog->id . '/edit')}}">
+    <form method="POST" action="{{ url('/admin/blog/' . $blog->id . '/edit')}}" enctype="multipart/form-data">
         @csrf 
 
         <div class="form-group mb-3">
@@ -100,7 +100,14 @@ use Illuminate\Support\ViewErrorBag;
              </div>
         </div>
 
-        {{-- <div class="form-group mb-3">
+        <div class="form-group mb-3">
+            @if ($blog->image)
+                @if(substr($blog->image->name, 0, 8) !== 'https://')
+                    <img src="{{ asset('storage/' . $blog->image->name)}}" alt="{{$blog->image->alt}}" loading="lazy">
+                @else
+                    <img src="{{$blog->image->name}}" alt="{{$blog->image->alt}}" loading="lazy">
+                @endif
+            @endif
             <label for="image">Imagen</label>
             <input 
                 type="file" 
@@ -133,7 +140,7 @@ use Illuminate\Support\ViewErrorBag;
                     {{$message}}
                 </p>
             @enderror
-        </div> --}}
+        </div>
 
         <div class="btn-max-width mx-auto mb-3">
             <button type="submit" class="btn btn-warning mt-3 w-100 block m-auto">Editar Blog</button>

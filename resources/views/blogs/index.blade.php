@@ -14,6 +14,15 @@
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
                     <strong class="d-inline-block mb-2 text-primary-emphasis">#{{ $blog->id }}</strong>
+                    @if ($blog->image)
+                        @if(substr($blog->image->name, 0, 8) !== 'https://')
+                            <img src="{{ asset('storage/' . $blog->image->name)}}" alt="{{$blog->image->alt}}" loading="lazy">
+                        @else
+                            <img src="{{$blog->image->name}}" alt="{{$blog->image->alt}}" loading="lazy">
+                        @endif
+                    @else
+                        <img src="{{ asset('storage/' .'blogDefault.jpg')}}" alt="{{$blog->title}}" loading="lazy">
+                    @endif
                     <h3 class="mb-0">{{ $blog->title }}</h3>
                     <div class="mb-1 text-body-secondary">{{ $blog->release_date }}</div>
                     <p class="card-text mb-auto">{{ $blog->synopsis }}</p>

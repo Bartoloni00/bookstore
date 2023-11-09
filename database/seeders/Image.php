@@ -38,6 +38,10 @@ class Image extends Seeder
                 'name' => 'https://i.imgur.com/9nPhS5a.jpg',
                 'alt' => 'senor-de-los-anillos',
             ],
+            [
+                'name' => 'https://picsum.photos/320/160',
+                'alt' => 'Imagen para el blog aleatoria'
+            ]
         ]);
     }
 }

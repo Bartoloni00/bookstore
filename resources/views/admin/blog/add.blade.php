@@ -16,7 +16,7 @@ use Illuminate\Support\ViewErrorBag;
         Existen errores en el formulario.
     </p>
     @endif
-    <form method="POST" action="{{ route('create.blog.process') }}">
+    <form method="POST" action="{{ route('create.blog.process') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group mb-3">
@@ -101,17 +101,40 @@ use Illuminate\Support\ViewErrorBag;
              </div>
         </div>
 
-        {{-- 
         <div class="form-group mb-3">
             <label for="image">Imagen</label>
-            <input type="file" class="form-control-file" id="image" name="image">
+            <input 
+                type="file" 
+                class="form-control-file" 
+                id="image" 
+                name="image"
+                @error('image')
+                    aria-describedby="error-image"
+                @enderror>
+            @error('image')
+                <p class="text-danger" id="error-image">
+                    {{$message}}
+                </p>
+            @enderror
         </div>
-
+        
         <div class="form-group mb-3">
             <label for="alt">Texto Alternativo (Alt)</label>
-            <input type="text" class="form-control" id="alt" name="alt" value="{{ old('alt') }}">
+            <input 
+                type="text" 
+                class="form-control" 
+                id="alt" 
+                name="alt"
+                value="{{ old('alt') }}"
+                @error('alt')
+                    aria-describedby="error-alt"
+                @enderror>
+            @error('alt')
+                <p class="text-danger" id="error-alt">
+                    {{$message}}
+                </p>
+            @enderror
         </div>
-        --}}
 
         <div class="btn-max-width mx-auto mb-3">
             <button type="submit" class="btn btn-success mt-3 w-100 block m-auto">Agregar Blog</button>

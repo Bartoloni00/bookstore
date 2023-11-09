@@ -21,7 +21,7 @@ class Blog extends Seeder
                 'synopsis' => 'Synopsis de test',
                 'categorie_id' => 1,
                 'user_id' => 1,
-                'image_id' => 1,
+                'image_id' => 7,
             ]
         ]);
     }

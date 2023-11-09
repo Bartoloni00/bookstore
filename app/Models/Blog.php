@@ -18,6 +18,7 @@ class Blog extends Model
         'release_date',
         'user_id',
         'categorie_id',
+        'image_id'
     ];
 
     public const CREATE_RULES = [
