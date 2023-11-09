@@ -19,7 +19,7 @@ use Illuminate\Support\ViewErrorBag;
         </p>
     @endif
 
-    <form method="POST" action="{{ url('/admin/books/' . $book->id . '/edit')}}">
+    <form method="POST" action="{{ url('/admin/books/' . $book->id . '/edit')}}" enctype="multipart/form-data">
         @csrf 
 
         <div class="form-group mb-3">
@@ -149,7 +149,14 @@ use Illuminate\Support\ViewErrorBag;
             @enderror
         </div>
 
-        {{-- <div class="form-group mb-3">
+        <div class="form-group mb-3">
+            @if ($book->image)
+                @if(substr($book->image->name, 0, 8) !== 'https://')
+                    <img src="{{ asset('storage/' . $book->image->name)}}" alt="{{$book->image->alt}}" loading="lazy">
+                @else
+                    <img src="{{$book->image->name}}" alt="{{$book->image->alt}}" loading="lazy">
+                @endif
+            @endif
             <label for="image">Imagen</label>
             <input 
                 type="file" 
@@ -182,7 +189,7 @@ use Illuminate\Support\ViewErrorBag;
                     {{$message}}
                 </p>
             @enderror
-        </div> --}}
+        </div>
 
         <div class="btn-max-width mx-auto mb-3">
             <button type="submit" class="btn btn-warning mt-3 w-100 block m-auto">Editar Libro</button>

@@ -23,6 +23,7 @@ class Book extends Seeder
                 'user_id' => 1,
                 'categorie_id' => 1,
                 'author_id' => 1,
+                'image_id' => 1
             ],
             [
                 'title' => 'Cien años de soledad',
@@ -33,6 +34,7 @@ class Book extends Seeder
                 'user_id' => 1,
                 'categorie_id' => 2,
                 'author_id' => 2,
+                'image_id' => 2
             ],
             [
                 'title' => '1984',
@@ -43,6 +45,7 @@ class Book extends Seeder
                 'user_id' => 1,
                 'categorie_id' => 1,
                 'author_id' => 3,
+                'image_id' => 3
             ],
             [
                 'title' => 'Matar a un ruiseñor',
@@ -53,6 +56,7 @@ class Book extends Seeder
                 'user_id' => 1,
                 'categorie_id' => 1,
                 'author_id' => 4,
+                'image_id' => 4
             ],
             [
                 'title'=> 'Don Quijote de la Mancha',
@@ -63,6 +67,7 @@ class Book extends Seeder
                 'user_id'=> 1,
                 'categorie_id'=> 1,
                 'author_id'=> 5,
+                'image_id' => 5
             ],
             [
                 'title' => 'El Señor de los Anillos',
@@ -73,6 +78,7 @@ class Book extends Seeder
                 'user_id' => 1,
                 'categorie_id' => 1,
                 'author_id' => 6,
+                'image_id' => 6
             ]
         ]);
     }

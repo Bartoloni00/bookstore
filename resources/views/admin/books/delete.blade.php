@@ -16,7 +16,11 @@ use Illuminate\Support\ViewErrorBag;
   <div class="row g-0">
     <div class="col-md-4">
     @if ($book->image)
-      <img src="{{ asset('storage/' . $book->image->name)}}" alt="{{$book->image->alt}}" loading="lazy">
+      @if(substr($book->image->name, 0, 8) !== 'https://')
+        <img src="{{ asset('storage/' . $book->image->name)}}" alt="{{$book->image->alt}}" loading="lazy">
+      @else
+        <img src="{{$book->image->name}}" alt="{{$book->image->alt}}" loading="lazy">
+      @endif
     @else
     <img src="{{ asset('storage/' .'bookDefault.jpg')}}" alt="{{$book->title}}" loading="lazy">
     @endif

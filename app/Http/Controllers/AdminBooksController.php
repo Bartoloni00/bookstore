@@ -6,7 +6,6 @@ use App\Models\Book;
 use App\Models\Author;
 use App\Models\Images;
 use App\Models\Category;
-use Database\Seeders\Image;
 use Illuminate\Http\Request;
 
 class AdminBooksController extends Controller
@@ -72,15 +71,51 @@ class AdminBooksController extends Controller
     public function editProcess(int $id, Request $request)
     {
         $book = Book::findOrFail($id);
-        $request->validate(Book::CREATE_RULES,Book::ERROR_MESSAGES);
+        $image = null;
+    
+        if ($book->image_id !== null) {
+            $image = Images::findOrFail($book->image_id);
+        }
+    
+        $request->validate(Book::CREATE_RULES, Book::ERROR_MESSAGES);
         $data = $request->except('_token');
+        
+        if ($request->hasFile('image')) {
+            // dd($request->file('image'));
 
+            $dataImage = $request->only(['alt']);
+            $imageName = $request->file('image')->store('images');
+            $dataImage['name'] = $imageName;
+            if ($image) {
+                // Si existe una imagen asociada al libro, actualiza la imagen existente.
+               try {
+                \Storage::delete($image->name);
+
+                    $image->update($dataImage);
+                    $image->save();
+               } catch (\Throwable $error) {
+                    return redirect('admin/books')
+                        ->with('status.message', 'Al Libro: ' . e($data['title']) . ' no se le pudo actualizar la imagen.'. e($error));
+               }
+            } else {
+                // Si no hay una imagen asociada al libro, crea una nueva imagen.
+                try {
+                    $image = Images::create($dataImage);
+                    $data['image_id'] = $image->id; // Asocia la imagen al libro.
+                } catch (\Throwable $error) {
+                    return redirect('admin/books')
+                        ->with('status.message', 'Al Libro: ' . e($data['title']) . ' no se le pudo agregar una imagen.');
+
+                }
+            }
+        }
+    
         $book->update($data);
-
+    
         return redirect('admin/books')
-        ->with('status.message','El Libro: '. e($data['title']) . 'fue editado exitosamente.');
+            ->with('status.message', 'El Libro: ' . e($data['title']) . ' fue editado exitosamente.');
     }
-
+    
     public function deleteView(int $id)
     {
         return view('admin/books/delete',[
@@ -94,9 +129,24 @@ class AdminBooksController extends Controller
     public function deleteProcess(int $id)
     {
         $book = Book::findOrFail($id);
-        $book->delete();
+        $image = null;
+
+        if ($book->image_id !== null) {
+            try {
+                $image = Images::findOrFail($book->image_id);
+                \Storage::delete($image->name);
+                $book->delete();
+                $image->delete();
+            } catch (\Throwable $error) {
+                return redirect('admin/books')
+                    ->with('status.message','Ocurrio un error al eliminar la imagen del libro: '. e($book->title));
+            }
+        } else {
+            $book->delete();
+        }
+        
 
         return redirect('admin/books')
-        ->with('status.message','El Libro: '. e($book->title) . ' fue eliminado exitosamente.');
+            ->with('status.message','El Libro: '. e($book->title) . ' fue eliminado exitosamente.');
     }
 }
