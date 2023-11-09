@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="<?=url('css/estilos.css')?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <script src="https://kit.fontawesome.com/d95904715c.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="app">

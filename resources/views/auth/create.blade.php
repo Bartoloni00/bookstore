@@ -39,7 +39,10 @@
 
                         <div class="form-group mb-4">
                             <label for="password">Contraseña</label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            <div class="password-div">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <i class="fa-solid fa-eye-low-vision" id="ojo"></i>
+                            </div>
 
                             @error('password')
                             <span class="invalid-feedback" role="alert">

@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="<?=url('css/estilos.css')?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+  <script src="https://kit.fontawesome.com/d95904715c.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="app">
@@ -42,23 +44,23 @@
           <a class="navbar-brand col-lg-3 me-0" href="#">BookStore</a>
           <ul class="navbar-nav col-lg-6 justify-content-lg-center">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+              <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home <i class="fa-solid fa-house-chimney"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/quienes-somos') }}">Quiénes Somos</a>
+              <a class="nav-link" href="{{ url('/quienes-somos') }}">Quiénes Somos <i class="fa-solid fa-users"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/books/listado') }}">Libros</a>
+              <a class="nav-link" href="{{ url('/books/listado') }}">Tienda <i class="fa-solid fa-store"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/blogs/listado') }}">Blog</a>
+              <a class="nav-link" href="{{ url('/blogs/listado') }}">Blog  <i class="fa-solid fa-align-justify"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/contacto') }}">Contacto</a>
+              <a class="nav-link" href="{{ url('/contacto') }}">Contacto <i class="fa-solid fa-envelope"></i></a>
             </li>
             @auth
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('dashboard') }}">Admin</a>
+              <a class="nav-link" href="{{ route('dashboard') }}">Admin <i class="fa-solid fa-screwdriver-wrench"></i></a>
             </li>
             @endauth
           </ul>
@@ -66,14 +68,14 @@
             @auth
             <form action="<?= route('logout') ?>" method="post" class="nav-item">
               @csrf
-              <button type="submit" class="btn btn-primary">Cerrar sesión</button>
+              <button type="submit" class="btn btn-primary">Cerrar sesión <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
             </form>
             @else
             <li class="nav-item list-unstyled m-2">
-              <a class="btn btn-outline-primary" aria-current="page" href="<?=route('login')?>">Iniciar sesion</a>
+              <a class="btn btn-outline-primary" aria-current="page" href="<?=route('login')?>">Iniciar sesion <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
             </li>
             <li class="nav-item list-unstyled m-2">
-              <a class="btn btn-primary" aria-current="page" href="<?=route('user.create.view')?>">Registrarse</a>
+              <a class="btn btn-primary" aria-current="page" href="<?=route('user.create.view')?>">Registrarse <i class="fa-solid fa-user-plus"></i></a>
             </li>
             @endauth
           </div>
@@ -93,5 +95,6 @@
     </footer>
 </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="<?=url('js/eye.js')?>"></script>
 </body>
 </html>

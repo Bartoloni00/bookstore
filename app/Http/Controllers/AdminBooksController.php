@@ -81,16 +81,13 @@ class AdminBooksController extends Controller
         $data = $request->except('_token');
         
         if ($request->hasFile('image')) {
-            // dd($request->file('image'));
-
             $dataImage = $request->only(['alt']);
             $imageName = $request->file('image')->store('images');
             $dataImage['name'] = $imageName;
             if ($image) {
                 // Si existe una imagen asociada al libro, actualiza la imagen existente.
                try {
-                \Storage::delete($image->name);
-
+                    \Storage::delete($image->name);
                     $image->update($dataImage);
                     $image->save();
                } catch (\Throwable $error) {
@@ -105,11 +102,9 @@ class AdminBooksController extends Controller
                 } catch (\Throwable $error) {
                     return redirect('admin/books')
                         ->with('status.message', 'Al Libro: ' . e($data['title']) . ' no se le pudo agregar una imagen.');
-
                 }
             }
         }
-    
         $book->update($data);
     
         return redirect('admin/books')
