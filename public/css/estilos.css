@@ -50,8 +50,6 @@ html, body , #app{
 }
 
 .dashboard{
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
@@ -63,4 +61,8 @@ html, body , #app{
 }
 .dashboard .card-body i{
     padding: .5em;
+}
+
+.nav-link:hover{
+    border-bottom: 1px solid blue;
 }

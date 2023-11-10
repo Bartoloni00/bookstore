@@ -1,3 +1,24 @@
+# Bookstore
+Este e-commerce fue creado por Abraham Bartoloni y Ezequiel Arevalo para la materia Portales y comercio electronico, en la cual se utilizaron las tecnologias: PHP con su Framework Laravel, CSS, JavaScript y Bootstrap 5.
+# Instalacion:
+## Para poner en marcha este proyecto en tu máquina local, sigue estos pasos:
+1. Clona el repositorio: git clone [https://github.com/Bartoloni00/TrainEmpire.git]
+2. Navega hasta el directorio del proyecto: 
+```
+cd TrainEmpire
+```
+3. Instala todas las dependencias del proyecto (requiere tener instalado composer): 
+```
+composer install
+```
+4. Corre las migraciones y los seeders, generando la base de datos y cargando algunos datos: 
+```
+php artisan migrate:refresh --seed
+```
+5. es muy importante tener el archivo [.env] con sus credenciales (el archivo [.env.example]) posee algunos ejemplos.
+6. _Inicia un servidor de desarrollo PHP local_ o usa el servidor web que prefieras.
+
+# Readme de laravel:
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

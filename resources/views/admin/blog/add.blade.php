@@ -16,7 +16,7 @@ use Illuminate\Support\ViewErrorBag;
         Existen errores en el formulario.
     </p>
     @endif
-    <form method="POST" action="{{ route('create.blog.process') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('blog.create.process') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group mb-3">

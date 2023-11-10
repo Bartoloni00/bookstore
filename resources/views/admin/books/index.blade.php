@@ -7,7 +7,7 @@
 
 @section('contenido')
 <h1>Dashboard de libros</h1>
-<a href="{{ route('create.book.view') }}" class="btn btn-success mb-3"><i class="bi bi-plus-circle"></i> Agregar nuevo libro</a>
+<a href="{{ route('book.create.view') }}" class="btn btn-success mb-3"><i class="bi bi-plus-circle"></i> Agregar nuevo libro</a>
 
 <div class="table-responsive">
     <table class="table table-bordered table-striped">

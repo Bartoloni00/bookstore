@@ -47,16 +47,16 @@
               <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home <i class="fa-solid fa-house-chimney"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/quienes-somos') }}">Quiénes Somos <i class="fa-solid fa-users"></i></a>
+              <a class="nav-link" href="{{ route('about_us') }}">Quiénes Somos <i class="fa-solid fa-users"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/books/listado') }}">Tienda <i class="fa-solid fa-store"></i></a>
+              <a class="nav-link" href="{{ route('books') }}">Tienda <i class="fa-solid fa-store"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/blogs/listado') }}">Blog  <i class="fa-solid fa-align-justify"></i></a>
+              <a class="nav-link" href="{{ route('blogs') }}">Blog  <i class="fa-solid fa-align-justify"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/contacto') }}">Contacto <i class="fa-solid fa-envelope"></i></a>
+              <a class="nav-link" href="{{ route('contact') }}">Contacto <i class="fa-solid fa-envelope"></i></a>
             </li>
             @auth
             <li class="nav-item">

@@ -6,7 +6,7 @@
 
 @section('contenido')
 <h1>Dashboard del blog</h1>
-<a href="{{ route('create.blog.view') }}" class="btn btn-success mb-3"><i class="bi bi-plus-circle"></i> Agregar nuevo blog</a>
+<a href="{{ route('blog.create.view') }}" class="btn btn-success mb-3"><i class="bi bi-plus-circle"></i> Agregar nuevo blog</a>
 
 <div class="table-responsive">
     <table class="table table-bordered table-striped">

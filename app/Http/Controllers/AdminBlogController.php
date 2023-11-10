@@ -81,6 +81,7 @@ class AdminBlogController extends Controller
                     $image->save();
                 } catch (\Throwable $error) {
                     return redirect('admin/blog')
+                        ->with('status.type','danger')
                         ->with('status.message','El blog: '. e($data['title']) . ' no pudo actualizar su imagen.');
                 }
             } else {
@@ -89,6 +90,7 @@ class AdminBlogController extends Controller
                     $data['image_id'] = $image->id;
                 } catch (\Throwable $error) {
                     return redirect('admin/blog')
+                        ->with('status.type','danger')
                         ->with('status.message','Al blog: '. e($data['title']) . ' no se le pudo agregar una imagen.');
                 }
             }
@@ -122,6 +124,7 @@ class AdminBlogController extends Controller
                 $image->delete();
             } catch (\Throwable $error) {
                 return redirect('admin/blog')
+                    ->with('status.type','danger')
                     ->with('status.message','Ocurrio un error al eliminar la imagen del libro: '. e($blog->title));
             }
         }else {

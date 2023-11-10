@@ -25,16 +25,10 @@
           <a class="navbar-brand col-lg-3 me-0" href="#">BookStore</a>
           <ul class="navbar-nav col-lg-6 justify-content-lg-center">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{ url('/admin') }}">Home</a>
+              <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/admin/books') }}">Libros</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url('/admin/blog') }}">Blogs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('home') }}">Web</a>
+              <a class="nav-link" href="{{ route('home') }}">Volver a la Web</a>
             </li>
           </ul>
         </div>

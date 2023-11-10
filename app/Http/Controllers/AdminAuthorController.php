@@ -25,7 +25,7 @@ class AdminAuthorController extends Controller
 
         Author::create($data);
 
-        return redirect('admin/books/add')
+        return redirect('admin/author')
             ->with('status.message','El Author: '. e($data['name'] . ' ' . e($data['lastname'] . ' fue creado con exito.')));
     }
 

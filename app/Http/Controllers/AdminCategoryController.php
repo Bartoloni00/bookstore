@@ -26,7 +26,7 @@ class AdminCategoryController extends Controller
 
         Category::create($data);
 
-        return redirect('admin/books/add')
+        return redirect('admin/category')
             ->with('status.message','El Categoria : '. e($data['name']) . ' fue creada con exito.');
     }
 

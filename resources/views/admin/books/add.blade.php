@@ -19,7 +19,7 @@ use Illuminate\Support\ViewErrorBag;
         </p>
     @endif
 
-    <form method="POST" action="{{ route('create.book.process')}}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('book.create.process')}}" enctype="multipart/form-data">
         @csrf 
 
         <div class="form-group mb-3">

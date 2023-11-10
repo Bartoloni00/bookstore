@@ -92,6 +92,7 @@ class AdminBooksController extends Controller
                     $image->save();
                } catch (\Throwable $error) {
                     return redirect('admin/books')
+                        ->with('status.type','danger')
                         ->with('status.message', 'Al Libro: ' . e($data['title']) . ' no se le pudo actualizar la imagen.'. e($error));
                }
             } else {
@@ -101,6 +102,7 @@ class AdminBooksController extends Controller
                     $data['image_id'] = $image->id; // Asocia la imagen al libro.
                 } catch (\Throwable $error) {
                     return redirect('admin/books')
+                        ->with('status.type','danger')
                         ->with('status.message', 'Al Libro: ' . e($data['title']) . ' no se le pudo agregar una imagen.');
                 }
             }
@@ -134,6 +136,7 @@ class AdminBooksController extends Controller
                 $image->delete();
             } catch (\Throwable $error) {
                 return redirect('admin/books')
+                    ->with('status.type','danger')
                     ->with('status.message','Ocurrio un error al eliminar la imagen del libro: '. e($book->title));
             }
         } else {

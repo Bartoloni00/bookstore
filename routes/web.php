@@ -12,162 +12,147 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Pagina de inicio
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
         ->name('home');// esto me permite llamar a la ruta por su nombre en lugar de por url (uso de la funcion route())
 
-// Pagina acerca de nosotros
-Route::get('quienes-somos', [\App\Http\Controllers\HomeController::class, 'about']);
+Route::get('/quienes-somos', [\App\Http\Controllers\HomeController::class, 'about'])// asi llamamos al controlador y su metodo sin utilizar los grupos
+	->name('about_us');
+Route::get('/contacto',[\App\Http\Controllers\HomeController::class,'contact'])
+	->name('contact');
 
-// Pagina de servicios
-// Route::get('/servicios',[\App\Http\Controllers\HomeController::class,'service']);
-
-//Pagina de contacto
-Route::get('/contacto',[\App\Http\Controllers\HomeController::class,'contact']);
-
-// Pagina de legalidad
-// Route::get('/legalidad',[\App\Http\Controllers\HomeController::class,'legality']);
-
-// Preguntas frecuentas
-// Route::get('/preguntas-frecuentes',[\App\Http\Controllers\HomeController::class,'faq']);
 
 // Inicio de sesion o registro
-Route::get('/iniciar-sesion',[\App\Http\Controllers\AuthController::class,'login'])
-        ->name('login');
+Route::controller(\App\Http\Controllers\AuthController::class)->group(function(){
+        Route::get('/iniciar-sesion','login')
+        	->name('login');
 
-Route::post('/iniciar-sesion',[\App\Http\Controllers\AuthController::class,'loginProcess'])
-        ->name('login.process');
+        Route::post('/iniciar-sesion','loginProcess')
+                ->name('login.process');
 
-Route::get('/registrar-usuario',[\App\Http\Controllers\AuthController::class,'createView'])
-        ->name('user.create.view');
+        Route::get('/registrar-usuario','createView')
+                ->name('user.create.view');
 
-Route::post('/registrar-usuario',[\App\Http\Controllers\AuthController::class,'createProcess'])
-        ->name('user.create.process');
+        Route::post('/registrar-usuario','createProcess')
+                ->name('user.create.process');
 
-Route::post('cerrar-sesion',[\App\Http\Controllers\AuthController::class,'logoutProcess'])
-        ->name('logout')
-        ->middleware('auth');
-// Listado de propiedades // Busqueda avanzada
-Route::get('/books/listado', [\App\Http\Controllers\BooksController::class, 'index'])
-        ->name('books');
-// Pagina de detalle de propiedad
-Route::get('/books/{id}', [\App\Http\Controllers\BooksController::class, 'details'])
-        ->whereNumber('id');//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
-        
-Route::get('/blogs/listado', [\App\Http\Controllers\BlogsController::class, 'index'])
-        ->name('blogs');
+        Route::post('cerrar-sesion','logoutProcess')
+                ->name('logout');
+});
+Route::controller(\App\Http\Controllers\BooksController::class)->group(function(){
+        // Listado de propiedades // Busqueda avanzada
+        Route::get('/books/listado','index')
+                ->name('books');
+        // Pagina de detalle de propiedad
+        Route::get('/books/{id}','details')
+                ->whereNumber('id');//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
+}); 
+Route::controller(\App\Http\Controllers\BlogsController::class)->group(function(){
+	Route::get('/blogs/listado','index')
+		->name('blogs');
 
-Route::get('/blogs/{id}', [\App\Http\Controllers\BlogsController::class, 'details'])
-        ->whereNumber('id');
+	Route::get('/blogs/{id}','details')
+		->whereNumber('id');
+});
+Route::middleware(['auth'])->group(function(){// le pune el middleware de autentificacion a todos los del grupo
+Route::prefix('admin')->group(function(){// Agrega el prefijo 'admin' a todas las rutas
+        Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])
+        ->name('dashboard');
 
-Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])
-        ->name('dashboard')
-        ->middleware('auth');
+        Route::controller(\App\Http\Controllers\AdminBooksController::class)->group(function(){
+                Route::get('/books', 'index')
+                        ->name('admin.books');
+                Route::name('book.')->group(function(){
+                        Route::get('/books/add', 'createView')
+                                ->name('create.view');
 
-Route::get('/admin/books', [\App\Http\Controllers\AdminBooksController::class, 'index'])
-        ->middleware('auth')
-        ->name('admin.books');
+                        Route::post('/books/add', 'createProcess')
+                                ->name('create.process');
 
-Route::get('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createView'])
-        ->middleware('auth')
-        ->name('create.book.view');
-Route::post('/admin/books/add', [\App\Http\Controllers\AdminBooksController::class, 'createProcess'])
-        ->middleware('auth')
-        ->name('create.book.process');
+                        Route::get('/books/{id}/edit', 'editView')
+                                ->name('edit.view');
+                        Route::post('/books/{id}/edit', 'editProcess')
+                                ->name('edit.process');
 
-Route::get('/admin/books/{id}/edit', [\App\Http\Controllers\AdminBooksController::class, 'editView'])
-        ->middleware('auth');
-Route::post('/admin/books/{id}/edit', [\App\Http\Controllers\AdminBooksController::class, 'editProcess'])
-        ->middleware('auth');
+                        Route::get('/books/{id}/delete', 'deleteView')
+                                ->name('delete.view');
+                        Route::post('/books/{id}/delete', 'deleteProcess')
+                                ->name('delete.process');
+                });
+        });
 
-Route::get('/admin/books/{id}/delete', [\App\Http\Controllers\AdminBooksController::class, 'deleteView'])
-        ->middleware('auth');
-Route::post('/admin/books/{id}/delete', [\App\Http\Controllers\AdminBooksController::class, 'deleteProcess'])
-        ->middleware('auth');
+        Route::controller(\App\Http\Controllers\AdminBlogController::class)->group(function(){
+                Route::get('/blog', 'index')
+                ->name('admin.blogs');
 
-Route::get('/admin/blog', [\App\Http\Controllers\AdminBlogController::class, 'index'])
-        ->middleware('auth')
-        ->name('admin.blogs');
+                Route::name('blog.')->group(function(){
+                        Route::get('/blog/add','createView')
+                        ->name('create.view');
+                        Route::post('/blog/add','createProcess')
+                                ->name('create.process');
 
-Route::get('/admin/blog/add', [\App\Http\Controllers\AdminBlogController::class, 'createView'])
-        ->middleware('auth')
-        ->name('create.blog.view');
-Route::post('/admin/blog/add', [\App\Http\Controllers\AdminBlogController::class, 'createProcess'])
-        ->middleware('auth')
-        ->name('create.blog.process');
+                        Route::get('/blog/{id}/edit','editView')
+                                ->name('edit.view');
+                        Route::post('/blog/{id}/edit','editProcess')
+                                ->name('edit.process');
 
-Route::get('/admin/blog/{id}/edit', [\App\Http\Controllers\AdminBlogController::class, 'editView'])
-        ->middleware('auth')
-        ->name('edit.blog.view');
-Route::post('/admin/blog/{id}/edit', [\App\Http\Controllers\AdminBlogController::class, 'editProcess'])
-        ->middleware('auth')
-        ->name('edit.blog.process');
+                        Route::get('/blog/{id}/delete','deleteView')
+                                ->name('delete.view');
+                        Route::post('/blog/{id}/delete','deleteProcess')
+                                ->name('delete.process');
+                });
+        });
 
-Route::get('/admin/blog/{id}/delete', [\App\Http\Controllers\AdminBlogController::class, 'deleteView'])
-        ->middleware('auth')
-        ->name('delete.blog.view');
-Route::post('/admin/blog/{id}/delete', [\App\Http\Controllers\AdminBlogController::class, 'deleteProcess'])
-        ->middleware('auth')
-        ->name('delete.blog.process');
+        Route::controller(\App\Http\Controllers\AdminAuthorController::class)->group(function(){
+                Route::get('/author','index')
+                ->name('admin.authors');
+                Route::name('author.')->group(function(){
+                        Route::get('/author/add','createView')
+                        ->name('create.form');
+                        Route::post('/author/add','createProcess')
+                                ->name('create.process');
+                        Route::get('/author/{id}/edit','editView')
+                                ->name('edit.form');
+                        Route::post('/author/{id}/edit','editProcess')
+                                ->name('edit.process');
+                        Route::get('/author/{id}/delete','deleteView')
+                                ->name('delete.form');
+                        Route::post('/author/{id}/delete','deleteProcess')
+                                ->name('delete.process');
+                });
+        });
 
-Route::get('/admin/author',[\App\Http\Controllers\AdminAuthorController::class, 'index'])
-        ->middleware('auth')
-        ->name('admin.authors');
-Route::get('/admin/author/add', [\App\Http\Controllers\AdminAuthorController::class, 'createView'])
-        ->middleware('auth')
-        ->name('author.create.form');
-Route::post('/admin/author/add', [\App\Http\Controllers\AdminAuthorController::class, 'createProcess'])
-        ->middleware('auth')
-        ->name('author.create.process');
-Route::get('/admin/author/{id}/edit', [\App\Http\Controllers\AdminAuthorController::class, 'editView'])
-        ->middleware('auth')
-        ->name('author.edit.form');
-Route::post('/admin/author/{id}/edit', [\App\Http\Controllers\AdminAuthorController::class, 'editProcess'])
-        ->middleware('auth')
-        ->name('author.edit.process');
-Route::get('/admin/author/{id}/delete', [\App\Http\Controllers\AdminAuthorController::class, 'deleteView'])
-        ->middleware('auth')
-        ->name('author.delete.form');
-Route::post('/admin/author/{id}/delete', [\App\Http\Controllers\AdminAuthorController::class, 'deleteProcess'])
-        ->middleware('auth')
-        ->name('author.delete.process');
+        Route::controller(\App\Http\Controllers\AdminCategoryController::class)->group(function(){
+                Route::get('/category','index')
+                ->name('admin.categories');
+                Route::name('category.')->group(function(){
+                        Route::get('/category/add','createView')
+                        ->name('create.form');
+                        Route::post('/category/add','createProcess')
+                                ->name('create.process');
+                        Route::get('/category/{id}/edit','editView')
+                                ->name('edit.form');
+                        Route::post('/category/{id}/edit','editProcess')
+                                ->name('edit.process');
+                                Route::get('/category/{id}/delete','deleteView')
+                                ->name('delete.form');
+                        Route::post('/category/{id}/delete','deleteProcess')
+                                ->name('delete.process');
+                });
+        });
 
-
-Route::get('admin/category',[\App\Http\Controllers\AdminCategoryController::class,'index'])
-        ->middleware('auth')
-        ->name('admin.categories');
-Route::get('/admin/category/add', [\App\Http\Controllers\AdminCategoryController::class, 'createView'])
-        ->middleware('auth')
-        ->name('category.create.form');
-Route::post('/admin/category/add', [\App\Http\Controllers\AdminCategoryController::class, 'createProcess'])
-        ->middleware('auth')
-        ->name('category.create.process');
-Route::get('/admin/category/{id}/edit', [\App\Http\Controllers\AdminCategoryController::class, 'editView'])
-        ->middleware('auth')
-        ->name('category.edit.form');
-Route::post('/admin/category/{id}/edit', [\App\Http\Controllers\AdminCategoryController::class, 'editProcess'])
-        ->middleware('auth')
-        ->name('category.edit.process');
-        Route::get('/admin/category/{id}/delete', [\App\Http\Controllers\AdminCategoryController::class, 'deleteView'])
-        ->middleware('auth')
-        ->name('category.delete.form');
-Route::post('/admin/category/{id}/delete', [\App\Http\Controllers\AdminCategoryController::class, 'deleteProcess'])
-        ->middleware('auth')
-        ->name('category.delete.process');
-
-
-Route::get('admin/users',[\App\Http\Controllers\AdminUserController::class, 'index'])
-        ->middleware('auth')
-        ->name('admin.users');
-Route::get('admin/users/{id}/edit',[\App\Http\Controllers\AdminUserController::class, 'editView'])
-        ->middleware('auth')
-        ->name('users.edit.form');
-Route::post('admin/users/{id}/edit',[\App\Http\Controllers\AdminUserController::class, 'editProcess'])
-        ->middleware('auth')
-        ->name('users.edit.proces');
-Route::get('admin/users/{id}/delete',[\App\Http\Controllers\AdminUserController::class, 'deleteView'])
-        ->middleware('auth')
-        ->name('users.delete.form');
-Route::post('admin/users/{id}/delete',[\App\Http\Controllers\AdminUserController::class, 'deleteProcess'])
-        ->middleware('auth')
-        ->name('users.delete.proces');
+        Route::controller(\App\Http\Controllers\AdminUserController::class)->group(function(){
+                Route::get('/users','index')
+                ->name('admin.users');
+                Route::name('users.')->group(function(){
+                        Route::get('/users/{id}/edit','editView')
+                        ->name('edit.form');
+                        Route::post('/users/{id}/edit','editProcess')
+                                ->name('edit.proces');
+                        Route::get('/users/{id}/delete','deleteView')
+                                ->name('delete.form');
+                        Route::post('/users/{id}/delete','deleteProcess')
+                                ->name('delete.proces');
+                });
+        });
+});
+});
