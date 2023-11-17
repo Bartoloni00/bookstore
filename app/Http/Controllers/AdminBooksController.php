@@ -59,12 +59,20 @@ class AdminBooksController extends Controller
             $dataBook['user_id'] = auth()->user()->id;
             $dataBook['image_id'] = $imageID;
             // dd($dataBook);
+            // throw new \Exception();
             Book::create($dataBook);
 
             DB::commit(); // Finalizo la transaccion SQL
             return redirect('/admin/books')
                 ->with('status.message','El Libro: '. e($dataBook['title']) . ' fue agregado exitosamente.');
         } catch (\Exception $e) {
+            if ($imageID) {
+                // Si se ha creado una imagen, elimina el registro de la base de datos
+                $image = Images::find($imageID);
+                if ($image) {
+                    \Storage::delete($image->name); // Elimina el archivo del sistema de archivos
+                }
+            }
             DB::rollback(); // desago las acciones creadas previamente en la base de datos en caso de que alguna falle SQL
             return redirect('/admin/books')
                 ->with('status.type','danger')
@@ -156,10 +164,10 @@ class AdminBooksController extends Controller
             try {
                 $image = Images::findOrFail($book->image_id);
                 DB::transaction(function() use ($image, $book){
-                    \Storage::delete($image->name);// Corregir el porque se elimina esta imagen si falla la transaccion
                     $book->delete();
                     $image->delete();
                 }); // otra sintaxis para las transacciones SQL
+                \Storage::delete($image->name);
             } catch (\Exception $error) {
                 return redirect('admin/books')
                     ->with('status.type','danger')
