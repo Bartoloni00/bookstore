@@ -2,9 +2,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\Author;
-use App\Models\Images;
-use App\Models\Category;
 
 class BooksController extends Controller
 {
@@ -13,10 +10,8 @@ class BooksController extends Controller
         // traemos todos los registros de las peliculas usando el modelo Book
         // usamos el metodo all() que retorna una Collection (clase que representa un array de objetos)
         
-        $books = Book::all();
-        $author = Author::All();
-        $images = Images::All();
-        $category = Category::All();
+        // $books = Book::all()->paginate(4);
+        $books = Book::paginate(4);
         // echo '<pre>';
         // print_r($books);
         // echo '</pre>';
@@ -24,9 +19,6 @@ class BooksController extends Controller
         // tenemos que proveerselo expresamente, utilizando el segundo parametro de view()
         return view('books/index', [
             'books' => $books,
-            'author' => $author,
-            'images' => $images,
-            'category' => $category,
         ]);
     }
     public function details(int $id)

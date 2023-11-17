@@ -30,4 +30,5 @@ use Illuminate\Support\ViewErrorBag;
     @endforeach
     </div>
   </div>
+  {{ $categories->links()}}
 @endsection

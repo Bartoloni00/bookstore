@@ -1,5 +1,9 @@
 <?php 
-/** @var Blog[]|Collection $blogs */
+use Illuminate\Database\Eloquent\Collection;
+use App\Models\Book;
+use Illuminate\Paginator\LengthAwarePaginator;
+
+/** @var Blog[]|Collection|LengthAwarePaginator $blogs */
 ?>
 
 @extends('layouts.main')
@@ -35,4 +39,6 @@
         </div>
         @endforeach
   </div>
+
+  {{$blogs->links()}}
 @endsection

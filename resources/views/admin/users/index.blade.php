@@ -31,4 +31,5 @@ use Illuminate\Support\ViewErrorBag;
     @endforeach
     </div>
   </div>
+  {{$users->links()}}
 @endsection

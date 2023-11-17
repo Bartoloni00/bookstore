@@ -1,5 +1,9 @@
 <?php 
-/** @var Book[]|Collection $books */
+use Illuminate\Database\Eloquent\Collection;
+use App\Models\Book;
+use Illuminate\Paginator\LengthAwarePaginator;
+
+/** @var Book[]|Collection|LengthAwarePaginator $books */
 ?>
 @extends('layouts.main')
 
@@ -26,4 +30,6 @@
         </div>
         @endforeach
   </div>
+
+{{$books->links()}}
 @endsection

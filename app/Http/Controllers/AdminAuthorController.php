@@ -10,7 +10,7 @@ class AdminAuthorController extends Controller
     public function index()
     {
         return view('admin/authors/index',[
-            'authors' => Author::all()
+            'authors' => Author::paginate(15)
         ]);
     }
 

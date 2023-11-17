@@ -30,5 +30,5 @@ use Illuminate\Support\ViewErrorBag;
     @endforeach
     </div>
   </div>
-
+{{$authors->links()}}
 @endsection

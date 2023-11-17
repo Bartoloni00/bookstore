@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Images;
+use Illuminate\Support\Facades\DB;
 
 class AdminBlogController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::paginate(10);
         return view('admin/blog/index',[
             'blogs' => $blogs
         ]);
@@ -30,24 +31,31 @@ class AdminBlogController extends Controller
         $imageID = null;
         $data = $request->only(['title','description','synopsis','categorie_id']);
 
-        if ($request->hasFile('image')) {
-            $dataImage = $request->only(['alt']);
-            $imageName = $request->file('image')->store('images');
-            $dataImage['name'] = $imageName;
-
-            $image = Images::create($dataImage);
-            $imageID = $image->id;
+        try {
+            DB::beginTransaction();
+            if ($request->hasFile('image')) {
+                $dataImage = $request->only(['alt']);
+                $imageName = $request->file('image')->store('images');
+                $dataImage['name'] = $imageName;
+    
+                $image = Images::create($dataImage);
+                $imageID = $image->id;
+            }
+    
+            $request->validate(Blog::CREATE_RULES,Blog::ERROR_MESSAGES);
+            $data['release_date'] = now();
+            $data['user_id'] = auth()->user()->id;
+            $data['image_id'] = $imageID;
+            
+            Blog::create($data);
+            DB::commit();
+            return redirect('admin/blog')
+            ->with('status.message','El blog: '. e($data['title']) . ' fue agregado exitosamente.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect('admin/blog')
+            ->with('status.message','El blog: '. e($data['title']) . ' no pudo ser agregado.');
         }
-
-        $request->validate(Blog::CREATE_RULES,Blog::ERROR_MESSAGES);
-        $data['release_date'] = now();
-        $data['user_id'] = auth()->user()->id;
-        $data['image_id'] = $imageID;
-        
-        Blog::create($data);
-
-        return redirect('admin/blog')
-        ->with('status.message','La categoria: '. e($data['title']) . ' fue agregado exitosamente.');
     }
 
     public function editView(int $id)
@@ -70,38 +78,46 @@ class AdminBlogController extends Controller
         $request->validate(Blog::CREATE_RULES,Blog::ERROR_MESSAGES);
         $data = $request->except('_token');
 
-        if ($request->hasFile('image')) {
-            $dataImage = $request->only(['alt']);
-            $imageName = $request->file('image')->store('images');
-            $dataImage['name'] = $imageName;
-            if($image) {
-                try {
-                    \Storage::delete($image->name);
-                    $image->update($dataImage);
-                    $image->save();
-                } catch (\Throwable $error) {
-                    return redirect('admin/blog')
-                        ->with('status.type','danger')
-                        ->with('status.message','El blog: '. e($data['title']) . ' no pudo actualizar su imagen.');
-                }
-            } else {
-                try {
-                    $image = Images::create($dataImage);
-                    $data['image_id'] = $image->id;
-                } catch (\Throwable $error) {
-                    return redirect('admin/blog')
-                        ->with('status.type','danger')
-                        ->with('status.message','Al blog: '. e($data['title']) . ' no se le pudo agregar una imagen.');
+        try {
+            DB::beginTransaction();
+            if ($request->hasFile('image')) {
+                $dataImage = $request->only(['alt']);
+                $imageName = $request->file('image')->store('images');
+                $dataImage['name'] = $imageName;
+                if($image) {
+                    try {
+                        \Storage::delete($image->name);
+                        $image->update($dataImage);
+                        $image->save();
+                    } catch (\Throwable $error) {
+                        return redirect('admin/blog')
+                            ->with('status.type','danger')
+                            ->with('status.message','El blog: '. e($data['title']) . ' no pudo actualizar su imagen.');
+                    }
+                } else {
+                    try {
+                        $image = Images::create($dataImage);
+                        $data['image_id'] = $image->id;
+                    } catch (\Throwable $error) {
+                        return redirect('admin/blog')
+                            ->with('status.type','danger')
+                            ->with('status.message','Al blog: '. e($data['title']) . ' no se le pudo agregar una imagen.');
+                    }
                 }
             }
+    
+            $data['release_date'] = now();
+    
+            $blog->update($data);
+            DB::commit();
+            return redirect('admin/blog')
+            ->with('status.message','El blog: '. e($data['title']) . ' fue editado exitosamente.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect('admin/blog')
+                            ->with('status.type','danger')
+                            ->with('status.message','El blog: '. e($data['title']) . ' no pudo ser editado.');
         }
-
-        $data['release_date'] = now();
-
-        $blog->update($data);
-
-        return redirect('admin/blog')
-        ->with('status.message','El blog: '. e($data['title']) . ' fue editado exitosamente.');
     }
 
     public function deleteView(int $id)
@@ -119,9 +135,11 @@ class AdminBlogController extends Controller
         if ($blog->image_id !== null) {
             try {
                 $image = Images::findOrFail($blog->image_id);
-                \Storage::delete($image->name);
-                $blog->delete();
-                $image->delete();
+                DB::transaction(function() use($image, $blog){
+                    \Storage::delete($image->name);
+                    $blog->delete();
+                    $image->delete();
+                });
             } catch (\Throwable $error) {
                 return redirect('admin/blog')
                     ->with('status.type','danger')

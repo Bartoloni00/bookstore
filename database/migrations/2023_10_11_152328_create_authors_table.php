@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name',45);
             $table->string('lastname',45);
             $table->timestamps();
+
+            //$table->index('lastname);
         });
     }
 

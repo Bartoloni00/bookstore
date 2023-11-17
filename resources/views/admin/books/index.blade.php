@@ -40,5 +40,5 @@
         </tbody>
     </table>
 </div>
-
+{{$books->links()}}
 @endsection()
