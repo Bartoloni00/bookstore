@@ -59,9 +59,15 @@
               <a class="nav-link" href="{{ route('contact') }}">Contacto <i class="fa-solid fa-envelope"></i></a>
             </li>
             @auth
+            @if(auth()->user()->rol_id == 1)
             <li class="nav-item">
               <a class="nav-link" href="{{ route('dashboard') }}">Admin <i class="fa-solid fa-screwdriver-wrench"></i></a>
             </li>
+            @else
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('dashboard') }}">Carrito <i class="fa-solid fa-cart-shopping"></i></a>
+            </li>
+            @endif
             @endauth
           </ul>
           <div class="d-lg-flex col-lg-3 justify-content-lg-end">

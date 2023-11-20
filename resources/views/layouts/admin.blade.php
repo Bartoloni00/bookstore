@@ -31,12 +31,16 @@
               <a class="nav-link" href="{{ route('home') }}">Volver a la Web</a>
             </li>
           </ul>
+          <form action="<?= route('logout') ?>" method="post" class="nav-item">
+            @csrf
+            <button type="submit" class="btn btn-primary">Cerrar sesión <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+          </form>
         </div>
       </div>
     </nav>
     <main class="container py-3">
-      @if (\Session::has('status.message'))
-        <div class="alert alert-success">
+    @if (\Session::has('status.message'))
+        <div class="alert alert-{{\Session::get('status.type','success')}}">
           <p>{!! \Session::get('status.message') !!}</p>
         </div>
       @endif

@@ -30,6 +30,14 @@ class User extends Seeder
                 'rol_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
+            ],
+            [
+                'name' => 'Sarasa',
+                'email' => 'sarasa@gmail.com',
+                'password' => Hash::make('rico'),
+                'rol_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
             ]
         ]);
     }

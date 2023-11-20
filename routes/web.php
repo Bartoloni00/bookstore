@@ -53,7 +53,7 @@ Route::controller(\App\Http\Controllers\BlogsController::class)->group(function(
 	Route::get('/blogs/{id}','details')
 		->whereNumber('id');
 });
-Route::middleware(['auth'])->group(function(){// le pune el middleware de autentificacion a todos los del grupo
+Route::middleware(['auth','is.admin'])->group(function(){// le pune el middleware de autentificacion a todos los del grupo
 Route::prefix('admin')->group(function(){// Agrega el prefijo 'admin' a todas las rutas
         Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])
         ->name('dashboard');
