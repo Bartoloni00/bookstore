@@ -1,6 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Mail\Contact; // Corregir la ruta de la clase Contact si es necesario
+use Illuminate\Support\Facades\Mail; // Corregir el namespace de Illuminate\Support\Facades\Mail
+
 class HomeController extends Controller
 {
     public function index()
@@ -21,6 +25,16 @@ class HomeController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+
+    public function contactResult(Request $request)
+    {   
+        $data = $request->only(['email','reason','message']);
+        Mail::to('bookstore@gmail.com')->send(new Contact($data));
+        return redirect()
+                ->route('home')
+                // ->with('status.type','danger')
+                ->with('status.message','Email enviado exitosamente.');
     }
 
     public function legality()

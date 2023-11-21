@@ -18,6 +18,10 @@ php artisan migrate:refresh --seed
 5. es muy importante tener el archivo [.env] con sus credenciales (el archivo [.env.example]) posee algunos ejemplos.
 6. _Inicia un servidor de desarrollo PHP local_ o usa el servidor web que prefieras.
 
+# ¿que se utiliza para el manejo de Emails?
+usamos: [https://mailtrap.io/] una web que sirve como interceptor de nuestros emails y revisarlos desde ahi
+tambien para verificar la compatibilidad de todos los elementos de los emails se puede utilizar [https://caniemail.com/]
+
 # Readme de laravel:
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 

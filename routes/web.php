@@ -19,6 +19,8 @@ Route::get('/quienes-somos', [\App\Http\Controllers\HomeController::class, 'abou
 	->name('about_us');
 Route::get('/contacto',[\App\Http\Controllers\HomeController::class,'contact'])
 	->name('contact');
+Route::post('/contacto',[\App\Http\Controllers\HomeController::class,'contactResult'])
+	->name('contact.result');
 
 
 // Inicio de sesion o registro
