@@ -14,8 +14,10 @@ class BlogsController extends Controller
     }
     public function details(int $id)
     {
+        $blog = Blog::findOrFail($id);
+        $blog->load(['category','user']);
         return view('blogs/details',[
-            'blogs' => Blog::findOrFail($id),
+            'blog' => $blog,
         ]);
     }
 }

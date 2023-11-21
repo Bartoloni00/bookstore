@@ -11,30 +11,7 @@ use Illuminate\Support\ViewErrorBag;
 @section('contenido')
     <h1 class="mb-3">Deseas eliminar el blog: {{ $blog->title }}</h1>
     
-    <div class="form-group mb-3">
-        <span>Título</span>
-        <p class="form-control bg-body-secondary">{{ old('title', $blog->title) }}</p>
-    </div>
-
-    <div class="form-group mb-3">
-        <span>Descripción</span>
-        <p class="form-control bg-body-secondary" >{{old('description', $blog->description)}}</p>
-    </div>
-
-    <div class="form-group mb-3">
-        <span>Sinopsis</span>
-        <p class="form-control bg-body-secondary" >{{old('synopsis', $blog->synopsis)}}</p>
-    </div>
-
-    <div class="form-group mb-3">
-        <span>Fecha de Lanzamiento</span>
-        <p class="form-control bg-body-secondary">{{ old('release_date', $blog->release_date ?: \Carbon\Carbon::now()->toDateString()) }}</p>
-    </div>
-
-    <div class="form-group mb-3">
-        <span>Categoría</span>
-        <p class="form-control bg-body-secondary">{{ $blog->category->name }}</p>
-    </div>
+    <x-blog-details :blog="$blog"/>
     
     <p class="text-danger text-center">¿Realmente estas seguro de querer eliminar el libro : {{$blog->title}}</p>
 

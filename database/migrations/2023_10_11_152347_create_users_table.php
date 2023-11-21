@@ -21,7 +21,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-    }
+    }// agregar que un usuario tenga un libro comprado
 
     /**
      * Reverse the migrations.

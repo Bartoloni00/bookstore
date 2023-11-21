@@ -66,3 +66,7 @@ html, body , #app{
 .nav-link:hover{
     border-bottom: 1px solid blue;
 }
+
+.blog{
+    max-width:800px;
+}

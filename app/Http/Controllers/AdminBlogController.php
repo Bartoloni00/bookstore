@@ -125,9 +125,12 @@ class AdminBlogController extends Controller
     
 
     public function deleteView(int $id)
-    {
+    {   
+        $blog = Blog::findOrFail($id);
+        $blog->load(['category','user']);
+        
         return view('admin/blog/delete',[
-            'blog' => Blog::findOrFail($id)
+            'blog' => $blog
         ]);
     }
 
