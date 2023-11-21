@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class AdminBooksController extends Controller
 {
     
@@ -45,7 +46,9 @@ class AdminBooksController extends Controller
                 
             if ($request->hasFile('image')) {
                 $dataImage = $request->only(['alt']);
-                $imageName = $request->file('image')->store('images'); // Corregir que la imagen no se agregue si falla la transaccion
+                $imageName = $request->file('image')->store('images');
+                Images::manipularImg($imageName, 500, 324);
+
                 $dataImage['name'] = $imageName;
 
                 // $request->validate(Images::CREATE_RULES, Images::ERROR_MESSAGES);
@@ -107,6 +110,8 @@ class AdminBooksController extends Controller
         if ($request->hasFile('image')) {
             $dataImage = $request->only(['alt']);
             $imageName = $request->file('image')->store('images');
+            // \Debugbar::addMessage(storage_path('app/public/'.$imageName));
+            Images::manipularImg($imageName, 500, 324);
             $dataImage['name'] = $imageName;
             if ($image) {
                 // Si existe una imagen asociada al libro, actualiza la imagen existente.
@@ -138,7 +143,7 @@ class AdminBooksController extends Controller
             ->with('status.message', 'El Libro: ' . e($data['title']) . ' fue editado exitosamente.');
        } catch (\Exception $e) {
             DB::rollback(); // desago las acciones creadas previamente en la base de datos en caso de que alguna falle SQL
-
+            \Debugbar::addThrowable($e);
             return redirect('admin/books')
                         ->with('status.type','danger')
                         ->with('status.message', 'Al Libro: ' . e($data['title']) . ' no pudo ser editado.');

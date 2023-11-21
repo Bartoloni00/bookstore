@@ -5,6 +5,7 @@ use Illuminate\Support\ViewErrorBag;
 /** @var ViewErrorBag; $errors*/
 /** @var User[]|Collection $users */
 
+// TODO: agregar boton para enviarle un email al usuario
 ?>
 
 @extends('layouts.admin')

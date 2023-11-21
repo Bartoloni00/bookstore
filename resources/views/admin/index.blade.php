@@ -2,7 +2,7 @@
 @section('title', 'Admin Dashboard')
 
 @section('contenido')
-<h1>Admin Dashboard</h1>
+<h1 class="text-center pb-3">Admin Dashboard</h1>
     <div class="container">
         <div class="row dashboard">
             <div class="col-lg-4 col-md-6 mb-4">

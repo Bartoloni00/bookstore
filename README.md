@@ -16,7 +16,12 @@ composer install
 php artisan migrate:refresh --seed
 ```
 5. es muy importante tener el archivo [.env] con sus credenciales (el archivo [.env.example]) posee algunos ejemplos.
-6. _Inicia un servidor de desarrollo PHP local_ o usa el servidor web que prefieras.
+6. Para permitir que el proyecto modifique las imagenes que se cargan al mismo en localhost debemos ir al archivo de [xampp/php/php.ini] aproximadamente en la linea: 930 encontraremos esto:
+```
+;extension=gd
+```
+debemos eliminar el punto y coma (;) para que intervention/image pueda manipular las imagenes.
+7. _Inicia un servidor de desarrollo PHP local_ o usa el servidor web que prefieras.
 
 # ¿que se utiliza para el manejo de Emails?
 usamos: [https://mailtrap.io/] una web que sirve como interceptor de nuestros emails y revisarlos desde ahi

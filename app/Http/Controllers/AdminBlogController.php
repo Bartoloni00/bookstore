@@ -36,6 +36,7 @@ class AdminBlogController extends Controller
             if ($request->hasFile('image')) {
                 $dataImage = $request->only(['alt']);
                 $imageName = $request->file('image')->store('images');
+                Images::manipularImg($imageName, 160, 320);
                 $dataImage['name'] = $imageName;
     
                 $image = Images::create($dataImage);
@@ -87,6 +88,8 @@ class AdminBlogController extends Controller
             if ($request->hasFile('image')) {
                 $dataImage = $request->only(['alt']);
                 $imageName = $request->file('image')->store('images');
+                Images::manipularImg($imageName, 160, 320);
+
                 $dataImage['name'] = $imageName;
     
                 try {
