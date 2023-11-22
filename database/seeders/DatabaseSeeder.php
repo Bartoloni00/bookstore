@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(NewSeeder::class);
         $this->call(Blog::class);
         $this->call(Book::class);
+        $this->call(UsersHasBooks::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

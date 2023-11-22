@@ -4,5 +4,5 @@
 
 @section('contenido')
 <h1 class="mb-3">Detalles</h1>
-<x-book-details :book="$book"/>
+<x-book-details :book="$book" buy="true"/>
 @endsection

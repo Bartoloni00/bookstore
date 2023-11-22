@@ -141,7 +141,6 @@ use Illuminate\Support\ViewErrorBag;
                     >{{ $author->name }} {{ $author->lastname }}</option>
             @endforeach
         </select>
-            </select>
             @error('author_id')
                 <p class="text-danger">
                     {{$message}}

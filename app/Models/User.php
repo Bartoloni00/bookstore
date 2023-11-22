@@ -72,4 +72,17 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class, 'rol_id');
     }
+
+    /**
+     * Definimos una relacion de muchos a muchos
+     */
+    public function Book()//: BelongToMany
+    {
+        return $this->belongsToMany(
+            Book::class,
+            'users_has_books',
+            'user_id',
+            'book_id'
+        );
+    }
 }

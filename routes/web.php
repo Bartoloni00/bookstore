@@ -47,7 +47,13 @@ Route::controller(\App\Http\Controllers\BooksController::class)->group(function(
         // Pagina de detalle de propiedad
         Route::get('/books/{id}','details')
                 ->whereNumber('id');//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
-}); 
+        Route::middleware('auth')->group(function(){
+                // Route::post('/book/buy/{id}','buy')
+                // ->name('book.buy'); Todo comprar libros
+                Route::get('/book/mybooks','myBooks')
+                ->name('books.my');
+        });
+        }); 
 Route::controller(\App\Http\Controllers\BlogsController::class)->group(function(){
 	Route::get('/blogs/listado','index')
 		->name('blogs');

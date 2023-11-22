@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\User;
 
 class BooksController extends Controller
 {
@@ -30,4 +31,24 @@ class BooksController extends Controller
             'book' => Book::findOrFail($id)
         ]);
     }
+
+    public function myBooks()
+    {
+        $user = User::findOrFail(auth()->user()->id);
+        return view('books/mybooks',[
+            'user'=> $user
+        ]);
+    }
+
+    // public function buy(int $id, Request $request)
+    // {
+    //     $user = User::findOrFail(auth()->user()->id);
+    //     $book = Book::findOrFail($id);
+
+    //     $user->book()->attach($)
+
+    //     return view('books/mybooks',[
+    //         'user'=> $user
+    //     ]);
+    // }
 }

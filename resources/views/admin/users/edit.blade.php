@@ -27,7 +27,7 @@ use Illuminate\Support\ViewErrorBag;
                     <label for="name">Nombre de usuario</label>
                     <input 
                         id="name" 
-                        type="name" 
+                        type="text" 
                         class="form-control"
                         @error('name') is-invalid @enderror name="name" value="{{old('name', $user->name)}}" required autofocus>
                     

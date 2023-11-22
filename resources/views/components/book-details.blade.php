@@ -19,6 +19,18 @@
         <p class="card-text"><b>Release date:</b><small class="text-body-secondary"> {{$book->release_date}}</small></p>
         <p class="card-text"><b>Price:</b><small class="text-body-secondary"> ${{$book->price}}</small></p>
         <p class="card-text"><b>Category:</b><small class="text-body-secondary"> {{$book->category->name}}</small></p>
+        @if($buy)
+          @auth
+            <!-- <form action="{{url('/book/buy/'. $book->id)}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">Comprar</button> TODO: comprar libros
+            </form> -->
+            <a href="{{ route('home') }}" class="btn btn-primary">Comprar</a>
+
+          @else
+            <a href="{{ route('login') }}" class="btn btn-primary">Comprar</a>
+          @endauth
+        @endif
       </div>
     </div>
   </div>

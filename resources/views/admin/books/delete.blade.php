@@ -12,7 +12,7 @@ use Illuminate\Support\ViewErrorBag;
 @section('contenido')
     <h1 class="mb-3">Deseas eliminar el libro: {{ $book->title }}</h1>
 
-<x-book-details :book="$book"/>
+<x-book-details :book="$book" buy="false"/>
     
     <p class="text-danger text-center">¿Realmente estas seguro de querer eliminar el libro : {{$book->title}}</p>
     
