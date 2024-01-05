@@ -69,6 +69,14 @@ class Book extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    /**
+     * Definimos una relacion de muchos a muchos
+     */
+    public function Users()
+    {
+        return $this->belongsToMany(User::class,'users_has_books');
+    }
+
     protected function price(): Attribute
     {
         return Attribute::make(

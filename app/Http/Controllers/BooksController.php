@@ -40,15 +40,16 @@ class BooksController extends Controller
         ]);
     }
 
-    // public function buy(int $id, Request $request)
-    // {
-    //     $user = User::findOrFail(auth()->user()->id);
-    //     $book = Book::findOrFail($id);
-
-    //     $user->book()->attach($)
-
-    //     return view('books/mybooks',[
-    //         'user'=> $user
-    //     ]);
-    // }
+    public function buy(int $id)
+    {
+        $user = User::findOrFail(auth()->user()->id);
+        $book = Book::findOrFail($id);
+    
+        $user->books()->attach($book->id);
+    
+        return view('books.mybooks', [
+            'user' => $user
+        ]);
+    }
+    
 }

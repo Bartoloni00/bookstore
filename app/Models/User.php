@@ -76,13 +76,14 @@ class User extends Authenticatable
     /**
      * Definimos una relacion de muchos a muchos
      */
-    public function Book()//: BelongToMany
+    public function Books()//: BelongToMany
     {
-        return $this->belongsToMany(
-            Book::class,
-            'users_has_books',
-            'user_id',
-            'book_id'
-        );
+        // return $this->belongsToMany(
+        //     Book::class,
+        //     'users_has_books',
+        //     'user_id',
+        //     'book_id'
+        // );
+        return $this->belongsToMany(Book::class,'users_has_books');
     }
 }

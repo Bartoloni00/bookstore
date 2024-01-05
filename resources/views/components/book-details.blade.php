@@ -21,11 +21,10 @@
         <p class="card-text"><b>Category:</b><small class="text-body-secondary"> {{$book->category->name}}</small></p>
         @if($buy)
           @auth
-            <!-- <form action="{{url('/book/buy/'. $book->id)}}" method="post">
+            <form action="{{url('/book/buy/'. $book->id)}}" method="post">
               @csrf
-              <button type="submit" class="btn btn-primary">Comprar</button> TODO: comprar libros
-            </form> -->
-            <a href="{{ route('home') }}" class="btn btn-primary">Comprar</a>
+              <button type="submit" class="btn btn-primary">Comprar</button>
+            </form>
 
           @else
             <a href="{{ route('login') }}" class="btn btn-primary">Comprar</a>
