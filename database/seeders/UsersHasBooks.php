@@ -17,18 +17,21 @@ class UsersHasBooks extends Seeder
             [
                 'user_id' => 3,
                 'book_id' => 1,
+                'amount' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'user_id' => 3,
                 'book_id' => 2,
+                'amount' => 3,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'user_id' => 3,
                 'book_id' => 3,
+                'amount' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ]

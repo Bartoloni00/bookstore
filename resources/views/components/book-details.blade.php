@@ -23,11 +23,11 @@
           @auth
             <form action="{{url('/book/buy/'. $book->id)}}" method="post">
               @csrf
-              <button type="submit" class="btn btn-primary">Comprar</button>
+              <button type="submit" class="btn btn-primary">Agregar al carrito</button>
             </form>
 
           @else
-            <a href="{{ route('login') }}" class="btn btn-primary">Comprar</a>
+            <a href="{{ route('login') }}" class="btn btn-primary">Agregar al carrito</a>
           @endauth
         @endif
       </div>

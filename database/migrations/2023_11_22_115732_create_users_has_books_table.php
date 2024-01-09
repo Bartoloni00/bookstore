@@ -18,6 +18,7 @@ return new class extends Migration
             // $table->foreing('book_id')->references('id')->on('books');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('book_id')->constrained('books');
+            $table->tinyInteger('amount')->default(1); // cantidad
             $table->primary(['user_id','book_id']);
             $table->timestamps();
         });

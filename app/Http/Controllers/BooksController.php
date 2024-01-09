@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
@@ -32,6 +33,9 @@ class BooksController extends Controller
         ]);
     }
 
+    /**
+     * muestra el carrito
+     */
     public function myBooks()
     {
         $user = User::findOrFail(auth()->user()->id);
@@ -40,16 +44,58 @@ class BooksController extends Controller
         ]);
     }
 
-    public function buy(int $id)
+    /**
+     * Agrega en el carrito
+     */
+    public function addToCart(int $id)
     {
         $user = User::findOrFail(auth()->user()->id);
         $book = Book::findOrFail($id);
     
-        $user->books()->attach($book->id);
+        $message = 'El libro: '. $book->title . 'fue añadido al carrito';
+        try {
+            $user->books()->attach($book->id);
+        } catch (\Throwable $th) {
+            if ($th instanceof \Illuminate\Database\QueryException && $th->getCode() == 23000) {
+                // El libro ya existe en el carrito
+                $user->books()->where('book_id', $book->id)->increment('amount');
+                $message = 'Haz incrementado en 1 al libro: '. $book->title . 'en tu carrito';
+            } else {
+                $message = 'Ocurrio un error: El libro no pudo ser agregado al carrito, intenta mas tarde';
+                return redirect()
+                    ->route('books.my')
+                    ->with('status.type','danger')
+                    ->with('status.message', $message);
+            }
+        }
     
-        return view('books.mybooks', [
-            'user' => $user
-        ]);
+        return redirect()
+            ->route('books.my')
+            ->with('status.message', $message);
     }
     
+    
+    /**
+     * Edita la cantidad(amount) de un libro en el carrito
+     */
+    public function updateCart(Request $request)
+    {  
+        $data = $request->only(['amount','book_id']);
+        $user = User::findOrFail(auth()->user()->id);
+
+        $request->validate([
+            'amount' => ['required', 'numeric'],
+        ],[
+            'amount.required' => 'Debes indicar la cantidad para editarla',
+            'amount.numeric' => 'La cantidad debe ser un numero',
+        ]);
+
+        $user->books()->updateExistingPivot($data['book_id'], [
+            'amount' => $data['amount'],
+        ]);
+
+        return redirect()
+            ->route('books.my')
+            ->with('status.message','Cantidad actualizada.');
+    }
 }

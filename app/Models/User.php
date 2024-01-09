@@ -84,6 +84,6 @@ class User extends Authenticatable
         //     'user_id',
         //     'book_id'
         // );
-        return $this->belongsToMany(Book::class,'users_has_books');
+        return $this->belongsToMany(Book::class,'users_has_books')->withPivot('amount');
     }
 }
