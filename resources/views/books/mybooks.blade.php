@@ -36,7 +36,11 @@ foreach ($user->books as $book) {
                     <p class="mb-0">Tienes {{ $items }} libros en el carrito</p>
                   </div>
                 </div>
-
+                @error('amount')
+                  <p class="text-danger" id="error-amount">
+                    {{$message}}
+                  </p>
+                @enderror
                 @foreach($user->books as $book)
                     <article class="card mb-3 mb-lg-0">
                         <div class="card-body">
@@ -67,9 +71,12 @@ foreach ($user->books as $book) {
                                               value="{{ $book->pivot->amount }}"
                                               class="form-control" 
                                               style="width:50px;"
+                                              @error('amount')
+                                                  aria-describedby="error-amount"
+                                              @enderror
                                               >
                                           </div>
-                                          <button type="submit" class="btn btn-warning mt-3 w-100 block m-auto">Editar</button>
+                                          <button type="submit" class="btn btn-warning"><i class="bi bi-pencil"></i></button>
                                         </form>
                                     </div>
                                 </div>
@@ -78,7 +85,10 @@ foreach ($user->books as $book) {
                                     <div style="width: 80px;">
                                         <span class="mb-0">$ {{ $book->price }}</span>
                                     </div>
-                                    <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                                    <form action="{{ route('book.delete',['id' => $book->id]) }}" method="post">
+                                      @csrf   
+                                      <button type="submit" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

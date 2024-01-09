@@ -48,11 +48,15 @@ Route::controller(\App\Http\Controllers\BooksController::class)->group(function(
                 ->whereNumber('id');//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
         Route::middleware('auth')->group(function(){
                 Route::post('/book/buy/{id}','addToCart')
-                ->name('book.buy'); // agregar libro al carrito
+                        ->whereNumber('id')
+                        ->name('book.buy'); // agregar libro al carrito
                 Route::get('/book/mybooks','myBooks')
-                ->name('books.my');// vista del carrito
+                        ->name('books.my');// vista del carrito
                 Route::post('/book/update','updateCart')
-                ->name('books.update');
+                        ->name('books.update');
+                Route::post('/book/delete/{id}','removeFromCart')
+                        ->name('book.delete')
+                        ->whereNumber('id');
         });
         }); 
 Route::controller(\App\Http\Controllers\BlogsController::class)->group(function(){

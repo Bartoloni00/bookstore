@@ -84,10 +84,11 @@ class BooksController extends Controller
         $user = User::findOrFail(auth()->user()->id);
 
         $request->validate([
-            'amount' => ['required', 'numeric'],
-        ],[
+            'amount' => ['required', 'numeric', 'gte:1'],
+        ], [
             'amount.required' => 'Debes indicar la cantidad para editarla',
-            'amount.numeric' => 'La cantidad debe ser un numero',
+            'amount.numeric' => 'La cantidad debe ser un número',
+            'amount.gte' => 'La cantidad no puede ser un número negativo',
         ]);
 
         $user->books()->updateExistingPivot($data['book_id'], [
@@ -98,4 +99,17 @@ class BooksController extends Controller
             ->route('books.my')
             ->with('status.message','Cantidad actualizada.');
     }
+
+    public function removeFromCart(int $bookId)
+{
+    $user = User::findOrFail(auth()->user()->id);
+    $book = Book::findOrFail($bookId);
+
+    // Deshacer la relación
+    $user->books()->detach($book->id);
+
+    return redirect()
+        ->route('books.my')
+        ->with('status.message', 'Libro eliminado del carrito exitosamente');
+}
 }
