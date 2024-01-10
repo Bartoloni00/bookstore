@@ -47,16 +47,24 @@ Route::controller(\App\Http\Controllers\BooksController::class)->group(function(
         Route::get('/books/{id}','details')
                 ->whereNumber('id');//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
         Route::middleware('auth')->group(function(){
+                // TODO: hacerlo en un controlador especifico para carrito
                 Route::post('/book/buy/{id}','addToCart')
                         ->whereNumber('id')
                         ->name('book.buy'); // agregar libro al carrito
-                Route::get('/book/mybooks','myBooks')
+                Route::get('/book/mybooks','myBooks')// TODO: modificar este nombre a cart o carrito
                         ->name('books.my');// vista del carrito
                 Route::post('/book/update','updateCart')
                         ->name('books.update');
                 Route::post('/book/delete/{id}','removeFromCart')
                         ->name('book.delete')
                         ->whereNumber('id');
+                // Mercado Pago // TODO: hacerlo en un controlador especifico para mercadopago
+                Route::get('/books/delsuccessete', 'mpSuccess')
+                        ->name('mp.success');
+                Route::get('/books/pending', 'mpPending')
+                        ->name('mp.pending');
+                Route::get('/books/failture', 'mpFailture')
+                        ->name('mp.failture');
         });
         }); 
 Route::controller(\App\Http\Controllers\BlogsController::class)->group(function(){
@@ -88,6 +96,8 @@ Route::prefix('admin')->group(function(){// Agrega el prefijo 'admin' a todas la
 
                         Route::get('/books/{id}/delete', 'deleteView')
                                 ->name('delete.view');
+                        Route::post('/books/{id}/delete', 'deleteProcess')
+                                ->name('delete.process');
                         Route::post('/books/{id}/delete', 'deleteProcess')
                                 ->name('delete.process');
                 });

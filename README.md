@@ -4,21 +4,28 @@ Este e-commerce fue creado por Abraham Bartoloni y Ezequiel Arevalo para la mate
 ## Para poner en marcha este proyecto en tu máquina local, sigue estos pasos:
 1. Clona el repositorio: git clone [https://github.com/Bartoloni00/bookstore.git]
 2. Navega hasta el directorio del proyecto: 
-```
+``` Bash
 cd bookstore
-```
+``` 
 3. Instala todas las dependencias del proyecto (requiere tener instalado composer): 
-```
+``` Bash
 composer install
 ```
 4. Corre las migraciones y los seeders, generando la base de datos y cargando algunos datos: 
+``` Bash
+php artisan migrate
 ```
+``` Bash
 php artisan migrate:refresh --seed
 ```
 5. es muy importante tener el archivo [.env] con sus credenciales (el archivo [.env.example]) posee algunos ejemplos.
 6. Para permitir que el proyecto modifique las imagenes que se cargan al mismo en localhost debemos ir al archivo de [xampp/php/php.ini] aproximadamente en la linea: 930 encontraremos esto:
 ```
 ;extension=gd
+```
+7. Linkeamos el almacenamiento de imagenes:
+``` Bash
+php artisan storage:link
 ```
 debemos eliminar el punto y coma (;) para que intervention/image pueda manipular las imagenes.
 7. _Inicia un servidor de desarrollo PHP local_ o usa el servidor web que prefieras.

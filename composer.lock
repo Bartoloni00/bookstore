@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ea2325863f436a8e61abfb86bfbab1f",
+    "content-hash": "09d44e69be19c1aaa3f3a1e79e38c228",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2675,6 +2675,45 @@
                 "source": "https://github.com/maximebf/php-debugbar/tree/v1.18.2"
             },
             "time": "2023-02-04T15:27:00+00:00"
+        },
+        {
+            "name": "mercadopago/dx-php",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercadopago/sdk-php.git",
+                "reference": "146aab2b4edf6e792e7fdc75eb97c0eb8b3835cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercadopago/sdk-php/zipball/146aab2b4edf6e792e7fdc75eb97c0eb8b3835cb",
+                "reference": "146aab2b4edf6e792e7fdc75eb97c0eb8b3835cb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.22",
+                "phpunit/phpunit": "^10.2",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MercadoPago\\": "src/MercadoPago"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Mercado Pago PHP SDK",
+            "homepage": "https://github.com/mercadopago/sdk-php",
+            "support": {
+                "source": "https://github.com/mercadopago/sdk-php/tree/3.0.1"
+            },
+            "time": "2024-01-03T13:51:44+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -1,14 +1,19 @@
 <?php
-$subTotal = 0;
+// $subTotal = 0;
 $items = 0;
 foreach ($user->books as $book) {
     $items += $book->pivot->amount;
-    if ($book->pivot->amout == 1) {
-        $subTotal += $book->price;
-    } else {
-        $subTotal += $book->price * $book->pivot->amount;
-    }
+    // if ($book->pivot->amout == 1) {
+    //     $subTotal += $book->price;
+    // } else {
+    //     $subTotal += $book->price * $book->pivot->amount;
+    // }
 }
+
+// $envio = $subTotal > 100 ? 'Envio gratis': $subTotal * 0.20;
+// $total = $subTotal > 100 ? $subTotal : $subTotal * 1.20;
+
+
 ?>
 
 @extends('layouts.main')
@@ -95,7 +100,6 @@ foreach ($user->books as $book) {
                     </article>
                 @endforeach
 
-
               </div>
               <div class="col-lg-5">
 
@@ -112,29 +116,25 @@ foreach ($user->books as $book) {
                         class="fab fa-cc-visa fa-2x me-2"></i></a>
                     <a href="#!" type="submit" class="text-white"><i
                         class="fab fa-cc-amex fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
-
                     <hr class="my-4">
 
                     <div class="d-flex justify-content-between">
                       <p class="mb-2">Subtotal</p>
-                      <p class="mb-2">$ {{ $subTotal}}</p>
+                      <p class="mb-2">$ {{ $totalPrice}}</p>
                     </div>
 
                     <div class="d-flex justify-content-between">
                       <p class="mb-2">Envio</p>
-                      <p class="mb-2">$ {{ $subTotal > 100 ? 'Envio gratis': $subTotal * 0.20}}</p>
+                      <p class="mb-2">Envio gratis</p>
                     </div>
 
                     <div class="d-flex justify-content-between mb-4">
                       <p class="mb-2">Total (Sin impuestos)</p>
-                      <p class="mb-2">$ {{ $subTotal > 100 ? $subTotal : $subTotal * 1.20}}</p>
+                      <p class="mb-2">$ {{ $totalPrice}}</p>
                     </div>
 
-                    <button type="button" class="btn btn-info btn-block btn-lg">
-                      <div class="d-flex justify-content-between">
-                        <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                      </div>
+                    <button type="button" class="btn btn-info btn-block btn-lg m-auto">
+                        <div id="checkout"></div>
                     </button>
 
                   </div>
@@ -151,3 +151,23 @@ foreach ($user->books as $book) {
   </div>
 </section>
 @endsection
+
+<!-- pusheamos los scrips de js al stack que imprimimos al final del layout -->
+@push('js')
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+<script>
+  // const mp = new MercadoPago('{{ $mpPublicKey }}'); esto tambien serviria (blade)
+  const mp = new MercadoPago('<?= $mpPublicKey ?>'); //aca estoy utilizando blade para incluir la clave publica
+  const bricksBuilder = mp.bricks();// maneja de UI de mercado pago
+  mp.bricks().create("wallet", "checkout", {
+    initialization: {
+        preferenceId: "<?= $preference->id; ?>",
+    },
+  customization: {
+  texts: {
+    valueProp: 'smart_option',
+  },
+  }});
+
+</script>
+@endpush

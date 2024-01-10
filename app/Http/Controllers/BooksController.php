@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\User;
 use Illuminate\Http\Request;
+use MercadoPago\MercadoPagoConfig;
+use MercadoPago\Client\Preference\PreferenceClient;
 
 class BooksController extends Controller
 {
@@ -13,7 +15,7 @@ class BooksController extends Controller
         // usamos el metodo all() que retorna una Collection (clase que representa un array de objetos)
         
         // $books = Book::all()->paginate(4);
-        $books = Book::paginate(4);
+        $books = Book::paginate(20);
         // echo '<pre>';
         // print_r($books);
         // echo '</pre>';
@@ -39,8 +41,39 @@ class BooksController extends Controller
     public function myBooks()
     {
         $user = User::findOrFail(auth()->user()->id);
+
+        $items = [];
+        $totalPrice = 0;
+
+        foreach ($user->books as $book) {
+            $items[] = [
+                "title" => $book->title,
+                "quantity" => $book->pivot->amount,
+                "unit_price" => $book->price,
+                "currency_id" => 'ARS',
+            ];
+
+            $totalPrice += $book->price * $book->pivot->amount;
+        }
+
+        MercadoPagoConfig::setAccessToken(config('mercadopago.accessToken'));
+
+        $client = new PreferenceClient();
+
+        $preference = $client->create([
+            "items"=> $items,
+            "back_urls" => [
+                'success' => route('mp.success'),
+                'pending' => route('mp.pending'),
+                'failture' => route('mp.failture'),
+            ],
+          ]);
+
         return view('books/mybooks',[
-            'user'=> $user
+            'user'=> $user,
+            'totalPrice' => $totalPrice,
+            'preference' => $preference,
+            'mpPublicKey' => config('mercadopago.publicKey'),
         ]);
     }
 
@@ -101,7 +134,7 @@ class BooksController extends Controller
     }
 
     public function removeFromCart(int $bookId)
-{
+    {
     $user = User::findOrFail(auth()->user()->id);
     $book = Book::findOrFail($bookId);
 
@@ -111,5 +144,27 @@ class BooksController extends Controller
     return redirect()
         ->route('books.my')
         ->with('status.message', 'Libro eliminado del carrito exitosamente');
-}
+    }
+
+    public function mpSuccess(Request $request)
+    {
+        //TODO: Crear una tabla en la que guardamos todos los datos de la compra realizada por el usuario 
+        // posterior mente vaciar el carrito
+        echo 'exito';
+        dd($request);
+    }
+
+    public function mpPending(Request $request)
+    {
+        // TODO: vaciar el carrito
+        echo 'pendiente';
+        dd($request);
+    }
+
+    public function mpFailture(Request $request)
+    {
+        //TODO: mensaje de error del fallo
+        echo 'fallo';
+        dd($request);
+    }
 }
