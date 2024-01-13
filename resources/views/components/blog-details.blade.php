@@ -1,12 +1,22 @@
 <div class="card text-center">
-  <div class="card-header">
-    Release date: {{ $blog->release_date }} | Category: {{ $blog->category->name}} 
+
+  <!--Información del blog-->
+  <div class="card-header-blog">
+    Release date: {{ $blog->release_date }} | Category: {{ $blog->category->name}}
   </div>
-  <div class="card-body blog">
+
+  <!--Contenido del blog-->
+  <div class="card-body-blog">
+
+    <!--Titulo del blog-->
     <h5 class="card-title">{{$blog->title}}</h5>
+
+    <!--Descripción del blog-->
     <p class="card-text">{{ $blog->description }}</p>
   </div>
-  <div class="card-footer text-body-secondary">
-   Author: {{$blog->user->name}}
+
+  <!--Author del blog-->
+  <div class="card-footer-blog text-body-secondary">
+    Author: {{$blog->user->name}}
   </div>
 </div>

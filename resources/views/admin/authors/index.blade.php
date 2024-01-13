@@ -22,7 +22,7 @@ use Illuminate\Support\ViewErrorBag;
                   <h2 class="card-title">{{$author->name}} {{$author->lastname}}</h2>
                 </div>
                 <div class="card-footer d-flex">
-                  <a href="{{ url('/admin/author/'. $author->id .'/edit') }}" class="btn btn-warning w-100 mx-2"><i class="bi bi-pencil"></i> Editar</a>
+                  <a href="{{ url('/admin/author/'. $author->id .'/edit') }}" class="btn btn-primary w-100 mx-2"><i class="bi bi-pencil"></i> Editar</a>
                   <a href="{{ url('/admin/author/'. $author->id .'/delete') }}" class="btn btn-danger w-100 mx-2"><i class="bi bi-trash3"></i> Eliminar</a>
                 </div>
               </div>

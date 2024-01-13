@@ -32,7 +32,7 @@
                 <td>{{ $book->release_date }}</td>
                 <td>$ {{ $book->price }}</td>
                 <td>
-                    <a href="{{ url('/admin/books/' . $book->id . '/edit') }}" class="btn btn-warning w-100 block mb-2"><i class="bi bi-pencil"></i> Editar</a>
+                    <a href="{{ url('/admin/books/' . $book->id . '/edit') }}" class="btn btn-primary w-100 block mb-2"><i class="bi bi-pencil"></i> Editar</a>
                     <a href="{{ url('/admin/books/' . $book->id . '/delete') }}" class="btn btn-danger w-100 block"><i class="bi bi-trash3"></i> Eliminar</a>
                 </td>
             </tr>

@@ -24,7 +24,7 @@ use Illuminate\Support\ViewErrorBag;
                   <p class="card-title">Rol: {{ $user->role->name }}</p>
                 </div>
                 <div class="card-footer d-flex">
-                  <a href="{{ url('/admin/users/'. $user->id .'/edit') }}" class="btn btn-warning w-100 mx-2"><i class="bi bi-pencil"></i> Editar</a>
+                  <a href="{{ url('/admin/users/'. $user->id .'/edit') }}" class="btn btn-primary w-100 mx-2"><i class="bi bi-pencil"></i> Editar</a>
                   <a href="{{ url('/admin/users/'. $user->id .'/delete') }}" class="btn btn-danger w-100 mx-2"><i class="bi bi-trash3"></i> Eliminar</a>
                 </div>
             </div>
