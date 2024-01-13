@@ -18,7 +18,7 @@ php artisan migrate
 ``` Bash
 php artisan migrate:refresh --seed
 ```
-5. es muy importante tener el archivo [.env] con sus credenciales (el archivo [.env.example]) posee algunos ejemplos.
+5. es muy importante tener el archivo [.env] con sus credenciales (el archivo [.env.example]) posee algunos ejemplos, Para generar la APP_KEY utiliza: php artisan key:generate
 6. Para permitir que el proyecto modifique las imagenes que se cargan al mismo en localhost debemos ir al archivo de [xampp/php/php.ini] aproximadamente en la linea: 930 encontraremos esto:
 ```
 ;extension=gd

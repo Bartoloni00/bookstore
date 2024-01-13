@@ -27,7 +27,7 @@
                 <td>{{ $blog->category->name }}</td>
                 <td>{{ $blog->release_date }}</td>
                 <td>
-                    <a href="{{ url('/admin/blog/' . $blog->id . '/edit') }}" class="btn btn-warning w-100 block mb-2"><i class="bi bi-pencil"></i> Editar</a>
+                    <a href="{{ url('/admin/blog/' . $blog->id . '/edit') }}" class="btn btn-primary w-100 block mb-2"><i class="bi bi-pencil"></i> Editar</a>
                     <a href="{{ url('/admin/blog/' . $blog->id . '/delete') }}" class="btn btn-danger w-100 block"><i class="bi bi-trash3"></i> Eliminar</a>
                 </td>
             </tr>

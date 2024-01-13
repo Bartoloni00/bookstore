@@ -1,6 +1,7 @@
-<?php 
-use Illuminate\Database\Eloquent\Collection;
+<?php
+
 use App\Models\Book;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Paginator\LengthAwarePaginator;
 
 /** @var Book[]|Collection|LengthAwarePaginator $books */
@@ -11,25 +12,44 @@ use Illuminate\Paginator\LengthAwarePaginator;
 
 @section('contenido')
 
-<h1>Listado de libros</h1>
-    <div class="row mb-2">
+<!--Titulo de la sección-->
+<h1 class="text-center py-4">Nuestros libros</h1>
+
+<!--Contenedor de la sección-->
+<div class="container">
+    <div class="row">
         @foreach ($books as $book)
-        <div class="col-md-6">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="min-height: 250px;">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary-emphasis">#{{ $book->id }}</strong>
-                    <h3 class="mb-0">{{ $book->title }}</h3>
-                    <div class="mb-1 text-body-secondary">{{ $book->author->name }} {{ $book->author->lastname }}</div>
-                    <p class="card-text mb-auto">{{ $book->synopsis }}</p>
-                    <a href="{{ url('books',['id' => $book->id]) }}" class="icon-link gap-1 icon-link-hover stretched-link">
+        <div class="col-lg-4 mb-4 col-md-6 my-5">
+            <!--Contenedor del libro-->
+            <div class="card">
+                <!--Portada del libro-->
+                <img src="{{$book->image->name}}" alt="{{$book->image->alt}}" class="card-img-top img-fluid">
+
+                <!--Contenido del libro-->
+                <div class="card-body-books p-2">
+                    <!--Titulo del libro-->
+                    <h5 class="card-title">{{ $book->title }}</h5>
+
+                    <!--Author del libro-->
+                    <p>{{ $book->author->name }} {{ $book->author->lastname }}</p>
+
+                    <!--Synopsis del libro-->
+                    <p class="card-text">{{ $book->synopsis }}</p>
+                </div>
+                <div class="card-footer">
+                    <!--Boton información adicional del libro-->
+                    <a href="{{ url('books',['id' => $book->id]) }}" class="btn-custom d-block text-center w-10 icon-link icon-link-hover text-decoration-none">
                         Ver mas
-                        <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+                        <svg class="bi">
+                            <use xlink:href="#chevron-right"></use>
+                        </svg>
                     </a>
                 </div>
             </div>
         </div>
         @endforeach
-  </div>
+    </div>
+</div>
 
 {{$books->links()}}
 @endsection
