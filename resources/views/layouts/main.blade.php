@@ -87,7 +87,7 @@
                 </li>
               @else
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('books.my') }}">Carrito</a>
+                  <a class="nav-link" href="{{ route('book.cart') }}">Carrito</a>
                 </li>
               @endif
             @endauth

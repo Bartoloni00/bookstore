@@ -46,27 +46,37 @@ Route::controller(\App\Http\Controllers\BooksController::class)->group(function(
         // Pagina de detalle de propiedad
         Route::get('/books/{id}','details')
                 ->whereNumber('id');//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
+}); 
+
+Route::controller(\App\Http\Controllers\CartController::class)->group(function(){
         Route::middleware('auth')->group(function(){
-                // TODO: hacerlo en un controlador especifico para carrito
-                Route::post('/book/buy/{id}','addToCart')
-                        ->whereNumber('id')
-                        ->name('book.buy'); // agregar libro al carrito
-                Route::get('/book/mybooks','myBooks')// TODO: modificar este nombre a cart o carrito
-                        ->name('books.my');// vista del carrito
-                Route::post('/book/update','updateCart')
-                        ->name('books.update');
-                Route::post('/book/delete/{id}','removeFromCart')
-                        ->name('book.delete')
-                        ->whereNumber('id');
-                // Mercado Pago // TODO: hacerlo en un controlador especifico para mercadopago
-                Route::get('/books/delsuccessete', 'mpSuccess')
-                        ->name('mp.success');
-                Route::get('/books/pending', 'mpPending')
-                        ->name('mp.pending');
-                Route::get('/books/failture', 'mpFailture')
-                        ->name('mp.failture');
+                Route::name('book.')->group(function(){
+                        Route::get('/book/cart','cart')
+                                ->name('cart');// vista del carrito
+                        Route::post('/book/buy/{id}','addToCart')
+                                ->whereNumber('id')
+                                ->name('buy'); // agregar libro al carrito
+                        Route::post('/book/update','updateCart')
+                                ->name('update');
+                        Route::post('/book/delete/{id}','removeFromCart')
+                                ->name('delete')
+                                ->whereNumber('id');
+                });
         });
-        }); 
+});
+
+Route::controller(\App\Http\Controllers\MPController::class)->group(function(){
+        Route::middleware('auth')->group(function(){
+                Route::name('mp.')->group(function(){
+                        Route::get('/books/delsuccessete', 'mpSuccess')
+                                ->name('success');
+                        Route::get('/books/pending', 'mpPending')
+                                ->name('pending');
+                        Route::get('/books/failture', 'mpFailture')
+                                ->name('failture');
+                });
+        });
+});
 Route::controller(\App\Http\Controllers\BlogsController::class)->group(function(){
 	Route::get('/blogs/listado','index')
 		->name('blogs');

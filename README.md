@@ -34,6 +34,10 @@ debemos eliminar el punto y coma (;) para que intervention/image pueda manipular
 usamos: [https://mailtrap.io/] una web que sirve como interceptor de nuestros emails y revisarlos desde ahi
 tambien para verificar la compatibilidad de todos los elementos de los emails se puede utilizar [https://caniemail.com/]
 
+# ¿Como se manejan los pagos en el sitio?
+Para aceptar los pagos utilizamos checkout Pro de Mercado pago [https://www.mercadopago.com.ar/developers/es/docs/checkout-pro/landing] en su ultima version 3.0.0 para ello necesito la ultima version de xampp o equivalente ya que el mismo esta ligado a la version de PHP.
+
+
 # Readme de laravel:
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 

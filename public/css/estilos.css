@@ -5,13 +5,19 @@ body,
     height: 100%;
 }
 
+:root {
+    --principal-color: #438e96;
+    --principal-color-dark: #3b757f;
+    --principal-color-light: #bfe0e2;
+}
+
 #app {
     display: grid;
     grid-template-rows: 60px auto 75px;
 }
 
 .fix-bgcolor {
-    background-color: #438e96;
+    background-color: var(--principal-color);
 }
 
 /* width */
@@ -21,44 +27,47 @@ body,
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #bfe0e2;
+    background: var(--principal-color-light);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #438e96;
+    background: var(--principal-color);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #3b757f;
+    background: var(--principal-color-dark);
 }
 
 .btn-custom {
-    color: #bfe0e2;
-    background-color: #438e96;
+    color: var(--principal-color-light);
+    background-color: var(--principal-color);
     border: transparent;
     border-radius: 5px;
     padding: 8px;
+    text-decoration: none;
 }
 
 .btn-custom:hover {
     color: #ddeff0;
-    background-color: #3b757f;
+    background-color: var(--principal-color-dark);
 }
 
 /*Menú de Navegación*/
 .navbar {
-    background-color: #438e96;
+    background-color: var(--principal-color);
 }
 
 .nav-link {
-    color: #bfe0e2 !important;
+    color: var(--principal-color-light) !important;
+    border-radius: 8px;
+    font-weight: bolder;
 }
 
 .nav-link:hover {
-    background-color: #bfe0e2;
-    color: #438e96 !important;
+    color: #ddeff0;
+    background-color: var(--principal-color-dark);
 }
 
 /*Pie de Página*/
@@ -67,7 +76,7 @@ body,
     justify-content: center;
     align-items: center;
     height: 75px;
-    background-color: #438e96;
+    background-color: var(--principal-color);
 }
 
 .footer p {
@@ -121,14 +130,14 @@ body,
     align-items: center;
     flex-direction: column;
     background-color: #ddeff0;
-    border: 1px solid #bfe0e2;
+    border: 1px solid var(--principal-color-light);
     border-radius: 5px;
     transition: all 300ms ease-in-out;
 }
 
 .dashboard .card-body:hover {
     color: #ddeff0;
-    background-color: #3b757f;
+    background-color: var(--principal-color-dark);
 }
 
 .dashboard .card-body i {
@@ -138,7 +147,7 @@ body,
 /* Custom CSS vista Welcome*/
 #section-Welcome {
     background-color: #ddeff0;
-    border: 1px solid #438e96;
+    border: 1px solid var(--principal-color);
     margin-bottom: 40px;
 }
 
@@ -148,7 +157,7 @@ body,
     user-select: text;
     width: 100%;
     min-height: 600px;
-    border: 1px solid #bfe0e2;
+    border: 1px solid var(--principal-color-light);
     padding: 10px;
     height: 600px;
     overflow-y: scroll;
@@ -163,8 +172,8 @@ body,
     min-height: 50px;
     line-height: 50px;
     background-color: #ddeff0;
-    border: 1px solid #bfe0e2;
-    color: #3b757f;
+    border: 1px solid var(--principal-color-light);
+    color: var(--principal-color-dark);
 }
 
 /*Custom CSS vista de Contacto*/
@@ -183,14 +192,14 @@ body,
     line-height: 40px;
     border-radius: 15px 0px 0px 15px;
     background-color: #ddeff0;
-    border: 1px solid #bfe0e2;
+    border: 1px solid var(--principal-color-light);
 }
 
 .custom-input {
     height: 40px;
     width: 100%;
     text-indent: 10px;
-    border: 1px solid #bfe0e2;
+    border: 1px solid var(--principal-color-light);
     border-radius: 0px 15px 15px 0px;
     outline: none;
 }
@@ -199,14 +208,14 @@ body,
 .custom-input:active,
 .custom-input:focus {
     outline: none;
-    border-color: #438e96;
+    border-color: var(--principal-color);
 }
 
 .custom-textarea {
     width: 100%;
     padding: 5px;
     text-indent: 10px;
-    border: 1px solid #bfe0e2;
+    border: 1px solid var(--principal-color-light);
     outline: none;
     resize: vertical;
     max-height: 400px;
@@ -217,22 +226,22 @@ body,
 }
 
 .custom-textarea::-webkit-scrollbar-track {
-    background: #bfe0e2;
+    background: var(--principal-color-light);
 }
 
 .custom-textarea::-webkit-scrollbar-thumb {
-    background: #438e96;
+    background: var(--principal-color);
 }
 
 .custom-textarea::-webkit-scrollbar-thumb:hover {
-    background: #3b757f;
+    background: var(--principal-color-dark);
 }
 
 .custom-textarea:hover,
 .custom-textarea:active,
 .custom-textarea:focus {
     outline: none;
-    border-color: #438e96;
+    border-color: var(--principal-color);
 }
 
 .card-body-books {
