@@ -86,4 +86,28 @@ class User extends Authenticatable
         // );
         return $this->belongsToMany(Book::class,'users_has_books')->withPivot('amount');
     }
+
+    public function processCartItems():array
+    {
+        $cart = [];
+        $totalPrice = 0;
+
+        foreach ($this->books as $book) {
+            $cart[] = [
+                "title" => $book->title,
+                "quantity" => $book->pivot->amount,
+                "unit_price" => $book->price,
+                "currency_id" => 'ARS',
+            ];
+
+            $totalPrice += $book->price * $book->pivot->amount;
+        }
+
+        return [
+            'totalPrice' => $totalPrice,
+            'items' => $cart,
+        ];
+    }
+
+    // public function clearCart()
 }

@@ -18,10 +18,11 @@ class DatabaseSeeder extends Seeder
         $this->call(Author::class);
         $this->call(Category::class);
         $this->call(User::class);
-        $this->call(NewSeeder::class);
         $this->call(Blog::class);
         $this->call(Book::class);
         $this->call(UsersHasBooks::class);
+        $this->call(Purchases::class);
+        $this->call(BooksPurchases::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

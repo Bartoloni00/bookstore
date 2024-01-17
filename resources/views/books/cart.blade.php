@@ -63,7 +63,7 @@ foreach ($user->books as $book) {
                                         @endif
                                     </div>
                                     <div class="ms-3">
-                                        <h2><a href="{{ url('book',['id' => $book->id]) }}">{{ $book->title }}</a></h2>
+                                        <h2><a href="{{ url('books',['id' => $book->id]) }}">{{ $book->title }}</a></h2>
                                         <form action="{{ route('book.update') }}" method="post" class="d-flex flex-row align-items-center">
                                           @csrf   
                                           <input type="hidden" name="book_id" value="{{ $book->id }}">

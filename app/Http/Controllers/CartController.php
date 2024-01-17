@@ -17,26 +17,14 @@ class CartController extends Controller
     {
         $user = User::findOrFail(auth()->user()->id);
 
-        $items = [];
-        $totalPrice = 0;
-
-        foreach ($user->books as $book) {// llevar esto al modelo de user
-            $items[] = [
-                "title" => $book->title,
-                "quantity" => $book->pivot->amount,
-                "unit_price" => $book->price,
-                "currency_id" => 'ARS',
-            ];
-
-            $totalPrice += $book->price * $book->pivot->amount;
-        }
+        $cart = $user->processCartItems();
 
         MercadoPagoConfig::setAccessToken(config('mercadopago.accessToken'));
 
         $client = new PreferenceClient();
 
         $preference = $client->create([
-            "items"=> $items,
+            "items"=> $cart['items'],
             "back_urls" => [
                 'success' => route('mp.success'),
                 'pending' => route('mp.pending'),
@@ -46,7 +34,7 @@ class CartController extends Controller
 
         return view('books/cart',[
             'user'=> $user,
-            'totalPrice' => $totalPrice,
+            'totalPrice' => $cart['totalPrice'],
             'preference' => $preference,
             'mpPublicKey' => config('mercadopago.publicKey'),
         ]);
