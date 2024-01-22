@@ -11,7 +11,7 @@
 
             <!--Contenedor de un item-->
             <div class="col-lg-6 col-md-6 mb-4 ">
-                <a class="card text-decoration-none" href="{{ route('admin.books') }}">
+                <a class="card position-static text-decoration-none" href="{{ route('admin.books') }}">
                     <div class="card-body">
                         <!--Titulo de un item-->
                         <h2 class="card-title">Libros</h2>
@@ -23,7 +23,7 @@
 
             <!--Contenedor de un item-->
             <div class="col-lg-6 col-md-6 mb-4">
-                <a class="card text-decoration-none" href="{{ route('admin.blogs') }}">
+                <a class="card position-static text-decoration-none" href="{{ route('admin.blogs') }}">
                     <div class="card-body">
                         <!--Titulo de un item-->
                         <h2 class="card-title">Blogs</h2>
@@ -35,7 +35,7 @@
 
             <!--Contenedor de un item-->
             <div class="col-lg-6 col-md-6 mb-4">
-                <a class="card text-decoration-none" href="{{ route('admin.authors') }}">
+                <a class="card position-static text-decoration-none" href="{{ route('admin.authors') }}">
                     <div class="card-body">
                         <!--Titulo de un item-->
                         <h2 class="card-title">Autores</h2>
@@ -47,7 +47,7 @@
 
             <!--Contenedor de un item-->
             <div class="col-lg-6 col-md-6 mb-4">
-                <a class="card text-decoration-none" href="{{ route('admin.categories') }}">
+                <a class="card position-static text-decoration-none" href="{{ route('admin.categories') }}">
                     <div class="card-body">
                         <!--Titulo de un item-->
                         <h2 class="card-title">Categorías</h2>
@@ -59,7 +59,7 @@
 
             <!--Contenedor de un item-->
             <div class="col-lg-6 col-md-6 mb-4">
-                <a class="card text-decoration-none" href="{{ route('admin.users') }}">
+                <a class="card position-static text-decoration-none" href="{{ route('admin.users') }}">
                     <div class="card-body">
                         <!--Titulo de un item-->
                         <h2 class="card-title">Usuarios</h2>

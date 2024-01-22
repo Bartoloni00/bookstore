@@ -21,7 +21,7 @@ use Illuminate\Paginator\LengthAwarePaginator;
         @foreach ($books as $book)
         <div class="col-lg-4 mb-4 col-md-6 my-5">
             <!--Contenedor del libro-->
-            <div class="card">
+            <div class="card position-static">
                 <!--Portada del libro-->
                 <img src="{{$book->image->name}}" alt="{{$book->image->alt}}" class="card-img-top img-fluid">
 

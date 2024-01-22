@@ -1,4 +1,4 @@
-<div class="card text-center">
+<div class="card position-static text-center">
 
   <!--Información del blog-->
   <div class="card-header-blog">

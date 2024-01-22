@@ -12,7 +12,7 @@
         </svg>
 
         <!-- Titulo de la vista -->
-        <h1 class="text-body-emphasis">¿Como surgio BookStore?</h1>
+        <h1 class="text-body-emphasis">¿Cómo surgió BookStore?</h1>
 
         <!-- Descripción de la vista -->
         <p class="col-lg-8 mx-auto fs-5 text-muted">
@@ -41,7 +41,7 @@
 
         <!-- Imagen de Perfil -->
         <div class="redonditos">
-            <img src="https://avatars.githubusercontent.com/u/116020038?v=4" alt="foto de perfil de abraham bartoloni" loading="lazy" class />
+            <img src="https://avatars.githubusercontent.com/u/116020038?v=4" alt="foto de perfil de abraham bartoloni" loading="lazy" >
         </div>
 
         <!-- Nombre del Perfil -->
@@ -64,7 +64,7 @@
 
         <!-- Imagen de Perfil -->
         <div class="redonditos">
-            <img src="https://avatars.githubusercontent.com/u/111710833?s=400&u=7f1a1b29bfc2b8678dc5688a4311df4a6ebc4970&v=4" alt="foto de perfil de ezequiel arevalo" loading="lazy" />
+            <img src="https://avatars.githubusercontent.com/u/111710833?s=400&u=7f1a1b29bfc2b8678dc5688a4311df4a6ebc4970&v=4" alt="foto de perfil de ezequiel arevalo" loading="lazy" >
         </div>
 
         <!-- Nombre del Perfil -->

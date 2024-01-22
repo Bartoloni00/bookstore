@@ -7,7 +7,7 @@
 <section class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card my-5">
+            <div class="card position-static my-5">
                 <!--Titulo de la sección-->
                 <div class="card-header">
                     <h1 class="text-center">Login</h1>
