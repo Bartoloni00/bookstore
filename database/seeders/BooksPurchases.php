@@ -15,7 +15,7 @@ class BooksPurchases extends Seeder
     {
         DB::table('books_purchases')->insert([
             [
-                'user_id' => 3,
+                'purchase_id' => 1,
                 'book_id' => 1,
                 'amount' => 1,
                 'price' => 3500,
@@ -23,7 +23,7 @@ class BooksPurchases extends Seeder
                 'updated_at' => now()
             ],
             [
-                'user_id' => 3,
+                'purchase_id' => 1,
                 'book_id' => 2,
                 'amount' => 3,
                 'price' => 1500,
@@ -31,7 +31,7 @@ class BooksPurchases extends Seeder
                 'updated_at' => now()
             ],
             [
-                'user_id' => 3,
+                'purchase_id' => 1,
                 'book_id' => 3,
                 'amount' => 1,
                 'price' => 1250,

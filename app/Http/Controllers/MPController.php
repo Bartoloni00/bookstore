@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Purchase;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MPController extends Controller
@@ -12,28 +14,104 @@ class MPController extends Controller
  
     public function mpSuccess(Request $request)
     {
-        //TODO: Crear una tabla en la que guardamos todos los datos de la compra realizada por el usuario 
-        // posterior mente vaciar el carrito
-        /*
-        del query de $request puedo sacar el status,payment_id,preference_id
-        ¿como acceder a los items que compro el usuario?
-        ¿una vez que la compra esta realizada, como vacio el carrito
-        */
-        echo 'exito';
-        dd($request);
+        // Guardamos la compra en la tabla purchases de la base de datos
+        $dataPurchase;
+        $user = User::findOrFail(auth()->user()->id);
+        $cart = $user->processCartItems();
+
+
+        $dataPurchase['user_id'] = $user->id;
+        $dataPurchase['payment_id'] = $request->payment_id;
+        $dataPurchase['preference_id'] = $request->preference_id;
+        $dataPurchase['total_price'] = $cart['totalPrice'] * 100;
+        $dataPurchase['state'] ='success';
+        $dataPurchase['created_at'] = now();
+        $dataPurchase['updated_at'] = now();
+        $purchase = Purchase::create($dataPurchase);
+        $purchaseId = $purchase->id;
+        // dd($dataPurchase);
+        // establecer las relaciones de muchos a muchos entre purchases y books
+        $purchase = Purchase::findOrFail($purchaseId);
+        foreach ($user->books as $book) {
+
+            // dd($book);
+            $bookData = [
+                'book_id' => $book->id,
+                'amount' => $book->pivot->amount,
+                'price' => $book->price
+            ];
+            $purchase->Books()->attach($book->id);
+            $purchase->Books()->updateExistingPivot($bookData['book_id'], [
+                'amount' => $bookData['amount'],
+                'price' => $bookData['price'] * 100,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+        // $purchase->Books()->attach();
+        // vaciar carrito
+        foreach ($user->books as $book) {
+            $user->books()->detach($book->id);
+        }
+        // redireccionar
+        return redirect()
+        ->route('book.cart')
+        ->with('status.message', 'Compra realizada exitosamente');
     }
 
     public function mpPending(Request $request)
     {
-        // TODO: vaciar el carrito
-        echo 'pendiente';
-        dd($request);
+        // Guardamos la compra en la tabla purchases de la base de datos
+        $dataPurchase;
+        $user = User::findOrFail(auth()->user()->id);
+        $cart = $user->processCartItems();
+
+
+        $dataPurchase['user_id'] = $user->id;
+        $dataPurchase['payment_id'] = $request->payment_id;
+        $dataPurchase['preference_id'] = $request->preference_id;
+        $dataPurchase['total_price'] = $cart['totalPrice'] * 100;
+        $dataPurchase['state'] ='pending';
+        $dataPurchase['created_at'] = now();
+        $dataPurchase['updated_at'] = now();
+        $purchase = Purchase::create($dataPurchase);
+        $purchaseId = $purchase->id;
+        // dd($dataPurchase);
+        // establecer las relaciones de muchos a muchos entre purchases y books
+        $purchase = Purchase::findOrFail($purchaseId);
+        foreach ($user->books as $book) {
+
+            // dd($book);
+            $bookData = [
+                'book_id' => $book->id,
+                'amount' => $book->pivot->amount,
+                'price' => $book->price
+            ];
+            $purchase->Books()->attach($book->id);
+            $purchase->Books()->updateExistingPivot($bookData['book_id'], [
+                'amount' => $bookData['amount'],
+                'price' => $bookData['price'] * 100,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+        // $purchase->Books()->attach();
+        // vaciar carrito
+        foreach ($user->books as $book) {
+            $user->books()->detach($book->id);
+        }
+        // redireccionar
+        return redirect()
+        ->route('book.cart')
+        ->with('status.message', 'Compra pendiente de pago');
     }
 
     public function mpFailture(Request $request)
     {
-        //TODO: mensaje de error del fallo
-        echo 'fallo';
-        dd($request);
+        // redireccionar
+        return redirect()
+        ->route('book.cart')
+        ->with('status.type','danger')
+        ->with('status.message', 'Ocurrio un error al realizar la compra');
     }
 }

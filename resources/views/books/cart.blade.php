@@ -1,13 +1,15 @@
 <?php
 // $subTotal = 0;
 $items = 0;
-foreach ($user->books as $book) {
+if (!empty($user->books)) {
+  foreach ($user->books as $book) {
     $items += $book->pivot->amount;
     // if ($book->pivot->amout == 1) {
     //     $subTotal += $book->price;
     // } else {
     //     $subTotal += $book->price * $book->pivot->amount;
     // }
+  }
 }
 
 // $envio = $subTotal > 100 ? 'Envio gratis': $subTotal * 0.20;
@@ -120,7 +122,7 @@ foreach ($user->books as $book) {
 
                     <div class="d-flex justify-content-between">
                       <p class="mb-2">Subtotal</p>
-                      <p class="mb-2">$ {{ $totalPrice}}</p>
+                      <p class="mb-2">$ {{ $totalPrice ?? 0}}</p>
                     </div>
 
                     <div class="d-flex justify-content-between">
@@ -130,12 +132,14 @@ foreach ($user->books as $book) {
 
                     <div class="d-flex justify-content-between mb-4">
                       <p class="mb-2">Total (Sin impuestos)</p>
-                      <p class="mb-2">$ {{ $totalPrice}}</p>
+                      <p class="mb-2">$ {{ $totalPrice ?? 0}}</p>
                     </div>
 
+                    @if(!empty($user->books))
                     <button type="button" class="btn btn-info btn-block btn-lg m-auto">
                         <div id="checkout"></div>
                     </button>
+                    @endif
 
                   </div>
                 </div>
@@ -156,12 +160,11 @@ foreach ($user->books as $book) {
 @push('js')
 <script src="https://sdk.mercadopago.com/js/v2"></script>
 <script>
-  // const mp = new MercadoPago('{{ $mpPublicKey }}'); esto tambien serviria (blade)
-  const mp = new MercadoPago('<?= $mpPublicKey ?>'); //aca estoy utilizando blade para incluir la clave publica
+  const mp = new MercadoPago('<?= $mpPublicKey ?? null ?>'); //aca estoy utilizando blade para incluir la clave publica
   const bricksBuilder = mp.bricks();// maneja de UI de mercado pago
   mp.bricks().create("wallet", "checkout", {
     initialization: {
-        preferenceId: "<?= $preference->id; ?>",
+        preferenceId: "<?= $preference->id ?? null ?>",
     },
   customization: {
   texts: {
@@ -171,3 +174,9 @@ foreach ($user->books as $book) {
 
 </script>
 @endpush
+<?php
+/*
+Los null en el script de arriba que estan junto al operador nullish coalescing (??)
+al lado de $mpPublicKey y $preference->id es para no tener problemas cuando el carrito esta vacio
+ */
+?>

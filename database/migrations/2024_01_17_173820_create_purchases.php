@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->unsignedInteger('total_price');
+            $table->string('preference_id',150);
+            $table->unsignedBigInteger('payment_id');
             $table->string('state',60);
             $table->timestamps();
         });

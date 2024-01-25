@@ -77,6 +77,11 @@ class Book extends Model
         return $this->belongsToMany(User::class,'users_has_books')->withPivot('amount');
     }
 
+    public function Purchases()
+    {
+        return $this->belongsToMany(Purchase::class,'books_purchases')->withPivot('amount','price');
+    }
+
     protected function price(): Attribute
     {
         return Attribute::make(

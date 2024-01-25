@@ -19,6 +19,10 @@ class CartController extends Controller
 
         $cart = $user->processCartItems();
 
+        if (empty($cart['items'])) {
+            // Manejar el caso de carrito vacío, por ejemplo
+            return view('books/cart',['user' => $user]);
+        }
         MercadoPagoConfig::setAccessToken(config('mercadopago.accessToken'));
 
         $client = new PreferenceClient();
