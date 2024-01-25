@@ -19,7 +19,7 @@ use Illuminate\Paginator\LengthAwarePaginator;
 <div class="row mb-2">
     @foreach ($blogs as $blog)
     <div class="col-md-6">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250">
             <div class="col p-4 d-flex flex-column position-static">
                 <!--ID del Blog-->
                 <strong class="d-inline-block mb-2 text-primary-emphasis">#{{ $blog->id }}</strong>
@@ -45,7 +45,7 @@ use Illuminate\Paginator\LengthAwarePaginator;
                 <p class="card-text mb-auto">{{ $blog->synopsis }}</p>
 
                 <!--Boton información adicional del blog-->
-                <a href="{{ url('/blogs/' . $blog->id) }}" class="icon-link gap-1 icon-link-hover stretched-link">
+                <a href="{{ url('/blogs/' . $blog->id) }}" class="icon-link gap-1 icon-link-hover">
                     Ver mas
                     <svg class="bi">
                         <use xlink:href="#chevron-right"></use>

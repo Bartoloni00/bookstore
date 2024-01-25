@@ -81,15 +81,15 @@
 
             <!-- Links de administrador, usuario logueado -->
             @auth
-              @if(auth()->user()->rol_id == 1)
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('dashboard') }}">Admin</a>
-                </li>
-              @else
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('book.cart') }}">Carrito</a>
-                </li>
-              @endif
+                @if(auth()->user()->rol_id == 1)
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('dashboard') }}">Admin</a>
+                  </li>
+                @else
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('book.cart') }}">Carrito</a>
+                  </li>
+                @endif
             @endauth
           </ul>
 
@@ -101,12 +101,12 @@
                 <button type="submit" class="btn-custom">Cerrar sesión <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
               </form>
             @else
-              <li class="nav-item list-unstyled m-2">
-                <a class="btn-custom" aria-current="page" href="<?=route('login')?>">Iniciar sesion <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-              </li>
-              <li class="nav-item list-unstyled m-2">
-                <a class="btn-custom" aria-current="page" href="<?=route('user.create.view')?>">Registrarse <i class="fa-solid fa-user-plus"></i></a>
-              </li>
+                <li class="nav-item list-unstyled m-2">
+                  <a class="btn-custom" aria-current="page" href="<?=route('login')?>">Iniciar sesion <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                </li>
+                <li class="nav-item list-unstyled m-2">
+                  <a class="btn-custom" aria-current="page" href="<?=route('user.create.view')?>">Registrarse <i class="fa-solid fa-user-plus"></i></a>
+                </li>
             @endauth
           </div>
         </div>
@@ -118,13 +118,13 @@
       <!-- Contenedor de Alerta -->
       @if (\Session::has('status.message'))
         <div class="alert alert-{{\Session::get('status.type','success')}} alert-dismissible fade show d-flex flex-row align-items-center" role="alert">
-          @if (\Session::get('status.type','success') === 'success')
-            <i class="fa-solid fa-circle-check px-2" aria-label="Success:"></i> <!-- Muestra este ícono si el tipo es success -->
-          @else
-            <i class="fa-solid fa-circle-exclamation px-2" aria-label="Danger:"></i> <!-- Muestra este ícono si el tipo no es success -->
-          @endif
-            <p class="pt-3">{!! \Session::get('status.message') !!}</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            @if (\Session::get('status.type','success') === 'success')
+              <i class="fa-solid fa-circle-check px-2" aria-label="Success:"></i> <!-- Muestra este ícono si el tipo es success -->
+            @else
+              <i class="fa-solid fa-circle-exclamation px-2" aria-label="Danger:"></i> <!-- Muestra este ícono si el tipo no es success -->
+            @endif
+              <p class="pt-3">{!! \Session::get('status.message') !!}</p>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       @endif
 

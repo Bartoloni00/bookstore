@@ -28,7 +28,7 @@
         <div class="col-md-7">
 
             <!-- Titulo de la sección -->
-            <h2 class="featurette-heading fw-normal lh-1">¡Contamos con una Gran catalogo de Libros!</h2>
+            <h2 class="featurette-heading fw-normal lh-1">¡Contamos con un Gran catálogo de Libros!</h2>
 
             <!-- descripción de la sección -->
             <p class="lead">
@@ -44,7 +44,7 @@
 
         <!-- Imagen de libros -->
         <div class="col-md-5 sect-2 text-center">
-            <img src="<?=url('img/libros.webp')?>" alt="libros apilados" loading="lazy" class="img-fluid" />
+            <img src="<?=url('img/libros.webp')?>" alt="libros apilados" loading="lazy" class="img-fluid" >
         </div>
     </div>
 
@@ -67,7 +67,7 @@
 
         <!-- Imagen de hombre araña -->
         <div class="col-md-5 sect-2 text-center order-md-1">
-            <img src="<?=url('img/blogs.webp')?>" alt="el tipico meme de los hombres que arañan señalandose entre si" loading="lazy" class="img-fluid" />
+            <img src="<?=url('img/blogs.webp')?>" alt="el tipico meme de los hombres que arañan señalandose entre si" loading="lazy" class="img-fluid" >
         </div>
     </div>
 </section>
@@ -80,7 +80,7 @@
                 <div class="text-center">
 
                     <!-- Frase de la sección -->
-                    <h2 class="fs-4 mb-4 fst-italic">"Los libros son un refugio, un paraiso en medio del caos"</h2>
+                    <h2 class="fs-4 mb-4 fst-italic">"Los libros son un refugio, un paraíso en medio del caos"</h2>
 
                     <!-- Author de la frase -->
                     <p class="d-flex align-items-center justify-content-center fw-bold">
@@ -93,7 +93,7 @@
 </section>
 
 <!--Cuarta Sección-->
-<section class="rounded-3 p-4 p-sm-5 mt-5" id="section-Welcome">
+<section class="rounded-3 p-4 p-sm-5 mt-5">
     <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
         <div class="mb-4 mb-xl-0">
 
@@ -107,7 +107,7 @@
 
             <!-- Email del usuario -->
             <div class="input-group mb-2">
-                <input class="custom-input w-50" type="text" placeholder="Correo electronico..." aria-label="Correo electronico..." aria-describedby="button-newsletter" />
+                <input class="custom-input w-50" type="text" placeholder="Correo electronico..." aria-label="Correo electronico..." aria-describedby="button-newsletter" >
                 <button class="btn-custom" id="button-newsletter" type="button">Subscribirse</button>
             </div>
 
