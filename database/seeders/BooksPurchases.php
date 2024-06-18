@@ -37,7 +37,39 @@ class BooksPurchases extends Seeder
                 'price' => 1250,
                 'created_at' => now(),
                 'updated_at' => now()
-            ]
+            ],
+            [
+                'purchase_id' => 2,
+                'book_id' => 2,
+                'amount' => 1,
+                'price' => 1250,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'purchase_id' => 2,
+                'book_id' => 3,
+                'amount' => 3,
+                'price' => 950,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'purchase_id' => 3,
+                'book_id' => 1,
+                'amount' => 1,
+                'price' => 3500,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'purchase_id' => 3,
+                'book_id' => 2,
+                'amount' => 3,
+                'price' => 1500,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
     }
 }

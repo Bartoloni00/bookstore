@@ -68,6 +68,17 @@
                     </div>
                 </a>
             </div>
+
+            <div class="col-lg-6 col-md-6 mb-4">
+                <a class="card position-static text-decoration-none" href="{{ route('admin.purchases.index') }}">
+                    <div class="card-body">
+                        <!--Titulo de un item-->
+                        <h2 class="card-title">ventas</h2>
+                        <!--Icono de un item-->
+                        <i class="fa-solid fa-users-gear fa-2xl"></i>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 

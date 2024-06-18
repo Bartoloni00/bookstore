@@ -45,6 +45,7 @@ Route::controller(\App\Http\Controllers\BooksController::class)->group(function(
                 ->name('books');
         // Pagina de detalle de propiedad
         Route::get('/books/{id}','details')
+                ->name('books.details')
                 ->whereNumber('id');//gracias a esto solo se podra acceder a esta ruta cuando se pasa un numero
 }); 
 
@@ -77,6 +78,18 @@ Route::controller(\App\Http\Controllers\MPController::class)->group(function(){
                 });
         });
 });
+
+Route::controller(\App\Http\Controllers\PurchaseController::class)->group(function(){
+        Route::middleware('auth')->group(function(){
+                //Vistas de mis compras para cada usuario
+                Route::name('purchase.')->group(function(){
+                        Route::get('/purchase', 'myPurchases')
+                                ->name('MyPurchases');
+                        Route::get('/purchase/{id}', 'details')
+                                ->name('details');
+                });
+                });
+        });
 Route::controller(\App\Http\Controllers\BlogsController::class)->group(function(){
 	Route::get('/blogs/listado','index')
 		->name('blogs');
@@ -89,6 +102,14 @@ Route::prefix('admin')->group(function(){// Agrega el prefijo 'admin' a todas la
         Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])
         ->name('dashboard');
 
+        Route::controller(\App\Http\Controllers\PurchaseController::class)->group(function(){
+                Route::name('admin.purchases.')->group(function(){
+                        Route::get('/purchases', 'adminAllPurchases')
+                                ->name('index');
+                        Route::get('/purchase/{id}', 'adminDetailsPurchase')
+                                ->name('details');
+                 });
+        });
         Route::controller(\App\Http\Controllers\AdminBooksController::class)->group(function(){
                 Route::get('/books', 'index')
                         ->name('admin.books');
@@ -186,6 +207,10 @@ Route::prefix('admin')->group(function(){// Agrega el prefijo 'admin' a todas la
                         Route::post('/users/{id}/delete','deleteProcess')
                                 ->name('delete.proces');
                 });
+        });
+
+        Route::controller(\App\Http\Controllers\AdminPurchaseController::class)->group(function(){
+                // vistas de todas las compras realizada en la tienda
         });
 });
 });
