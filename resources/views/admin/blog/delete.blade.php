@@ -9,15 +9,15 @@ use Illuminate\Support\ViewErrorBag;
 @section('title', 'Eliminar el blog: '. e($blog->title))
 
 @section('contenido')
-    <h1 class="mb-3">Deseas eliminar el blog: {{ $blog->title }}</h1>
+    <h2 class="custom-subtitle text-center my-5">Deseas eliminar el blog: {{ $blog->title }}</h2>
     
     <x-blog-details :blog="$blog"/>
     
-    <p class="text-danger text-center">¿Realmente estas seguro de querer eliminar el libro : {{$blog->title}}</p>
+    <p class="text-danger text-center custom-text">¿Realmente estas seguro de querer eliminar el libro : {{$blog->title}}</p>
 
-    <form method="POST" action="{{url('/admin/blog/'. $blog->id .'/delete')}}">
+    <form method="POST" action="{{url('/admin/blog/'. $blog->id .'/delete')}}" class="custom-forms">
     @csrf 
-        <div class="btn-max-width mx-auto mb-3">
+        <div class="mx-auto mb-3">
             <button type="submit" class="btn btn-danger mt-2 w-100 block m-auto">Eliminar Blog</button>
         </div>
     </form>

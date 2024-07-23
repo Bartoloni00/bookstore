@@ -10,15 +10,16 @@ use Illuminate\Paginator\LengthAwarePaginator;
 @section('title', 'Detalles de mi compra')
 
 @section('contenido')
-<h1>Compra del usuario: {{$purchase->user->name}}</h1>
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
+
+<div class="custom-table">
+    <h2 class="custom-subtitle mt-5">Compra del usuario: {{$purchase->user->name}}</h2>
+    <table class="table custom-table-striped">
         <thead>
             <tr>
                 <th scope="col">id de compra</th>
                 <th scope="col">id de pago</th>
                 <th scope="col">Estado</th>
-                </tr>
+            </tr>
         </thead>
         <tbody>
             <tr>
@@ -28,15 +29,16 @@ use Illuminate\Paginator\LengthAwarePaginator;
             </tr>
         </tbody>
     </table>
-    <h2>Libros en la orden de compra</h2>
-    <table class="table table-bordered table-striped">
+
+    <h2 class="custom-subtitle mt-5">Libros en la orden de compra</h2>
+    <table class="table custom-table-striped">
         <thead>
             <tr>
                 <th scope="col">Titulo</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio unitario</th>
                 <th scope="col">Precio total</th>
-                </tr>
+            </tr>
         </thead>
         <tbody>
             @foreach($purchase->books as $book)
@@ -45,7 +47,6 @@ use Illuminate\Paginator\LengthAwarePaginator;
                 <td>{{ $book->pivot->amount }}</td>
                 <td>$ {{ $book->pivot->price / 100}}</td>
                 <td>$ {{ $book->pivot->price * $book->pivot->amount / 100}}</td>
-                <td></td>
             </tr>
             @endforeach
             <tr>
@@ -53,7 +54,6 @@ use Illuminate\Paginator\LengthAwarePaginator;
                 <td></td>
                 <td></td>
                 <td>$ {{ $purchase->total_price / 100}}</td>
-                <td></td>
             </tr>
         </tbody>
     </table>

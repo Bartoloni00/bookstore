@@ -10,13 +10,15 @@ use Illuminate\Support\ViewErrorBag;
 @section('title', 'Añadir blog')
 @section('contenido')
 <div class="container">
-    <h1>Agregar Nuevo Blog</h1>
+    <h2 class="custom-subtitle text-center my-5">Agregar Nuevo Blog</h2>
+
     @if ($errors->any())
-    <p class="text-danger mb-3">
+    <p class="text-danger custom-text mb-3">
         Existen errores en el formulario.
     </p>
     @endif
-    <form method="POST" action="{{ route('blog.create.process') }}" enctype="multipart/form-data">
+    
+    <form method="POST" action="{{ route('blog.create.process') }}" enctype="multipart/form-data" class="custom-forms">
         @csrf
 
         <div class="form-group mb-3">
@@ -32,7 +34,7 @@ use Illuminate\Support\ViewErrorBag;
                     aria-describedby="error-title"
                 @enderror>
             @error('title')
-            <p class="text-danger"  id="error-title">
+            <p class="text-danger custom-text"  id="error-title">
                 {{$message}}
             </p>
             @enderror
@@ -51,7 +53,7 @@ use Illuminate\Support\ViewErrorBag;
                 @enderror
                 >{{ old('description') }}</textarea>
             @error('description')
-            <p class="text-danger" id="error-description">
+            <p class="text-danger custom-text" id="error-description">
                 {{$message}}
             </p>
             @enderror
@@ -70,7 +72,7 @@ use Illuminate\Support\ViewErrorBag;
                 @enderror
                 >{{ old('synopsis') }}</textarea>
             @error('synopsis')
-            <p class="text-danger" id="error-synopsis">
+            <p class="text-danger custom-text" id="error-synopsis">
                 {{$message}}
             </p>
             @enderror
@@ -89,7 +91,7 @@ use Illuminate\Support\ViewErrorBag;
                 @endforeach
             </select>
             @error('categorie_id')
-                <p class="text-danger">
+                <p class="text-danger custom-text">
                     {{$message}}
                 </p>
             @enderror
@@ -112,7 +114,7 @@ use Illuminate\Support\ViewErrorBag;
                     aria-describedby="error-image"
                 @enderror>
             @error('image')
-                <p class="text-danger" id="error-image">
+                <p class="text-danger custom-text" id="error-image">
                     {{$message}}
                 </p>
             @enderror
@@ -130,7 +132,7 @@ use Illuminate\Support\ViewErrorBag;
                     aria-describedby="error-alt"
                 @enderror>
             @error('alt')
-                <p class="text-danger" id="error-alt">
+                <p class="text-danger custom-text" id="error-alt">
                     {{$message}}
                 </p>
             @enderror

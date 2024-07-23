@@ -5,50 +5,49 @@
 @section('contenido')
 
 <!-- Titulo de la vista -->
-<h1 class="text-center mb-3">Contacto</h1>
+<h2 class="custom-subtitle text-center my-5">Contacto</h2>
 
 <!-- Formulario contacto -->
-<form action="{{ route('contact.result') }}" method="POST" class="m-auto mt-5" style="max-width:800px;">
+<form action="{{ route('contact.result') }}" method="POST" class="mt-5 custom-forms">
     @csrf
 
     <!-- Email del usuario -->
-    <label class="custom-label mb-3" for="email">
-        <span class="custom-label-text">Email: </span>
-        <input
-          type="email"
-          class="custom-input"
-          id="email"
-          name="email"
-          required
-          placeholder="Ingresa tu correo electrónico">
-    </label>
+    <div class="mb-3">
+      <label for="email" class="custom-forms-label">Email:</label>
+      <input
+       type="email" 
+       class="form-control" 
+       id="email" 
+       name="email"
+       placeholder="Ingresa tu correo electrónico">
+    </div>
 
     <!-- Titutlo del mensaje -->
-    <label class="custom-label mb-3" for="reason">
-        <span class="custom-label-text">Motivo:</span>
-        <input
-          type="text"
-          class="custom-input"
-          id="reason"
-          name="reason"
-          required
-          placeholder="Explícanos brevemente el motivo de tu contacto">
-    </label>
+    <div class="mb-3">
+      <label for="reason" class="custom-forms-label">Motivo:</label>
+      <input
+       type="text" 
+       class="form-control" 
+       id="reason" 
+       name="reason"
+       placeholder="Explícanos brevemente el motivo de tu contacto">
+    </div>
 
     <!-- Mensaje del usuario -->
-    <label class="mb-3 d-block" for="message">
-        <span class="form-label">Mensaje</span>
-        <textarea
-          class="custom-textarea"
-          id="message"
-          name="message"
-          rows="3"
-          required
-          placeholder="Escribe tu mensaje aquí">
-        </textarea>
-    </label>
+    <div class="mb-3">
+      <label for="message" class="custom-forms-label">Mensaje:</label>
+      <textarea 
+       class="form-control" 
+       id="message" 
+       name="message"
+       rows="3"
+       required
+       placeholder="Escribe tu mensaje aquí"></textarea>
+    </div>
 
     <!-- Boton de submit -->
-    <button type="submit" class="btn-custom mt-3 d-block m-auto w-25">Enviar</button>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="custom-forms-submit">Enviar</button>
+    </div>
 </form>
 @endsection

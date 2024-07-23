@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Mail\Contact; // Corregir la ruta de la clase Contact si es necesario
 use Illuminate\Support\Facades\Mail; // Corregir el namespace de Illuminate\Support\Facades\Mail
@@ -9,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        return view('welcome', ['books' => Book::All()]);
     }
 
     public function about()

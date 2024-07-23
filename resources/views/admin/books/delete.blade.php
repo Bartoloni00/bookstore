@@ -10,15 +10,15 @@ use Illuminate\Support\ViewErrorBag;
 @section('title','Confirmacion para eliminar el libro:' . $book->title)
 
 @section('contenido')
-    <h1 class="mb-3">Deseas eliminar el libro: {{ $book->title }}</h1>
+    <h2 class="custom-subtitle text-center my-5">Deseas eliminar el libro: {{ $book->title }}</h2>
 
-<x-book-details :book="$book" buy="false"/>
+    <x-book-details :book="$book" :buy="false"/>
     
-    <p class="text-danger text-center">¿Realmente estas seguro de querer eliminar el libro : {{$book->title}}</p>
+    <p class="text-danger text-center custom-text">¿Realmente estas seguro de querer eliminar el libro : {{$book->title}}</p>
     
-    <form method="POST" action="{{url('/admin/books/'. $book->id .'/delete')}}">
+    <form method="POST" action="{{url('/admin/books/'. $book->id .'/delete')}}" class="custom-forms">
       @csrf 
-      <div class="btn-max-width mx-auto mb-3">
+      <div class="mx-auto mb-3">
         <button type="submit" class="btn btn-danger mt-2 w-100 block m-auto">Eliminar Libro</button>
       </div>
     </form>

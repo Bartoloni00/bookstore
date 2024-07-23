@@ -10,18 +10,20 @@ use Illuminate\Support\ViewErrorBag;
 @section('title', 'Eliminar categoria')
 @section('contenido')
 
-    <h1>¿Estas seguro de querer eliminar la categoria: {{ $category->name }}?</h1>
+    <h2 class="custom-subtitle text-center my-5">¿Estas seguro de querer eliminar la categoria: {{ $category->name }}?</h2>
 
-    <div class="form-group mb-3">
-        <span>Nombre:</span>
-        <p class="form-control bg-body-secondary">{{ $category->name }}</p>
-    </div>
-
-    <p class="text-danger text-center">¿Estas seguro de querer eliminar la categoria: {{$category->name}}?</p>
     
-    <form method="POST" action="{{ url('/admin/category/'. $category->id .'/delete')}}">
+    <form method="POST" action="{{ url('/admin/category/'. $category->id .'/delete')}}" class="custom-forms">
         @csrf 
-        <div class="btn-max-width mx-auto mb-3">
+        
+        <div class="form-group mb-3">
+            <span>Nombre:</span>
+            <p class="form-control bg-body-secondary custom-text">{{ $category->name }}</p>
+        </div>
+    
+        <p class="text-danger text-center custom-text">¿Estas seguro de querer eliminar la categoria: {{$category->name}}?</p>
+
+        <div class="mx-auto mb-3">
             <button type="submit" class="btn btn-danger mt-3 w-100 block m-auto">Si, quiero eliminar la categoria</button>
         </div>
     </form>

@@ -13,15 +13,15 @@ use Illuminate\Support\ViewErrorBag;
 @section('contenido')
 
 <section class="container">
-    <h1>Editar el usuario: {{$user->name}}</h1>
+    <h2 class="custom-title text-center my-5">Editar el usuario: {{$user->name}}</h2>
     <div class="row justify-content-center">
         @if ($errors->any())
-        <p class="text-danger mb-3">
+        <p class="text-danger mb-3 custom-text">
             Existen errores en el formulario.
         </p>
         @endif
         <div class="col-md-6">
-            <form method="POST" action="{{ url('admin/users/' . $user->id . '/edit') }}" class="my-5">
+            <form method="POST" action="{{ url('admin/users/' . $user->id . '/edit') }}" class="custom-forms">
                 @csrf
                 <div class="form-group mb-3">
                     <label for="name">Nombre de usuario</label>
@@ -51,7 +51,7 @@ use Illuminate\Support\ViewErrorBag;
 
                 <div class="form-group mb-3">
                     <span>Rol:</span>
-                    <p class="form-control">{{$user->role->name}}</p>
+                    <p class="form-control custom-text">{{$user->role->name}}</p>
                 </div>
 
                 <div class="btn-max-width mx-auto mb-3">

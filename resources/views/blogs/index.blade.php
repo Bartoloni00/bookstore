@@ -13,49 +13,42 @@ use Illuminate\Paginator\LengthAwarePaginator;
 @section('contenido')
 
 <!--Titulo de la sección-->
-<h1 class="text-center py-4">Nuestros blogs</h1>
+<h2 class="custom-subtitle text-center my-5">Nuestros blogs</h2>
 
 <!--Contenedor de la sección-->
-<div class="row mb-2">
-    @foreach ($blogs as $blog)
-    <div class="col-md-6">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250">
-            <div class="col p-4 d-flex flex-column position-static">
-                <!--ID del Blog-->
-                <strong class="d-inline-block mb-2 text-primary-emphasis">#{{ $blog->id }}</strong>
-
-                <!--Portada del Blog-->
-                @if ($blog->image)
-                    @if(substr($blog->image->name, 0, 8) !== 'https://')
-                        <img src="{{ asset('storage/' . $blog->image->name)}}" alt="{{$blog->image->alt}}" loading="lazy">
-                    @else
-                        <img src="{{$blog->image->name}}" alt="{{$blog->image->alt}}" loading="lazy">
-                    @endif
-                @else
-                    <img src="{{ asset('storage/' .'blogDefault.jpg')}}" alt="{{$blog->title}}" loading="lazy">
-                @endif
-
-                <!--Titulo del Blog-->
-                <h2 class="mb-0">{{ $blog->title }}</h2>
-
-                <!--Fecha de publicación del Blog-->
-                <p class="mb-1 text-body-secondary">{{ $blog->release_date }}</p>
-
-                <!--Synopsis del Blog-->
-                <p class="card-text mb-auto">{{ $blog->synopsis }}</p>
-
-                <!--Boton información adicional del blog-->
-                <a href="{{ url('/blogs/' . $blog->id) }}" class="icon-link gap-1 icon-link-hover">
-                    Ver mas
-                    <svg class="bi">
-                        <use xlink:href="#chevron-right"></use>
-                    </svg>
-                </a>
-            </div>
+    <div class="container mt-5">
+        <div class="row">
+            @foreach ($blogs as $blog)
+                <div class="col-lg-4 col-md-6">
+                    <a href="{{ url('/blogs/' . $blog->id) }}" class="text-decoration-none">
+                        <div class="blog-card">
+                            @if ($blog->image)
+                                @if(substr($blog->image->name, 0, 8) !== 'https://')
+                                    <img src="{{ asset('storage/' . $blog->image->name)}}" class="blog-image" alt="{{$blog->image->alt}}" loading="lazy">
+                                @else
+                                    <img src="{{$blog->image->name}}" class="blog-image" alt="{{$blog->image->alt}}" loading="lazy">
+                                @endif
+                            @else
+                                <img src="{{ asset('storage/blogDefault.jpg')}}" class="blog-image" alt="{{$blog->title}}" loading="lazy">
+                            @endif
+                            <div class="blog-body">
+                                <h3 class="custom-subtitle-medium">{{ $blog->title }}</h3>
+                                <p class="custom-text">{{ $blog->synopsis }}</p>
+                                <div class="d-flex flex-row justify-content-between">
+                                    <p class="custom-text">
+                                        <i class="fas fa-user"></i> 
+                                        <span>{{ $blog->user->name }}</span>
+                                    </p>
+                                    <p class="custom-text">
+                                        <i class="fas fa-calendar"></i> 
+                                        <span>{{ $blog->release_date }}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
-    @endforeach
-</div>
-
-{{$blogs->links()}}
 @endsection

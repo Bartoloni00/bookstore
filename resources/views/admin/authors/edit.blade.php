@@ -10,7 +10,7 @@ use Illuminate\Support\ViewErrorBag;
 @section('title', 'Añadir Author')
 {{-- @csrf es para protegernos de ataques CSRF si no lo tenemos laravel tira un error 419 --}}
 @section('contenido')
-    <h1>Editar al author: {{$author->name}} {{$author->lastname}}</h1>
+    <h2 class="custom-subtitle text-center my-5">Editar al author: {{$author->name}} {{$author->lastname}}</h2>
 
     @if ($errors->any())
         <p class="text-danger mb-3">
@@ -18,7 +18,7 @@ use Illuminate\Support\ViewErrorBag;
         </p>
     @endif
 
-    <form method="POST" action="{{ url('/admin/author/'. $author->id .'/edit')}}">
+    <form method="POST" action="{{ url('/admin/author/'. $author->id .'/edit')}}" class="custom-forms">
         @csrf 
 
         <div class="form-group mb-3">
@@ -33,7 +33,7 @@ use Illuminate\Support\ViewErrorBag;
                     aria-describedby="error-name"
                 @enderror>
             @error('name')
-                <p class="text-danger" id="error-name">
+                <p class="text-danger custom-text" id="error-name">
                     {{$message}}
                 </p>
             @enderror
@@ -51,7 +51,7 @@ use Illuminate\Support\ViewErrorBag;
                     aria-describedby="error-lastname"
                 @enderror>
             @error('lastname')
-                <p class="text-danger" id="error-lastname">
+                <p class="text-danger custom-text" id="error-lastname">
                     {{$message}}
                 </p>
             @enderror

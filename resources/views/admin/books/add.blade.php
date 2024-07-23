@@ -11,15 +11,15 @@ use Illuminate\Support\ViewErrorBag;
 @section('title', 'Añadir libro')
 {{-- @csrf es para protegernos de ataques CSRF si no lo tenemos laravel tira un error 419 --}}
 @section('contenido')
-    <h1>Agregar Nuevo Libro</h1>
+    <h2 class="custom-subtitle text-center my-5">Agregar Nuevo Libro</h2>
 
     @if ($errors->any())
-        <p class="text-danger mb-3">
+        <p class="text-danger mb-3 custom-text">
             Existen errores en el formulario.
         </p>
     @endif
 
-    <form method="POST" action="{{ route('book.create.process')}}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('book.create.process')}}" enctype="multipart/form-data" class="custom-forms">
         @csrf 
 
         <div class="form-group mb-3">
@@ -34,7 +34,7 @@ use Illuminate\Support\ViewErrorBag;
                     aria-describedby="error-title"
                 @enderror>
             @error('title')
-                <p class="text-danger" id="error-title">
+                <p class="text-danger custom-text" id="error-title">
                     {{$message}}
                 </p>
             @enderror
@@ -52,7 +52,7 @@ use Illuminate\Support\ViewErrorBag;
                 @enderror
                 >{{old('description')}}</textarea>
             @error('description')
-                <p class="text-danger" id="error-description">
+                <p class="text-danger custom-text" id="error-description">
                     {{$message}}
                 </p>
             @enderror
@@ -70,7 +70,7 @@ use Illuminate\Support\ViewErrorBag;
                     aria-describedby="error-price"
                 @enderror>
             @error('price')
-                <p class="text-danger" id="error-price">
+                <p class="text-danger custom-text" id="error-price">
                     {{$message}}
                 </p>
             @enderror
@@ -88,7 +88,7 @@ use Illuminate\Support\ViewErrorBag;
                 @enderror
                 >{{old('synopsis')}}</textarea>
             @error('synopsis')
-                <p class="text-danger" id="error-synopsis">
+                <p class="text-danger custom-text" id="error-synopsis">
                     {{$message}}
                 </p>
             @enderror
@@ -106,7 +106,7 @@ use Illuminate\Support\ViewErrorBag;
                     aria-describedby="error-release_date"
                 @enderror>
             @error('release_date')
-                <p class="text-danger" id="error-release_date">
+                <p class="text-danger custom-text" id="error-release_date">
                     {{$message}}
                 </p>
             @enderror
@@ -125,7 +125,7 @@ use Illuminate\Support\ViewErrorBag;
                 @endforeach
             </select>
             @error('categorie_id')
-                <p class="text-danger">
+                <p class="text-danger custom-text">
                     {{$message}}
                 </p>
             @enderror
@@ -150,7 +150,7 @@ use Illuminate\Support\ViewErrorBag;
                 @endforeach
             </select>
             @error('author_id')
-                <p class="text-danger">
+                <p class="text-danger custom-text">
                     {{$message}}
                 </p>
             @enderror
@@ -173,7 +173,7 @@ use Illuminate\Support\ViewErrorBag;
                     aria-describedby="error-image"
                 @enderror>
             @error('image')
-                <p class="text-danger" id="error-image">
+                <p class="text-danger custom-text" id="error-image">
                     {{$message}}
                 </p>
             @enderror
@@ -191,7 +191,7 @@ use Illuminate\Support\ViewErrorBag;
                     aria-describedby="error-alt"
                 @enderror>
             @error('alt')
-                <p class="text-danger" id="error-alt">
+                <p class="text-danger custom-text" id="error-alt">
                     {{$message}}
                 </p>
             @enderror

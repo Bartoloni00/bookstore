@@ -28,7 +28,7 @@ use Illuminate\Paginator\LengthAwarePaginator;
                 <td>{{ $purchase->payment_id }}</td>
                 <td class="text-white <?= ($purchase->state == 'success') ? 'bg-success' : (($purchase->state == 'info') ? 'bg-info' : 'bg-error'); ?>">{{ $purchase->state }}</td>
                 <td>{{ $purchase->total_price }}</td>
-                <td><a href="{{ route('purchase.details', $purchase->id); }}">Ver detalles</a></td>
+                <td><a href="{{ route('purchase.details', $purchase->id) }}">Ver detalles</a></td>
             </tr>
             @endforeach
         </tbody>

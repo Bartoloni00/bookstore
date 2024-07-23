@@ -10,16 +10,21 @@ use Illuminate\Support\ViewErrorBag;
 @extends('layouts.admin')
 @section('title', 'Autores')
 @section('contenido')
-<h1 class="text-center">Categorias cargadas</h1>
-<a href="{{ route('category.create.form') }}" class="btn btn-success mb-4"><i class="bi bi-plus-circle"></i> Agregar categoria</a>
 
   <div class="container">
+    <div class="d-flex justify-content-between align-items-center my-5">
+      <h2 class="custom-subtitle my-5">Categorias cargadas</h2>
+      <a href="{{ route('category.create.form') }}" class="btn btn-success">
+          <i class="bi bi-plus-circle"></i>
+          <span>Agregar categoria</span>
+      </a>
+    </div>
     <div class="row">
     @foreach ($categories as $category)
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card">
             <div class="card-body">
-              <p class="card-title">Nombre: {{ $category->name }}</p>
+              <p class="custom-text">Nombre: {{ $category->name }}</p>
             </div>
             <div class="card-footer d-flex">
               <a href="{{ url('/admin/category/'. $category->id .'/edit') }}" class="btn btn-primary w-100 mx-2"><i class="bi bi-pencil"></i> Editar</a>
