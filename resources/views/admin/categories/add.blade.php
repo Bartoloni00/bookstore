@@ -10,15 +10,15 @@ use Illuminate\Support\ViewErrorBag;
 @section('title', 'Añadir categoria')
 {{-- @csrf es para protegernos de ataques CSRF si no lo tenemos laravel tira un error 419 --}}
 @section('contenido')
-    <h1>Agregar Nueva categoria</h1>
+    <h2 class="custom-subtitle text-center my-5">Agregar Nueva categoria</h2>
 
     @if ($errors->any())
-        <p class="text-danger mb-3">
+        <p class="text-danger mb-3 custom-text">
             Existen errores en el formulario.
         </p>
     @endif
 
-    <form method="POST" action="{{ route('category.create.process')}}">
+    <form method="POST" action="{{ route('category.create.process')}}" class="custom-forms">
         @csrf 
 
         <div class="form-group mb-3">
@@ -33,7 +33,7 @@ use Illuminate\Support\ViewErrorBag;
                     aria-describedby="error-name"
                 @enderror>
             @error('name')
-                <p class="text-danger" id="error-name">
+                <p class="text-danger custom-text" id="error-name">
                     {{$message}}
                 </p>
             @enderror

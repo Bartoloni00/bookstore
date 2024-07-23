@@ -3,6 +3,6 @@
 @section('title', $book->title)
 
 @section('contenido')
-<h1 class="mb-3">Detalles</h1>
+<h2 class="custom-subtitle text-center my-5">{{ $book->title }}</h2>
 <x-book-details :book="$book" buy="true"/>
 @endsection

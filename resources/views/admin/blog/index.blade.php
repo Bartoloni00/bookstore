@@ -5,15 +5,19 @@
 @section('title', 'Blogs Dashboard')
 
 @section('contenido')
-<h1>Dashboard del blog</h1>
-<a href="{{ route('blog.create.view') }}" class="btn btn-success mb-3"><i class="bi bi-plus-circle"></i> Agregar nuevo blog</a>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
+<div class="custom-table">
+    <div class="d-flex justify-content-between align-items-center my-5">
+        <h2 class="custom-subtitle my-5">Dashboard del blog</h2>
+        <a href="{{ route('blog.create.view') }}" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i>
+            <span>Agregar nuevo blog</span>
+        </a>
+    </div>
+    <table class="table custom-table-striped">
         <thead>
             <tr>
                 <th scope="col">Titulo</th>
-                <th scope="col">Synopsis</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Fecha de estreno</th>
                 <th scope="col">Acciones</th>
@@ -23,12 +27,17 @@
             @foreach ($blogs as $blog)
             <tr>
                 <td>{{ $blog->title }}</td>
-                <td>{{ $blog->synopsis }}</td>
                 <td>{{ $blog->category->name }}</td>
                 <td>{{ $blog->release_date }}</td>
-                <td>
-                    <a href="{{ url('/admin/blog/' . $blog->id . '/edit') }}" class="btn btn-primary w-100 block mb-2"><i class="bi bi-pencil"></i> Editar</a>
-                    <a href="{{ url('/admin/blog/' . $blog->id . '/delete') }}" class="btn btn-danger w-100 block"><i class="bi bi-trash3"></i> Eliminar</a>
+                <td class="action-buttons">
+                    <a href="{{ url('/admin/blog/' . $blog->id . '/edit') }}" class="btn btn-primary block mb-2">
+                        <i class="fa-solid fa-pencil"></i>
+                        <span>Editar</span>
+                    </a>
+                    <a href="{{ url('/admin/blog/' . $blog->id . '/delete') }}" class="btn btn-danger block">
+                        <i class="fa-solid fa-trash"></i>
+                        <span>Eliminar</span>
+                    </a>
                 </td>
             </tr>
             @endforeach

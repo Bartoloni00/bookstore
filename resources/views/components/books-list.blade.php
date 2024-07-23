@@ -16,13 +16,13 @@
                         <img src="{{ asset('storage/bookDefault.jpg')}}" alt="{{$book->title}}" loading="lazy" class="card-img-top">
                     @endif
                     <div class="card-body">
-                        <h2 class="card-title">{{$book->title}}</h2>
+                        <h2 class="custom-subtitle">{{$book->title}}</h2>
                         <a href="{{ url('books',['id' => $book->id]) }}" class="btn btn-primary">Ver el libro</a>
                     </div>
                 </div>
             </div>
         @endforeach
     @else
-        <h2 class="text-center text-info">No posee libros en el carrito</h2>
+        <h2 class="custom-subtitle text-center text-info">No posee libros en el carrito</h2>
     @endif
 </div>

@@ -15,28 +15,32 @@ class Image extends Seeder
     {
         DB::table('images')->insert([
             [
-                'name' => 'https://cdn.discordapp.com/attachments/1195342577256374414/1195353813683544104/1.png?ex=65b3aefd&is=65a139fd&hm=b5585d670547f92aa0a1d0d8aadf933aab293b661811fd52b2fb96739611e86f&',
+                'name' => 'https://media.discordapp.net/attachments/1260970767932457021/1265293483372187678/viaje-al-centro-de-la-tierra.png?ex=66a0fbe2&is=669faa62&hm=bdfcaf7490a8b7dffd23799e3ed9efe18ce575095605b12165c54194385095c9&=&format=webp&quality=lossless',
                 'alt' => 'Viaje-al-centro-de-la-Tierra',
             ],
             [
-                'name' => 'https://cdn.discordapp.com/attachments/1195342577256374414/1195353814002319400/2.png?ex=65b3aefd&is=65a139fd&hm=aac786d8ab80c0edc9394be06e62d97f7e0282fa6771b427960c9af82cd7bb73&',
+                'name' => 'https://media.discordapp.net/attachments/1260970767932457021/1265293482210361374/100-anos-de-soledad.png?ex=66a0fbe2&is=669faa62&hm=b81dc1f40d4dbe6b1b6c1199fa9bfaeb926fc58fed26b7efa76b60b234bbe1c1&=&format=webp&quality=lossless',
                 'alt' => '100-anos-de-soledad',
             ],
             [
-                'name' => 'https://media.discordapp.net/attachments/1195342577256374414/1195353814300098580/3.png?ex=65b3aefd&is=65a139fd&hm=fa7f4e50797e11d8b9ab508a7d88d7c8a3d66f772ac5fb90003211f8ceeaf640&',
+                'name' => 'https://media.discordapp.net/attachments/1260970767932457021/1265293482558492692/1984.png?ex=66a0fbe2&is=669faa62&hm=9e32076af2ed0cfd3909358dc11da9edddb2ac386ff20025def406c557bd0e57&=&format=webp&quality=lossless',
                 'alt' => '1984-portada',
             ],
             [
-                'name' => 'https://media.discordapp.net/attachments/1195342577256374414/1195353814602096671/4.png?ex=65b3aefe&is=65a139fe&hm=78c32b308878a246d30e50de64948272c2eb0897c7da76b23500ae84ede711ca&',
+                'name' => 'https://media.discordapp.net/attachments/1260970767932457021/1265293483070062716/matar-a-un-ruisenor.png?ex=66a0fbe2&is=669faa62&hm=52216461d266fa1727112c4847ecf1964c7dad74535fa61b196f9b2ed42f47f8&=&format=webp&quality=lossless',
                 'alt' => 'matar-a-un-ruisenor',
             ],
             [
-                'name' => 'https://media.discordapp.net/attachments/1195342577256374414/1195353815189291098/6.png?ex=65b3aefe&is=65a139fe&hm=28c3c84b6a0e1ae8158867c77e2616800b01a69a3b1c75b801becf148c7a1ef6&',
+                'name' => 'https://media.discordapp.net/attachments/1260970767932457021/1265293482814083135/don-quijote-de-la-mancha.png?ex=66a0fbe2&is=669faa62&hm=01d743fb1571972dc508e7099e6b5661a1c46dcdb6861b7f8ca629754f98084a&=&format=webp&quality=lossless',
                 'alt' => 'don-quijote-de-la-mancha',
             ],
             [
                 'name' => 'https://media.discordapp.net/attachments/1195342577256374414/1195353814920871956/5.png?ex=65b3aefe&is=65a139fe&hm=a6abf1be7b0a8cee3136e16029277de5f86139fabcfbeb88e780753400d4b61e&',
                 'alt' => 'senor-de-los-anillos',
+            ],
+            [
+                'name' => 'https://media.discordapp.net/attachments/1260970767932457021/1265302593723437167/caliz-de-fuego.png?ex=66a1045e&is=669fb2de&hm=14318c31490136091cf400da1e164404e0e41206801a95a55c6aaa21609c4298&=&format=webp&quality=lossless',
+                'alt' => 'harry-potter-y-el-caliz-de-fuego',
             ],
             [
                 'name' => 'https://picsum.photos/320/160',

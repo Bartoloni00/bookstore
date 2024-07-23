@@ -13,39 +13,23 @@ use Illuminate\Paginator\LengthAwarePaginator;
 @section('contenido')
 
 <!--Titulo de la sección-->
-<h1 class="text-center py-4">Nuestros libros</h1>
+<h2 class="custom-subtitle text-center my-5">Nuestros libros</h2>
 
 <!--Contenedor de la sección-->
-<div class="container">
-    <div class="row">
+<div class="container" id="tienda">
+    <div class="book-container">
         @foreach ($books as $book)
-        <div class="col-lg-4 mb-4 col-md-6 my-5">
-            <!--Contenedor del libro-->
-            <div class="card position-static">
-                <!--Portada del libro-->
-                <img src="{{$book->image->name}}" alt="{{$book->image->alt}}" class="card-img-top img-fluid">
-
-                <!--Contenido del libro-->
-                <div class="card-body-books p-2">
-                    <!--Titulo del libro-->
-                    <h5 class="card-title">{{ $book->title }}</h5>
-
-                    <!--Author del libro-->
-                    <p>{{ $book->author->name }} {{ $book->author->lastname }}</p>
-
-                    <!--Synopsis del libro-->
-                    <p class="card-text">{{ $book->synopsis }}</p>
+        <div class="book-card">
+            <a href="{{ url('books',['id' => $book->id]) }}" class="text-decoration-none d-block mx-auto">
+                <div class="custom-card">
+                    <img src="{{$book->image->name}}" alt="{{$book->image->alt}}" class="custom-card-img img-fluid">
+                    <div class="card-body-books p-2">
+                        <h3 class="custom-subtitle-medium fix-color">{{ $book->title }}</h3>
+                        <p class="custom-text fix-color">{{ $book->author->name }} {{ $book->author->lastname }}</p>
+                        <p class="custom-text fix-color">{{ $book->synopsis }}</p>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <!--Boton información adicional del libro-->
-                    <a href="{{ url('books',['id' => $book->id]) }}" class="btn-custom d-block text-center w-10 icon-link icon-link-hover text-decoration-none">
-                        Ver mas
-                        <svg class="bi">
-                            <use xlink:href="#chevron-right"></use>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+            </a>
         </div>
         @endforeach
     </div>

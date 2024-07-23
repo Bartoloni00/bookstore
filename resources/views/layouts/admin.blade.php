@@ -9,63 +9,57 @@
     <!-- La funcion URL genera una ruta absoluta del archivo -->
     <link rel="stylesheet" href="<?=url('css/estilos.css')?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
     <script src="https://kit.fontawesome.com/d95904715c.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="app">
     <!-- Menú de navegación -->
-    <nav class="navbar navbar-expand-lg" aria-label="Thirteenth navbar example fix-bgcolor">
-      <div class="container-fluid fix-bgcolor">
-        <!-- Boton Hamburguesa -->
-        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg" id="custom-navbar">
+      <div class="container-fluid">
+        <!-- Nombre del sitio -->
+        <h1 class="col-lg-3 custom-title">BookStore</h1>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <div class="navbar-text">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <!-- Link dashboard -->
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}">Dashboard</a>
+              </li>
 
-        <!-- Contenedor de items -->
-        <div class="navbar-collapse d-lg-flex collapse" id="navbarsExample11" >
-
-          <!-- Nombre del sitio -->
-          <a class="navbar-brand col-lg-3 me-0 text-white" href="{{route('home')}}">BookStore</a>
-
-          <!-- Listado de navegación -->
-          <ul class="navbar-nav col-lg-6 justify-content-lg-center">
-
-            <!-- Link dashboard -->
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}">Dashboard</a>
-            </li>
-
-            <!-- Link volver al sitio -->
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('home') }}">Volver a la Web</a>
-            </li>
-
-          </ul>
-
-          <!-- Boton de cerrar sesión -->
-          <div class="d-lg-flex col-lg-3 justify-content-lg-end">
-            <form action="<?=route('logout')?>" method="post" class="nav-item">
-              @csrf
-              <button type="submit" class="btn-custom">Cerrar sesión
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-              </button>
-            </form>
+              <!-- Link volver al sitio -->
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('home') }}">Volver a la Web</a>
+              </li>
+  
+              <form action="<?=route('logout')?>" method="post" class="nav-item">
+                  @csrf
+                  <button type="submit" class="nav-link">
+                    <span>Cerrar sesión</span>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  </button>
+              </form>
+            </ul>
           </div>
         </div>
       </div>
     </nav>
-    <main class="container py-3">
+
+    <main>
     @if (\Session::has('status.message'))
         <div class="alert alert-{{\Session::get('status.type','success')}}">
-          <p>{!! \Session::get('status.message') !!}</p>
+          <p class="custom-text">{!! \Session::get('status.message') !!}</p>
         </div>
       @endif
     @yield('contenido')
     </main>
-    <footer class="footer">
-        <p class="text-light text-wrap text-center">Jonathan Abraham Bartoloni | Ezequiel Thomas Arevalo</p>
+
+    <footer class="mt-4 pt-4">
+      <p class="custom-text text-center p-2 fix-color">Jonathan Abraham Bartoloni | Ezequiel Thomas Arevalo</p>
     </footer>
 </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
