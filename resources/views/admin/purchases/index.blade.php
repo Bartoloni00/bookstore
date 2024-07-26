@@ -16,7 +16,7 @@ use Illuminate\Paginator\LengthAwarePaginator;
         <thead>
             <tr>
                 <th scope="col">Usuario</th>
-                <th scope="col">id de pago</th>
+                <th scope="col">ID de pago</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Precio total de la compra</th>
                 <th scope="col">Detalles</th>

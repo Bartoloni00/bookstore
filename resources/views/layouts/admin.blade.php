@@ -35,16 +35,16 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('home') }}">Volver a la Web</a>
               </li>
-  
-              <form action="<?=route('logout')?>" method="post" class="nav-item">
-                  @csrf
-                  <button type="submit" class="nav-link">
-                    <span>Cerrar sesión</span>
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                  </button>
-              </form>
             </ul>
           </div>
+          
+          <form action="<?=route('logout')?>" method="post" class="nav-item">
+              @csrf
+              <button type="submit" class="nav-link">
+                <span>Cerrar sesión</span>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              </button>
+          </form>
         </div>
       </div>
     </nav>

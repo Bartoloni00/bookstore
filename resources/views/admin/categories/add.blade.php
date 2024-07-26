@@ -10,7 +10,7 @@ use Illuminate\Support\ViewErrorBag;
 @section('title', 'Añadir categoria')
 {{-- @csrf es para protegernos de ataques CSRF si no lo tenemos laravel tira un error 419 --}}
 @section('contenido')
-    <h2 class="custom-subtitle text-center my-5">Agregar Nueva categoria</h2>
+    <h2 class="custom-subtitle text-center my-5">Agregar una nueva categoría</h2>
 
     @if ($errors->any())
         <p class="text-danger mb-3 custom-text">
@@ -22,7 +22,7 @@ use Illuminate\Support\ViewErrorBag;
         @csrf 
 
         <div class="form-group mb-3">
-            <label for="name">Nombre de la categoria</label>
+            <label for="name">Nombre de la categoría</label>
             <input 
                 type="text" 
                 class="form-control" 

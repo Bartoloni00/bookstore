@@ -95,7 +95,7 @@ use Illuminate\Support\ViewErrorBag;
         </div>
 
         <div class="form-group mb-3">
-            <label for="release_date">Fecha de Lanzamiento</label>
+            <label for="release_date">Fecha de lanzamiento</label>
             <input 
                 type="date" 
                 class="form-control" 
@@ -115,7 +115,7 @@ use Illuminate\Support\ViewErrorBag;
         <div class="form-group mb-3">
             <label for="categorie_id">Categoría</label>
             <select class="form-control" id="categorie_id" name="categorie_id">
-                <option value="">--Selecciona una categoria--</option>
+                <option value="">--Selecciona una categoría--</option>
                 @foreach ($categories as $category)
                     <option 
                         value="{{$category->id}}"
@@ -133,7 +133,7 @@ use Illuminate\Support\ViewErrorBag;
         <div class="form-group mb-3">
             <label for="author_id">Autor</label>
             <select class="form-control" id="author_id" name="author_id">
-                <option value="">--Selecciona un author--</option>
+                <option value="">--Selecciona un autor--</option>
                 @foreach ($authors as $author)
                 <option 
                     value="{{$author->id}}"
@@ -173,7 +173,7 @@ use Illuminate\Support\ViewErrorBag;
         </div>
         
         <div class="form-group mb-3">
-            <label for="alt">Texto Alternativo (Alt)</label>
+            <label for="alt">Texto alternativo (Alt)</label>
             <input 
                 type="text" 
                 class="form-control" 

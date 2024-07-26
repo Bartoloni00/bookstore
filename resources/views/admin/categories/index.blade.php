@@ -13,10 +13,10 @@ use Illuminate\Support\ViewErrorBag;
 
   <div class="container">
     <div class="d-flex justify-content-between align-items-center my-5">
-      <h2 class="custom-subtitle my-5">Categorias cargadas</h2>
+      <h2 class="custom-subtitle my-5">Categorías cargadas</h2>
       <a href="{{ route('category.create.form') }}" class="btn btn-success">
-          <i class="bi bi-plus-circle"></i>
-          <span>Agregar categoria</span>
+          <i class="fa fa-plus-circle" aria-hidden="true"></i>
+          <span>Agregar una nueva categoría</span>
       </a>
     </div>
     <div class="row">

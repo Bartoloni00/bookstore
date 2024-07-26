@@ -14,10 +14,10 @@ use Illuminate\Support\ViewErrorBag;
 
 <div class="container">
   <div class="d-flex justify-content-between align-items-center my-5">
-    <h2 class="text-center custom-subtitle my-5">Authores registrados</h2>
+    <h2 class="text-center custom-subtitle my-5">Autores registrados</h2>
     <a href="{{ route('author.create.form') }}" class="btn btn-success">
-      <i class="bi bi-plus-circle"></i>
-      <span>Agregar nuevo author</span>
+      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      <span>Agregar un nuevo autor</span>
     </a>
   </div>
   <div class="row">

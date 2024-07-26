@@ -19,7 +19,7 @@
        class="form-control" 
        id="email" 
        name="email"
-       placeholder="Ingresa tu correo electrónico">
+       placeholder="Ingresa tu correo electrónico.">
     </div>
 
     <!-- Titutlo del mensaje -->
@@ -30,7 +30,7 @@
        class="form-control" 
        id="reason" 
        name="reason"
-       placeholder="Explícanos brevemente el motivo de tu contacto">
+       placeholder="Explícanos brevemente el motivo de tu contacto.">
     </div>
 
     <!-- Mensaje del usuario -->
@@ -42,7 +42,7 @@
        name="message"
        rows="3"
        required
-       placeholder="Escribe tu mensaje aquí"></textarea>
+       placeholder="Escribe tu mensaje aquí."></textarea>
     </div>
 
     <!-- Boton de submit -->

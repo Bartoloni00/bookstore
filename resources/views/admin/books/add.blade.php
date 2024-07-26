@@ -11,7 +11,7 @@ use Illuminate\Support\ViewErrorBag;
 @section('title', 'Añadir libro')
 {{-- @csrf es para protegernos de ataques CSRF si no lo tenemos laravel tira un error 419 --}}
 @section('contenido')
-    <h2 class="custom-subtitle text-center my-5">Agregar Nuevo Libro</h2>
+    <h2 class="custom-subtitle text-center my-5">Agregar un nuevo libro</h2>
 
     @if ($errors->any())
         <p class="text-danger mb-3 custom-text">
@@ -95,7 +95,7 @@ use Illuminate\Support\ViewErrorBag;
         </div>
 
         <div class="form-group mb-3">
-            <label for="release_date">Fecha de Lanzamiento</label>
+            <label for="release_date">Fecha de lanzamiento</label>
             <input 
                 type="date" 
                 class="form-control" 
@@ -116,7 +116,7 @@ use Illuminate\Support\ViewErrorBag;
             <div>
                 <label for="categorie_id">Categoría</label>
             <select class="form-control" id="categorie_id" name="categorie_id">
-                <option value="">--Selecciona una categoria--</option>
+                <option value="">--Selecciona una categoría--</option>
                 @foreach ($categories as $category)
                     <option 
                         value="{{$category->id}}"
@@ -132,7 +132,7 @@ use Illuminate\Support\ViewErrorBag;
             </div>
             <div class="mt-2">
                 <p>
-                 ¿No encuentras la categoria que deseas? <a href="{{ route('category.create.form') }}">Agregala</a>
+                 ¿No encuentras la categoría que deseas? <a href="{{ route('category.create.form') }}">Agrégala</a>
                 </p>
              </div>
         </div>
@@ -141,7 +141,7 @@ use Illuminate\Support\ViewErrorBag;
             <div>
                 <label for="author_id">Autor</label>
             <select class="form-control" id="author_id" name="author_id">
-            <option value="">--Selecciona un author--</option>
+            <option value="">--Selecciona un autor--</option>
                 @foreach ($authors as $author)
                     <option 
                         value="{{$author->id}}"
@@ -157,7 +157,7 @@ use Illuminate\Support\ViewErrorBag;
             </div>
             <div class="mt-2">
                <p>
-                ¿No encuentras el author que deseas? <a href="{{ route('author.create.form') }}">Agregalo</a>
+                ¿No encuentras el autor que deseas? <a href="{{ route('author.create.form') }}">Agrégalo</a>
                </p>
             </div>
         </div>
@@ -180,7 +180,7 @@ use Illuminate\Support\ViewErrorBag;
         </div>
         
         <div class="form-group mb-3">
-            <label for="alt">Texto Alternativo (Alt)</label>
+            <label for="alt">Texto alternativo (Alt)</label>
             <input 
                 type="text" 
                 class="form-control" 
