@@ -12,12 +12,12 @@ use Illuminate\Paginator\LengthAwarePaginator;
 @section('contenido')
 
 <div class="custom-table">
-    <h2 class="custom-subtitle mt-5">Compra del usuario: {{$purchase->user->name}}</h2>
+    <h2 class="custom-subtitle mt-5">Compras del usuario: {{$purchase->user->name}}</h2>
     <table class="table custom-table-striped">
         <thead>
             <tr>
-                <th scope="col">id de compra</th>
-                <th scope="col">id de pago</th>
+                <th scope="col">ID de compra</th>
+                <th scope="col">ID de pago</th>
                 <th scope="col">Estado</th>
             </tr>
         </thead>
@@ -34,7 +34,7 @@ use Illuminate\Paginator\LengthAwarePaginator;
     <table class="table custom-table-striped">
         <thead>
             <tr>
-                <th scope="col">Titulo</th>
+                <th scope="col">Título</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio unitario</th>
                 <th scope="col">Precio total</th>

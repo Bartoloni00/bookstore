@@ -63,7 +63,7 @@
             <div class="col-lg-6 col-md-6 mb-4">
                 <a class="card position-static text-decoration-none" href="{{ route('admin.purchases.index') }}">
                     <div class="card-body">
-                        <h3 class="custom-subtitle-medium">ventas</h3>
+                        <h3 class="custom-subtitle-medium">Ventas</h3>
                         <i class="fa-solid fa-users-gear fa-2xl"></i>
                     </div>
                 </a>

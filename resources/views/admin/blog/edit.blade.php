@@ -10,7 +10,7 @@ use Illuminate\Support\ViewErrorBag;
 @section('title', 'Editar el Blog: '. e($blog->title))
 {{-- @csrf es para protegernos de ataques CSRF si no lo tenemos laravel tira un error 419 --}}
 @section('contenido')
-    <h2 class="custom-subtitle text-center my-5">Editar Categoria: {{$blog->title}}</h2>
+    <h2 class="custom-subtitle text-center my-5">Editar la Categoría: {{$blog->title}}</h2>
 
     @if ($errors->any())
         <p class="text-danger custom-text mb-3 custom-text">
@@ -79,7 +79,7 @@ use Illuminate\Support\ViewErrorBag;
             <div>
                 <label for="categorie_id">Categoría</label>
                 <select class="form-control" id="categorie_id" name="categorie_id">
-                    <option value="">--Selecciona una categoria--</option>
+                    <option value="">--Selecciona una categoría--</option>
                     @foreach ($categories as $category)
                         <option 
                             value="{{$category->id}}"
@@ -95,7 +95,7 @@ use Illuminate\Support\ViewErrorBag;
             </div>
             <div class="mt-2">
                 <p>
-                 ¿No encuentras la categoria que deseas? <a href="{{ route('category.create.form') }}">Agregala</a>
+                 ¿No encuentras la categoría que deseas? <a href="{{ route('category.create.form') }}">Agrégala</a>
                 </p>
              </div>
         </div>

@@ -88,32 +88,32 @@
                   @endif
               @endauth
 
-            <!-- Links de cerrar sesión, registrarse, iniciar sesión -->
-              @auth
-                <form action="<?=route('logout')?>" method="post" class="nav-item">
-                  @csrf
-                  <button type="submit" class="nav-link">
-                    <span>Cerrar sesión</span>
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                  </button>
-                </form>
-              @else
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="<?=route('login')?>">
-                      <span>Iniciar sesion</span>
-                      <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="<?=route('user.create.view')?>">
-                      <span>Registrarse</span>
-                      <i class="fa-solid fa-user-plus"></i>
-                    </a>
-                  </li>
-              @endauth
             </ul>
-
           </div>
+
+          <!-- Links de cerrar sesión, registrarse, iniciar sesión -->
+            @auth
+              <form action="<?=route('logout')?>" method="post" class="nav-item">
+                @csrf
+                <button type="submit" class="nav-link">
+                  <span>Cerrar sesión</span>
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
+              </form>
+            @else
+                <li class="nav-item px-2">
+                  <a class="nav-link" aria-current="page" href="<?=route('login')?>">
+                    <span>Iniciar sesión</span>
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                  </a>
+                </li>
+                <li class="nav-item px-2">
+                  <a class="nav-link" aria-current="page" href="<?=route('user.create.view')?>">
+                    <span>Registrarse</span>
+                    <i class="fa-solid fa-user-plus"></i>
+                  </a>
+                </li>
+            @endauth
         </div>
       </div>
     </nav>

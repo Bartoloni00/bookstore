@@ -131,7 +131,6 @@ footer
 #section-first
 {
     width: 100%;
-    min-height: 100vh;
     background-color: var(--secondary-color);
     position: relative;
     top: 0;
@@ -172,8 +171,6 @@ footer
 #section-four
 {
     width: 100%;
-    height: auto;
-    min-height: 100vh;
     background-color: var(--secondary-color);
 }
 
@@ -233,7 +230,7 @@ footer
     width: 100%;
     height: auto;
     background-color: var(--bg-color);
-    position: absolute;
+    position: static;
     left: 0;
     bottom: -5px;
 }
@@ -255,7 +252,7 @@ footer
 
 .wave-footer
 {
-    position: absolute;
+    position: static;
     top: -8px;
     left: 0;
 }

@@ -38,7 +38,7 @@
         <h3 class="custom-subtitle-medium fw-normal mt-2 mb-3">Abraham Bartoloni</h3>
 
         <!-- Información del Perfil -->
-        <p class="custom-text">Desarollador FullStack</p>
+        <p class="custom-text">Desarrollador FullStack</p>
 
         <!-- Boton de github -->
         <a class="btn btn-secondary" href="https://github.com/Bartoloni00" target="_blank">
@@ -60,7 +60,7 @@
         <h3 class="custom-subtitle-medium fw-normal mt-2 mb-3">Ezequiel Arevalo</h3>
 
         <!-- Información del Perfil -->
-        <p class="custom-text">Desarollador Frontend</p>
+        <p class="custom-text">Desarrollador Front-end</p>
 
         <!-- Boton de github -->
         <a class="btn btn-secondary" href="https://github.com/Ezearevalodev" target="_blank">
