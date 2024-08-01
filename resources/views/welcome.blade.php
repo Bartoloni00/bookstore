@@ -13,7 +13,7 @@
             <p class="custom-text">En nuestro rincón de lectura, los amantes de la literatura podrán explorar nuevos géneros, descubrir fascinantes libros y disfrutar de muchas otras sorpresas en conjunto a nuestras colecciones de las sagas más emocionantes y entretenidas.</p>
         </div>
         <div class="col-md-6">
-            <img src="<?=url('img/books.webp')?>" class="img-fluid text-center" alt="Imagen representativa de bookstore">
+            <img src="<?=url('img/books.jpg')?>" class="img-fluid text-center" alt="Imagen representativa de bookstore">
         </div>
     </div>
 

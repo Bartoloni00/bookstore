@@ -131,7 +131,7 @@ use Illuminate\Support\ViewErrorBag;
                 class="form-control" 
                 id="alt" 
                 name="alt"
-                value="{{ old('alt') }}"
+                value="{{ $blog->image->alt }}"
                 @error('alt')
                     aria-describedby="error-alt"
                 @enderror>
