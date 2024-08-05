@@ -2,7 +2,7 @@
   <div class="row">
       <div class="col-md-4 d-flex align-items-center">
           @if ($book->image)
-              @if(substr($book->image->name, 0, 8) !== 'https://')
+              @if(substr($book->image->name, 0, 8) !== 'seedImage')
                   <img src="{{ asset('storage/' . $book->image->name)}}" class="img-fluid book-image" alt="{{$book->image->alt}}" loading="lazy">
               @else
                   <img src="{{ $book->image->name }}" class="img-fluid book-image" alt="{{$book->image->alt}}" loading="lazy">
