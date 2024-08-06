@@ -35,7 +35,7 @@ class Image extends Seeder
                 'alt' => 'don-quijote-de-la-mancha',
             ],
             [
-                'name' => 'seedImages/elsenordelosanillos.jpg',
+                'name' => 'seedImages/elsernordelosanillos.jpg',
                 'alt' => 'senor-de-los-anillos',
             ],
             [
