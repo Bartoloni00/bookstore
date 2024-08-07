@@ -11,7 +11,7 @@ use Illuminate\Paginator\LengthAwarePaginator;
 @section('title', 'Mis Compras')
 
 @section('contenido')
-<h1 class="text-center mb-3">Todas mis compras</h1>
+<h2 class="text-center mb-3">Todas mis compras</h2>
 <div class="table-responsive">
     <table class="table table-bordered table-striped">
         <thead>

@@ -41,6 +41,7 @@ if (!empty($user->books)) {
       @enderror
 
     <div class="row mb-4">
+      <h2>Carrito de compras</h2>
       @foreach($user->books as $book)
           <div class="col-12 col-md-4 bg-warning mb-3">
             @if ($book->image)

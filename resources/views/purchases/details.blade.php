@@ -10,7 +10,7 @@ use Illuminate\Paginator\LengthAwarePaginator;
 @section('title', 'Detalles de mi compra')
 
 @section('contenido')
-<h1>Mis compras</h1>
+<h2>Mis compras</h2>
 <div class="table-responsive">
     <table class="table table-bordered table-striped">
         <thead>
@@ -28,7 +28,7 @@ use Illuminate\Paginator\LengthAwarePaginator;
             </tr>
         </tbody>
     </table>
-    <h2>Libros en la orden de compra</h2>
+    <h3>Libros en la orden de compra</h3>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
